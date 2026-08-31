@@ -1,0 +1,2312 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!--[CDATA[<sc-helmet-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="assets/logo-kunie-favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<script src="./image-slot.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Nunito:wght@700;800;900&amp;family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&amp;display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; font-family: "Public Sans", system-ui, sans-serif; color: #14202E; background: #FFFFFF; font-size: 17px; line-height: 1.55; text-wrap: pretty; }
+  h1, h2, h3, h4 { margin: 0; font-family: "Source Serif 4", Georgia, serif; line-height: 1.18; letter-spacing: -0.01em; }
+  p { margin: 0; }
+  a { color: #1E5AA8; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:hover { color: #123A63; }
+  button { font-family: inherit; }
+  :focus-visible { outline: 3px solid #C8951B; outline-offset: 2px; border-radius: 2px; }
+  ul { margin: 0; padding: 0; }
+  @keyframes om-rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+  @keyframes om-kenburns { from { transform: scale(1.02); } to { transform: scale(1.09); } }
+  [data-reveal] { opacity: 0; }
+  @keyframes om-open { from { opacity: 0; transform: translateY(-6px); clip-path: inset(0 0 100% 0); } to { opacity: 1; transform: none; clip-path: inset(0 0 0 0); } }
+  [data-acc] { animation: om-open 420ms cubic-bezier(.22,.61,.36,1) both; }
+  @keyframes om-rule { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+  @keyframes om-stat-label { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  @keyframes om-stat-value { from { opacity: 0; transform: translateY(14px); filter: blur(6px); } to { opacity: 1; transform: none; filter: blur(0); } }
+  [data-stat] { position: relative; }
+  [data-stat]::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: #2E93B8; transform-origin: bottom; transform: scaleY(0); }
+  [data-stat] > dt, [data-stat] > dd { opacity: 0; }
+  .is-in [data-stat]::before { animation: om-rule 520ms cubic-bezier(.22,.61,.36,1) both; animation-delay: calc(var(--i) * 130ms); }
+  .is-in [data-stat] > dt { animation: om-stat-label 480ms cubic-bezier(.22,.61,.36,1) both; animation-delay: calc(var(--i) * 130ms + 120ms); }
+  .is-in [data-stat] > dd { animation: om-stat-value 620ms cubic-bezier(.22,.61,.36,1) both; animation-delay: calc(var(--i) * 130ms + 200ms); }
+  @media (prefers-reduced-motion: reduce) { html:not(.om-anim) [data-stat] > dt, html:not(.om-anim) [data-stat] > dd { opacity: 1 !important; } html:not(.om-anim) [data-stat]::before { transform: scaleY(1) !important; } }
+  [data-draw] svg path { stroke-dasharray: var(--len); stroke-dashoffset: var(--len); }
+  [data-draw] img { opacity: var(--op, 1); transform-origin: bottom center; }
+  [data-draw].is-armed img { opacity: 0; transform: translateY(10px) scaleY(0.94); }
+  [data-draw].is-armed.is-drawn img { animation: om-pin-grow 760ms cubic-bezier(.22,.61,.36,1) forwards; }
+  @keyframes om-pin-grow { to { opacity: var(--op, 1); transform: none; } }
+  [data-draw].is-drawn svg path { animation: om-draw 900ms cubic-bezier(.4,.0,.2,1) forwards; }
+  @keyframes om-draw { to { stroke-dashoffset: 0; } }
+  [data-reveal].is-in { animation: om-rise 620ms cubic-bezier(.22,.61,.36,1) both; }
+  [data-reveal].is-in[data-delay="1"] { animation-delay: 90ms; }
+  [data-reveal].is-in[data-delay="2"] { animation-delay: 180ms; }
+  [data-reveal].is-in[data-delay="3"] { animation-delay: 270ms; }
+  @media (prefers-reduced-motion: reduce) { html:not(.om-anim) * { transition: none !important; animation: none !important; } html:not(.om-anim) [data-reveal] { opacity: 1 !important; } html:not(.om-anim) [data-draw].is-armed img { opacity: var(--op, 1) !important; transform: none !important; } html:not(.om-anim) [data-draw] svg path { stroke-dashoffset: 0 !important; } }
+</style>
+
+
+<div style="max-width:100%;overflow-x:hidden">
+
+<a href="#contenu" style="position:absolute;left:-9999px;top:0;background:#123A63;color:#fff;padding:12px 20px;z-index:100;font-weight:600" style-focus="left:8px;top:8px">Aller au contenu principal</a>
+
+<!-- ============ BARRE UTILITAIRE ============ -->
+<div style="background:#123A63;color:#C9DCEF;font-size:14px">
+  <div style="max-width:1280px;margin:0 auto;padding:0 clamp(16px,4vw,40px);display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:40px">
+    <p style="display:flex;align-items:center;gap:8px;letter-spacing:0.01em;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8FCBE8" stroke-width="2" aria-hidden="true"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"></path></svg>
+      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}"><span style="min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Site officiel de la Commune de l’Île des Pins (Kunié)</span></sc-if><sc-if value="{{ isMobile }}"><span style="white-space:nowrap">Site officiel de la commune</span></sc-if>
+    </p>
+    <nav aria-label="Liens utilitaires" style="display:flex;gap:22px;align-items:center;flex-shrink:0;white-space:nowrap">
+      <a href="tel:+687461103" style="display:flex;align-items:center;gap:7px;color:#fff;font-weight:700;text-decoration:none" style-hover="color:#8FCBE8">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#8FCBE8" stroke-width="2" aria-hidden="true"><path d="M4 5h5l2 5-3 2a12 12 0 006 6l2-3 5 2v5H4z"></path></svg>
+        46 11 03
+      </a>
+      <a href="https://www.facebook.com/people/Commune-de-lIle-des-Pins-Kwenyii/61588837833747/" aria-label="Page Facebook de la commune" style="display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,0.14)" style-hover="background:#2E93B8">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3h-3.1V8.2c0-.9.3-1.5 1.6-1.5h1.6V4c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.2V10H7.6v3h2.7v8z"></path></svg>
+      </a>
+      <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <a href="#" style="color:#C9DCEF;text-decoration:none" style-hover="color:#fff;text-decoration:underline">Annuaire des services</a>
+      <a href="#" style="color:#C9DCEF;text-decoration:none" style-hover="color:#fff;text-decoration:underline">Marchés publics</a>
+      <a href="#" style="color:#C9DCEF;text-decoration:none" style-hover="color:#fff;text-decoration:underline">Accessibilité</a>
+      </sc-if>
+    </nav>
+  </div>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header style="background:#fff;border-bottom:1px solid #DFE3E9;position:sticky;top:0;z-index:40">
+  <div style="max-width:1280px;margin:0 auto;padding:14px clamp(16px,4vw,40px) 0;display:flex;flex-wrap:wrap;align-items:center;gap:20px 28px">
+    <a href="#" onClick="{{ goHome }}" style="display:flex;align-items:center;gap:14px;text-decoration:none;color:inherit;flex-shrink:0">
+      <img src="assets/logo-kunie-compact.png" alt="Armoiries de la Commune de l’Île des Pins, Kunié" width="58" height="58" style="width:clamp(46px,12vw,58px);height:clamp(46px,12vw,58px);object-fit:contain;display:block">
+      <span style="display:block;border-left:1px solid #DFE3E9;padding-left:14px">
+        <span style="display:block;font-family:'Source Serif 4',Georgia,serif;font-size:clamp(16px,4.2vw,20px);font-weight:700;color:#123A63;line-height:1.1">Commune de l’Île des Pins</span>
+        <span style="display:block;font-size:clamp(10px,2.8vw,13px);letter-spacing:0.12em;text-transform:uppercase;color:#5A6470;margin-top:3px">KUNIÉ - NOUVELLE-CALÉDONIE</span>
+      </span>
+    </a>
+
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <nav aria-label="Navigation principale" style="order:3;width:100%;display:flex;flex-wrap:wrap;gap:2px;border-top:1px solid #DFE3E9;margin-top:6px">
+          <a href="#" onClick="{{ goDemarches }}" style="padding:10px 12px;font-size:16px;font-weight:600;color:#14202E;text-decoration:none;border-bottom:3px solid transparent" style-hover="color:#1E5AA8;border-bottom-color:#1E5AA8">Démarches</a>
+          <a href="#" onClick="{{ goMairie }}" style="padding:10px 12px;font-size:16px;font-weight:600;color:#14202E;text-decoration:none;border-bottom:3px solid transparent" style-hover="color:#1E5AA8;border-bottom-color:#1E5AA8">Ma mairie</a>
+          <a href="#" onClick="{{ goVivre }}" style="padding:10px 12px;font-size:16px;font-weight:600;color:#14202E;text-decoration:none;border-bottom:3px solid transparent" style-hover="color:#1E5AA8;border-bottom-color:#1E5AA8">Vivre à Kunié</a>
+          <a href="#" onClick="{{ goActus }}" style="padding:10px 12px;font-size:16px;font-weight:600;color:#14202E;text-decoration:none;border-bottom:3px solid transparent" style-hover="color:#1E5AA8;border-bottom-color:#1E5AA8">Actualités et agenda</a>
+          <a href="#" onClick="{{ goVisiter }}" style="padding:10px 12px;font-size:16px;font-weight:600;color:#14202E;text-decoration:none;border-bottom:3px solid transparent" style-hover="color:#1E5AA8;border-bottom-color:#1E5AA8">Visiter Kunié</a>
+        </nav>
+        <div style="margin-left:auto;display:flex;align-items:center;gap:16px">
+        <div style="position:relative">
+        <form role="search" onSubmit="{{ onSearch }}" style="display:flex;align-items:center;border:1px solid #C3C9D2;border-radius:6px;background:#fff;height:44px;padding:0 6px 0 12px" style-focus-within="border-color:#1E5AA8">
+          <label for="q" style="position:absolute;left:-9999px">Rechercher une démarche</label>
+          <input id="q" type="search" value="{{ query }}" onInput="{{ onQuery }}" role="combobox" aria-expanded="{{ hasSuggestions }}" aria-controls="q-list" autoComplete="off" placeholder="Rechercher une démarche…" style="border: 0; outline: 0; font-size: 15px; width: 190px; background: transparent; color: #14202E; position: static">
+          <button type="submit" aria-label="Lancer la recherche" style="border:0;background:#EAF0F7;width:32px;height:32px;border-radius:4px;display:grid;place-items:center;cursor:pointer" style-hover="background:#1E5AA8">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1E5AA8" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4.5-4.5"></path></svg>
+          </button>
+        </form>
+        <sc-if value="{{ hasSuggestions }}">
+          <ul id="q-list" role="listbox" aria-label="Suggestions de démarches" style="position:absolute;top:calc(100% + 6px);right:0;width:min(420px,80vw);list-style:none;margin:0;padding:6px;background:#fff;border:1px solid #DFE3E9;border-top:3px solid #2E93B8;box-shadow:0 14px 34px rgba(18,58,99,0.18);z-index:60;max-height:60vh;overflow:auto">
+            <sc-for list="{{ suggestions }}" as="sg" hint-placeholder-count="3">
+              <li role="option" aria-selected="false"><a href="#" onClick="{{ sg.open }}" style="display:flex;flex-direction:column;gap:3px;padding:11px 12px;text-decoration:none;color:#14202E" style-hover="background:#F3F7FB">
+                <span style="font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#1E5AA8">{{ sg.cat }}</span>
+                <span style="font-size:16px;font-weight:600">{{ sg.titre }}</span>
+                <span style="font-size:14px;color:#5A6470">{{ sg.meta }}</span>
+              </a></li>
+            </sc-for>
+            <sc-if value="{{ noResult }}">
+              <li style="padding:14px 12px;font-size:15px;color:#5A6470">Aucune démarche ne correspond. <a href="#" onClick="{{ goContact }}">Contacter la mairie</a></li>
+            </sc-if>
+          </ul>
+        </sc-if>
+        </div>
+        <sc-if value="{{ hasSuggestions }}">
+          <ul id="q-list" role="listbox" aria-label="Suggestions" style="position:absolute;top:calc(100% + 6px);right:0;width:min(420px,80vw);list-style:none;margin:0;padding:6px;background:#fff;border:1px solid #DFE3E9;border-top:3px solid #2E93B8;box-shadow:0 14px 34px rgba(18,58,99,0.18);z-index:60;max-height:60vh;overflow:auto">
+            <sc-for list="{{ suggestions }}" as="sg" hint-placeholder-count="3">
+              <li role="option" aria-selected="false"><a href="#" onClick="{{ sg.open }}" style="display:flex;flex-direction:column;gap:3px;padding:11px 12px;text-decoration:none;color:#14202E" style-hover="background:#F3F7FB">
+                <span style="font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#1E5AA8">{{ sg.cat }}</span>
+                <span style="font-size:16px;font-weight:600">{{ sg.titre }}</span>
+                <span style="font-size:14px;color:#5A6470">{{ sg.meta }}</span>
+              </a></li>
+            </sc-for>
+            <sc-if value="{{ noResult }}">
+              <li style="padding:14px 12px;font-size:15px;color:#5A6470">Aucune démarche ne correspond. <a href="#" onClick="{{ goContact }}">Contacter la mairie</a></li>
+            </sc-if>
+          </ul>
+        </sc-if>
+        </div>
+        <a href="#" onClick="{{ goSignaler }}" style="display:inline-flex;align-items:center;gap:8px;border:1.5px solid #1E5AA8;color:#1E5AA8;text-decoration:none;font-weight:700;font-size:16px;padding:11px 16px;border-radius:6px;white-space:nowrap" style-hover="background:#1E5AA8;color:#fff">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 4l9 16H3z"></path><path d="M12 10v4M12 17v.5"></path></svg>
+          Signaler un problème
+        </a>
+        <a href="#" onClick="{{ goContact }}" style="background:#1E5AA8;color:#fff;text-decoration:none;font-weight:600;font-size:16px;padding:12px 20px;border-radius:6px;white-space:nowrap" style-hover="background:#123A63;transform:translateY(-5px);box-shadow:0 0 0 8px #ffffff,0 14px 28px rgba(18,58,99,0.26)">Contact</a>
+      </sc-if></div>
+    
+
+    <sc-if value="{{ isMobile }}">
+      <div style="margin-left:auto;display:flex;align-items:center;gap:8px">
+        <a href="#" onClick="{{ goSignaler }}" aria-label="Signaler un problème" style="width:48px;height:48px;border:1px solid #C3C9D2;border-radius:6px;display:grid;place-items:center">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#1E5AA8" stroke-width="2" aria-hidden="true"><path d="M12 4l9 16H3z"></path><path d="M12 10v4M12 17v.5"></path></svg>
+        </a>
+        <a href="#" onClick="{{ goContact }}" aria-label="Contacter la mairie" style="width:48px;height:48px;border:1px solid #C3C9D2;border-radius:6px;display:grid;place-items:center">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#1E5AA8" stroke-width="2" aria-hidden="true"><path d="M4 5h5l2 5-3 2a12 12 0 006 6l2-3 5 2v5H4z"></path></svg>
+        </a>
+        <button type="button" onClick="{{ toggleMenu }}" aria-label="Ouvrir le menu" style="display:flex;align-items:center;gap:8px;height:48px;padding:0 14px;background:#1E5AA8;color:#fff;border:0;border-radius:6px;font-size:15px;font-weight:600;cursor:pointer">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+          Menu
+        </button>
+      </div>
+    </sc-if>
+  </header></div>
+
+  <sc-if value="{{ menuOpen }}">
+    <div style="border-top:1px solid #DFE3E9;background:#fff;padding:8px clamp(16px,4vw,40px) 24px">
+      <form role="search" onSubmit="{{ onSearch }}" style="display:flex;align-items:center;border:1px solid #C3C9D2;border-radius:6px;height:52px;padding:0 8px 0 14px;margin:12px 0 8px">
+        <label for="qm" style="position:absolute;left:-9999px">Rechercher une démarche</label>
+        <input id="qm" type="search" value="{{ query }}" onInput="{{ onQuery }}" role="combobox" aria-expanded="{{ hasSuggestions }}" aria-controls="qm-list" autoComplete="off" placeholder="Rechercher une démarche…" style="border:0;outline:0;font-size:16px;flex:1;background:transparent">
+        <button type="submit" aria-label="Lancer la recherche" style="border:0;background:transparent;padding:8px;display:grid;place-items:center;cursor:pointer;min-width:44px;min-height:44px">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1E5AA8" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4.5-4.5"></path></svg>
+        </button>
+      </form>
+      <sc-if value="{{ hasSuggestions }}">
+        <ul id="qm-list" role="listbox" aria-label="Suggestions de démarches" style="list-style:none;margin:0 0 18px;padding:6px;background:#fff;border:1px solid #DFE3E9;border-top:3px solid #2E93B8;max-height:46vh;overflow:auto">
+          <sc-for list="{{ suggestions }}" as="sg" hint-placeholder-count="3">
+            <li role="option" aria-selected="false"><a href="#" onClick="{{ sg.open }}" style="display:flex;flex-direction:column;gap:3px;padding:14px 12px;text-decoration:none;color:#14202E;min-height:44px" style-hover="background:#F3F7FB">
+              <span style="font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#1E5AA8">{{ sg.cat }}</span>
+              <span style="font-size:16px;font-weight:600">{{ sg.titre }}</span>
+              <span style="font-size:14px;color:#5A6470">{{ sg.meta }}</span>
+            </a></li>
+          </sc-for>
+          <sc-if value="{{ noResult }}">
+            <li style="padding:14px 12px;font-size:15px;color:#5A6470">Aucune démarche ne correspond. <a href="#" onClick="{{ goContact }}">Contacter la mairie</a></li>
+          </sc-if>
+        </ul>
+      </sc-if>
+      <div style="height:10px"></div>
+      <nav aria-label="Navigation principale mobile" style="display:grid;gap:2px">
+        <a href="#" onClick="{{ goDemarches }}" style="display:flex;justify-content:space-between;align-items:center;padding:16px 4px;font-size:18px;font-weight:600;color:#14202E;text-decoration:none;border-bottom:1px solid #DFE3E9">Démarches et services <span aria-hidden="true" style="color:#1E5AA8">→</span></a>
+        <a href="#" onClick="{{ goMairie }}" style="display:flex;justify-content:space-between;align-items:center;padding:16px 4px;font-size:18px;font-weight:600;color:#14202E;text-decoration:none;border-bottom:1px solid #DFE3E9">Ma mairie <span aria-hidden="true" style="color:#1E5AA8">→</span></a>
+        <a href="#" onClick="{{ goVivre }}" style="display:flex;justify-content:space-between;align-items:center;padding:16px 4px;font-size:18px;font-weight:600;color:#14202E;text-decoration:none;border-bottom:1px solid #DFE3E9">Vivre à Kunié <span aria-hidden="true" style="color:#1E5AA8">→</span></a>
+        <a href="#" onClick="{{ goActus }}" style="display:flex;justify-content:space-between;align-items:center;padding:16px 4px;font-size:18px;font-weight:600;color:#14202E;text-decoration:none;border-bottom:1px solid #DFE3E9">Actualités et agenda <span aria-hidden="true" style="color:#1E5AA8">→</span></a>
+        <a href="#" onClick="{{ goSignaler }}" style="display:flex;justify-content:space-between;align-items:center;padding:16px 4px;font-size:18px;font-weight:600;color:#14202E;text-decoration:none;border-bottom:1px solid #DFE3E9">Signaler un problème <span aria-hidden="true" style="color:#1E5AA8">→</span></a>
+        <a href="#" onClick="{{ goVisiter }}" style="display:flex;justify-content:space-between;align-items:center;padding:16px 4px;font-size:18px;font-weight:600;color:#14202E;text-decoration:none;border-bottom:1px solid #DFE3E9">Visiter Kunié <span aria-hidden="true" style="color:#1E5AA8">→</span></a>
+        <a href="#" onClick="{{ goContact }}" style="display:flex;justify-content:space-between;align-items:center;padding:16px 4px;font-size:18px;font-weight:600;color:#14202E;text-decoration:none">Contact <span aria-hidden="true" style="color:#1E5AA8">→</span></a>
+      </nav>
+    </div>
+  </sc-if>
+
+
+<!-- ============ BANDEAU D'ALERTE ============ -->
+<sc-if value="{{ alertVisible }}" hint-placeholder-val="{{ true }}">
+  <div role="region" aria-label="Alerte municipale" style="background:#FBF3E3;border-bottom:1px solid #E8D6AE">
+    <div style="max-width:1280px;margin:0 auto;padding:14px clamp(16px,4vw,40px);display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap">
+      <span style="display:flex;align-items:center;gap:8px;background:#8A5A00;color:#fff;font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:5px 10px;border-radius:4px;flex-shrink:0">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" aria-hidden="true"><path d="M12 4l9 16H3z"></path><path d="M12 10v4M12 17v.5"></path></svg>
+        {{ alertLabel }}
+      </span>
+      <p style="flex:1;min-width:260px;font-size:16px;color:#4A3A12">
+        <strong style="font-weight:700">{{ alertTitle }}</strong> : {{ alertText }}
+        <a href="#" style="color:#8A5A00;font-weight:600;margin-left:6px">Consulter le bulletin</a>
+      </p>
+      <button type="button" onClick="{{ dismissAlert }}" style="border:1px solid #D9C08A;background:transparent;color:#6B5312;border-radius:4px;padding:6px 12px;font-size:14px;cursor:pointer" style-hover="background:#F3E6C9">Masquer</button>
+    </div>
+  </div>
+</sc-if>
+
+<main id="contenu">
+
+<!-- ================= PAGE : ACCUEIL ================= -->
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<div>
+
+  <!-- HERO -->
+  <section aria-label="Présentation de la commune" style="position:relative;overflow:hidden;background-color:#123A63;min-height:clamp(430px,62vh,600px);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:clamp(28px,4.5vw,56px) clamp(16px,4vw,40px) clamp(84px,9vw,110px)">
+    <div aria-hidden="true" style="position:absolute;inset:0">
+      <sc-for list="{{ slides }}" as="s" hint-placeholder-count="1">
+        <div style="position:absolute;inset:0;background-image:url({{ s.url }});background-size:cover;background-position:{{ s.pos }};opacity:{{ s.opacity }};transition:opacity {{ s.fade }} ease-in-out;animation:om-kenburns 14s ease-out both;transform:scale(1.02)"></div>
+      </sc-for>
+      
+    </div>
+    <div style="position: relative; text-align: center; max-width: min(860px,100%); padding-bottom: clamp(20px,3vw,44px)">
+      <p style="color: #fff; font-family: 'Nunito','Public Sans',sans-serif; font-size: clamp(14px,3vw,19px); font-weight: 800; letter-spacing: 0.24em; text-transform: uppercase; text-shadow: 0 2px 14px rgba(10,30,52,0.85); text-align: center; margin: 0 0 14px">Commune de l’Île des Pins</p>
+      
+      <h1 style="font-family:'Nunito','Public Sans',sans-serif;color:#fff;font-size:clamp(36px,7.4vw,86px);font-weight:900;letter-spacing:-0.02em;line-height:1.02;margin:0 0 16px;text-shadow:0 3px 26px rgba(10,30,52,0.8)">Kunié en un clic</h1>
+      <p style="color:#fff;font-size:clamp(16px,1.6vw,20px);max-width:46ch;margin:0 auto;text-shadow:0 2px 16px rgba(10,30,52,0.9)">Vos démarches, vos informations et la vie de la commune, accessibles en une seule page.</p>
+    </div>
+
+
+
+    
+    <div style="position:absolute;bottom:clamp(72px,7.5vw,88px);left:clamp(16px,4vw,40px);right:clamp(16px,4vw,40px);display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between">
+    <nav aria-label="Lieux de l’Île des Pins" style="display:flex;gap:4px;align-items:center;padding:0">
+      <button type="button" onClick="{{ togglePause }}" aria-label="{{ pauseLabel }}" aria-pressed="{{ paused }}" style="width:40px;height:40px;display:grid;place-items:center;border:0;background:transparent;cursor:pointer;margin-right:2px;opacity:0.72;transition:opacity 160ms" style-hover="opacity:1">
+        <sc-if value="{{ running }}" hint-placeholder-val="{{ true }}">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><rect x="7" y="5" width="3.6" height="14" rx="1"></rect><rect x="13.4" y="5" width="3.6" height="14" rx="1"></rect></svg>
+        </sc-if>
+        <sc-if value="{{ paused }}">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5l11 7-11 7z"></path></svg>
+        </sc-if>
+      </button>
+      <sc-for list="{{ slides }}" as="s" hint-placeholder-count="5">
+        <button type="button" onClick="{{ s.select }}" aria-label="{{ s.caption }}" aria-current="{{ s.current }}" style="width:26px;height:40px;border:0;cursor:pointer;padding:18.5px 0;background-color:{{ s.dot }};background-clip:content-box;transition:background-color 200ms" style-hover="background-color:#ffffff"></button>
+      </sc-for>
+    </nav>
+    <p aria-live="polite" style="display:flex;align-items:center;gap:8px;color:rgba(255,255,255,0.82);font-size:13px;letter-spacing:0.04em;padding:0;margin:0;text-shadow:0 1px 8px rgba(10,30,52,0.9)">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2" aria-hidden="true"><path d="M4 7h4l2-2h4l2 2h4v12H4z"></path><circle cx="12" cy="13" r="3.2"></circle></svg>
+      {{ slideCaption }}
+    </p>
+    </div>
+  </section>
+
+
+  <nav aria-label="Accès directs" style="position:relative;margin:clamp(-70px,-7vw,-44px) auto 0;max-width:1240px;padding:0 clamp(12px,4vw,40px);z-index:5">
+    <div style="background:#fff;border-top:3px solid #2E93B8;box-shadow:0 18px 44px rgba(18,58,99,0.18)">
+      <p style="padding:16px clamp(14px,3vw,26px) 0;font-family:'Nunito','Public Sans',sans-serif;font-size:13px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:#1E5AA8">Accès directs</p>
+      <ul style="list-style:none;display:{{ bandDisplay }};grid-template-columns:repeat(auto-fit,minmax(178px,1fr));gap:10px;align-items:stretch;padding:14px clamp(14px,3vw,26px) clamp(18px,3vw,26px);overflow-x:{{ bandOverflow }};scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none">
+        <li style="flex:{{ bandFlex }};scroll-snap-align:start;min-width:0">
+          <a href="#" onClick="{{ goDemarches }}" style="display:flex;align-items:center;gap:12px;height:100%;padding:16px 14px;text-decoration:none;color:#123A63;min-height:86px;border:1px solid #DFE3E9;transition:transform 200ms cubic-bezier(.22,.61,.36,1),box-shadow 200ms,border-color 200ms" style-hover="border-color:#1E5AA8;transform:translateY(-3px);box-shadow:0 10px 24px rgba(18,58,99,0.14)">
+            <span style="width:44px;height:44px;flex-shrink:0;background:#EAF0F7;display:grid;place-items:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1E5AA8" stroke-width="1.8" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"></path><path d="M9 11h7M9 15h5M9 7h4"></path></svg></span>
+            <span style="font-family:'Nunito','Public Sans',sans-serif;font-size:clamp(12px,1.05vw,15px);font-weight:800;letter-spacing:0.03em;text-transform:uppercase;line-height:1.25;min-width:0;overflow-wrap:anywhere;hyphens:auto">Démarches</span>
+          </a>
+        </li>
+        <li style="flex:{{ bandFlex }};scroll-snap-align:start;min-width:0">
+          <a href="#" onClick="{{ goActus }}" style="display:flex;align-items:center;gap:12px;height:100%;padding:16px 14px;text-decoration:none;color:#123A63;min-height:86px;border:1px solid #DFE3E9;transition:transform 200ms cubic-bezier(.22,.61,.36,1),box-shadow 200ms,border-color 200ms" style-hover="border-color:#1E5AA8;transform:translateY(-3px);box-shadow:0 10px 24px rgba(18,58,99,0.14)">
+            <span style="width:44px;height:44px;flex-shrink:0;background:#EAF0F7;display:grid;place-items:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1E5AA8" stroke-width="1.8" aria-hidden="true"><path d="M4 5h13v14H4z"></path><path d="M17 9h3v10H4"></path><path d="M7 8h7M7 11h7M7 14h4"></path></svg></span>
+            <span style="font-family:'Nunito','Public Sans',sans-serif;font-size:clamp(12px,1.05vw,15px);font-weight:800;letter-spacing:0.03em;text-transform:uppercase;line-height:1.25;min-width:0;overflow-wrap:anywhere;hyphens:auto">Actualités</span>
+          </a>
+        </li>
+        <li style="flex:{{ bandFlex }};scroll-snap-align:start;min-width:0">
+          <a href="#" onClick="{{ goActus }}" style="display:flex;align-items:center;gap:12px;height:100%;padding:16px 14px;text-decoration:none;color:#123A63;min-height:86px;border:1px solid #DFE3E9;transition:transform 200ms cubic-bezier(.22,.61,.36,1),box-shadow 200ms,border-color 200ms" style-hover="border-color:#1E5AA8;transform:translateY(-3px);box-shadow:0 10px 24px rgba(18,58,99,0.14)">
+            <span style="width:44px;height:44px;flex-shrink:0;background:#EAF0F7;display:grid;place-items:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1E5AA8" stroke-width="1.8" aria-hidden="true"><path d="M4 6h16v14H4z"></path><path d="M8 3v5M16 3v5M4 11h16"></path><path d="M8 15h2M14 15h2"></path></svg></span>
+            <span style="font-family:'Nunito','Public Sans',sans-serif;font-size:clamp(12px,1.05vw,15px);font-weight:800;letter-spacing:0.03em;text-transform:uppercase;line-height:1.25;min-width:0;overflow-wrap:anywhere;hyphens:auto">Agenda</span>
+          </a>
+        </li>
+        <li style="flex:{{ bandFlex }};scroll-snap-align:start;min-width:0">
+          <a href="#" onClick="{{ goContact }}" style="display:flex;align-items:center;gap:12px;height:100%;padding:16px 14px;text-decoration:none;color:#123A63;min-height:86px;border:1px solid #DFE3E9;transition:transform 200ms cubic-bezier(.22,.61,.36,1),box-shadow 200ms,border-color 200ms" style-hover="border-color:#1E5AA8;transform:translateY(-3px);box-shadow:0 10px 24px rgba(18,58,99,0.14)">
+            <span style="width:44px;height:44px;flex-shrink:0;background:#EAF0F7;display:grid;place-items:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1E5AA8" stroke-width="1.8" aria-hidden="true"><path d="M6 3h13v18H6z"></path><path d="M6 7H3M6 12H3M6 17H3"></path><circle cx="12.5" cy="10" r="2"></circle><path d="M9 16c0-1.8 1.6-2.8 3.5-2.8S16 14.2 16 16"></path></svg></span>
+            <span style="font-family:'Nunito','Public Sans',sans-serif;font-size:clamp(12px,1.05vw,15px);font-weight:800;letter-spacing:0.03em;text-transform:uppercase;line-height:1.25;min-width:0;overflow-wrap:anywhere;hyphens:auto">Annuaire<br>des services</span>
+          </a>
+        </li>
+        <li style="flex:{{ bandFlex }};scroll-snap-align:start;min-width:0">
+          <a href="#" style="display:flex;align-items:center;gap:12px;height:100%;padding:16px 14px;text-decoration:none;color:#123A63;min-height:86px;border:1px solid #DFE3E9;transition:transform 200ms cubic-bezier(.22,.61,.36,1),box-shadow 200ms,border-color 200ms" style-hover="border-color:#1E5AA8;transform:translateY(-3px);box-shadow:0 10px 24px rgba(18,58,99,0.14)">
+            <span style="width:44px;height:44px;flex-shrink:0;background:#EAF0F7;display:grid;place-items:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1E5AA8" stroke-width="1.8" aria-hidden="true"><path d="M5 4h11l3 3v13H5z"></path><path d="M8 11h8M8 15h8"></path><path d="M8 7h5"></path></svg></span>
+            <span style="font-family:'Nunito','Public Sans',sans-serif;font-size:clamp(12px,1.05vw,15px);font-weight:800;letter-spacing:0.03em;text-transform:uppercase;line-height:1.25;min-width:0;overflow-wrap:anywhere;hyphens:auto">Délibérations<br>et arrêtés</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+
+
+  <section data-reveal="" aria-labelledby="t-travaux" style="background:#123A63;color:#fff;padding:clamp(22px,3vw,32px) clamp(16px,4vw,40px)">
+    <div style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(18px,3vw,36px);align-items:start">
+      <div>
+        <p style="display:inline-block;color:#8FCBE8;font-size:13px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;border-top:3px solid #2E93B8;padding-top:12px;margin-bottom:8px">En ce moment</p>
+        <h2 id="t-travaux" style="font-size:clamp(20px,2.2vw,26px);margin-bottom:8px">Travaux et réseaux</h2>
+        <p style="color:#C9DCEF;font-size:16px;max-width:34ch">Chantiers, coupures d’eau et d’électricité, collecte : l’information de terrain, mise à jour par les services.</p>
+      </div>
+      <ul style="list-style:none;display:grid;gap:1px;background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.18);grid-column:span 2;min-width:0">
+        <sc-for list="{{ travaux }}" as="tv" hint-placeholder-count="4">
+          <li><a href="#" style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;background:#123A63;padding:14px 18px;text-decoration:none;color:#fff" style-hover="background:#1E5AA8">
+            <span style="font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#0C2340;background:#8FCBE8;padding:3px 8px;flex-shrink:0">{{ tv.type }}</span>
+            <span style="flex:1;min-width:180px;font-size:16px">{{ tv.titre }}</span>
+            <span style="font-size:15px;color:#C9DCEF">{{ tv.periode }}</span>
+          </a></li>
+        </sc-for>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ACCÈS RAPIDES -->
+  <section data-reveal="" id="acces-rapides" aria-labelledby="t-acces" style="background:#fff;padding:clamp(44px,6vw,76px) clamp(16px,4vw,40px)">
+    <div style="max-width:1280px;margin:0 auto">
+      <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:32px">
+        <div>
+          <p style="display:inline-block;color:#1E5AA8;font-size:13px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;border-top:3px solid #2E93B8;padding-top:12px;margin-bottom:10px">Je veux…</p>
+          <h2 id="t-acces" style="font-size:clamp(26px,2.8vw,34px);color:#123A63">Accéder rapidement à une démarche</h2>
+        </div>
+        <a href="#" onClick="{{ goDemarches }}" style="font-weight:600;font-size:16px;color:#1E5AA8;border-bottom:2px solid #C9DCEF;text-decoration:none;padding-bottom:3px" style-hover="border-bottom-color:#1E5AA8">Voir les 42 démarches →</a>
+      </div>
+      <ul style="list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:1px;background:#fff;border:1px solid #DFE3E9">
+        <li><a href="#" onClick="{{ goFiche }}" style="background:#fff;display:flex;flex-direction:column;gap:12px;padding:24px 22px;min-height:132px;text-decoration:none;color:#14202E;height:100%;box-shadow:0 0 0 1px #DFE3E9;transition:transform 180ms cubic-bezier(.22,.61,.36,1),background 180ms,box-shadow 180ms" style-hover="background:#F3F7FB;color:#1E5AA8;box-shadow:0 0 0 1px #DFE3E9,inset 0 3px 0 0 #2E93B8;transform:translateY(-2px)">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1E5AA8" stroke-width="1.8" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"></path><path d="M9 11h7M9 15h5"></path></svg>
+          <span style="font-size:17px;font-weight:600">État civil</span>
+          <span style="font-size:14px;color:#5A6470;margin-top:-4px">Naissance, mariage, décès</span>
+        </a></li>
+        <li><a href="#" style="background:#fff;display:flex;flex-direction:column;gap:12px;padding:24px 22px;min-height:132px;text-decoration:none;color:#14202E;height:100%;box-shadow:0 0 0 1px #DFE3E9;transition:transform 180ms cubic-bezier(.22,.61,.36,1),background 180ms,box-shadow 180ms" style-hover="background:#F3F7FB;color:#1E5AA8;box-shadow:0 0 0 1px #DFE3E9,inset 0 3px 0 0 #2E93B8;transform:translateY(-2px)">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1E5AA8" stroke-width="1.8" aria-hidden="true"><path d="M3 20h18M6 20V9l6-4 6 4v11"></path><path d="M10 20v-6h4v6"></path></svg>
+          <span style="font-size:17px;font-weight:600">Urbanisme</span>
+          <span style="font-size:14px;color:#5A6470;margin-top:-4px">Permis, cadastre, PUD</span>
+        </a></li>
+        <li><a href="#" onClick="{{ goRdv }}" style="background:#fff;display:flex;flex-direction:column;gap:12px;padding:24px 22px;min-height:132px;text-decoration:none;color:#14202E;height:100%;box-shadow:0 0 0 1px #DFE3E9;transition:transform 180ms cubic-bezier(.22,.61,.36,1),background 180ms,box-shadow 180ms" style-hover="background:#F3F7FB;color:#1E5AA8;box-shadow:0 0 0 1px #DFE3E9,inset 0 3px 0 0 #2E93B8;transform:translateY(-2px)">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1E5AA8" stroke-width="1.8" aria-hidden="true"><path d="M5 6h14v13H5z"></path><path d="M9 3v4M15 3v4M5 11h14"></path><path d="M9 15l2 2 4-4"></path></svg>
+          <span style="font-size:17px;font-weight:600">Rendez-vous état civil</span>
+          <span style="font-size:14px;color:#5A6470;margin-top:-4px">Réserver un créneau au guichet</span>
+        </a></li>
+        <li><a href="#" style="background:#fff;display:flex;flex-direction:column;gap:12px;padding:24px 22px;min-height:132px;text-decoration:none;color:#14202E;height:100%;box-shadow:0 0 0 1px #DFE3E9;transition:transform 180ms cubic-bezier(.22,.61,.36,1),background 180ms,box-shadow 180ms" style-hover="background:#F3F7FB;color:#1E5AA8;box-shadow:0 0 0 1px #DFE3E9,inset 0 3px 0 0 #2E93B8;transform:translateY(-2px)">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1E5AA8" stroke-width="1.8" aria-hidden="true"><path d="M4 8l8-4 8 4-8 4z"></path><path d="M4 8v7l8 4 8-4V8"></path></svg>
+          <span style="font-size:17px;font-weight:600">Éducation et enfance</span>
+          <span style="font-size:14px;color:#5A6470;margin-top:-4px">Inscription, cantine, transport</span>
+        </a></li>
+        <li><a href="#" style="background:#fff;display:flex;flex-direction:column;gap:12px;padding:24px 22px;min-height:132px;text-decoration:none;color:#14202E;height:100%;box-shadow:0 0 0 1px #DFE3E9;transition:transform 180ms cubic-bezier(.22,.61,.36,1),background 180ms,box-shadow 180ms" style-hover="background:#F3F7FB;color:#1E5AA8;box-shadow:0 0 0 1px #DFE3E9,inset 0 3px 0 0 #2E93B8;transform:translateY(-2px)">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1E5AA8" stroke-width="1.8" aria-hidden="true"><path d="M6 8h12l-1 12H7z"></path><path d="M9 8V5h6v3"></path></svg>
+          <span style="font-size:17px;font-weight:600">Déchets et collecte</span>
+          <span style="font-size:14px;color:#5A6470;margin-top:-4px">Calendrier, encombrants</span>
+        </a></li>
+        <li><a href="#" style="background:#fff;display:flex;flex-direction:column;gap:12px;padding:24px 22px;min-height:132px;text-decoration:none;color:#14202E;height:100%;box-shadow:0 0 0 1px #DFE3E9;transition:transform 180ms cubic-bezier(.22,.61,.36,1),background 180ms,box-shadow 180ms" style-hover="background:#F3F7FB;color:#1E5AA8;box-shadow:0 0 0 1px #DFE3E9,inset 0 3px 0 0 #2E93B8;transform:translateY(-2px)">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1E5AA8" stroke-width="1.8" aria-hidden="true"><circle cx="9" cy="8" r="3"></circle><circle cx="17" cy="10" r="2.4"></circle><path d="M3 20c0-3.3 2.7-5 6-5s6 1.7 6 5M16 15c3 0 5 1.6 5 4.5"></path></svg>
+          <span style="font-size:17px;font-weight:600">Associations et salles</span>
+          <span style="font-size:14px;color:#5A6470;margin-top:-4px">Subvention, réservation</span>
+        </a></li>
+        <li><a href="#" style="background:#fff;display:flex;flex-direction:column;gap:12px;padding:24px 22px;min-height:132px;text-decoration:none;color:#14202E;height:100%;box-shadow:0 0 0 1px #DFE3E9;transition:transform 180ms cubic-bezier(.22,.61,.36,1),background 180ms,box-shadow 180ms" style-hover="background:#F3F7FB;color:#1E5AA8;box-shadow:0 0 0 1px #DFE3E9,inset 0 3px 0 0 #2E93B8;transform:translateY(-2px)">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1E5AA8" stroke-width="1.8" aria-hidden="true"><path d="M5 6h14v13H5z"></path><path d="M9 3v4M15 3v4M5 11h14"></path></svg>
+          <span style="font-size:17px;font-weight:600">Élections</span>
+          <span style="font-size:14px;color:#5A6470;margin-top:-4px">Inscription, procuration</span>
+        </a></li>
+        <li><a href="#" style="background:#fff;display:flex;flex-direction:column;gap:12px;padding:24px 22px;min-height:132px;text-decoration:none;color:#14202E;height:100%;box-shadow:0 0 0 1px #DFE3E9;transition:transform 180ms cubic-bezier(.22,.61,.36,1),background 180ms,box-shadow 180ms" style-hover="background:#F3F7FB;color:#1E5AA8;box-shadow:0 0 0 1px #DFE3E9,inset 0 3px 0 0 #2E93B8;transform:translateY(-2px)">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1E5AA8" stroke-width="1.8" aria-hidden="true"><path d="M12 4v12M12 19v.5"></path><circle cx="12" cy="12" r="9"></circle></svg>
+          <span style="font-size:17px;font-weight:600">Signaler un problème</span>
+          <span style="font-size:14px;color:#5A6470;margin-top:-4px">Voirie, éclairage, dépôt</span>
+        </a></li>
+        <li><a href="#" style="background:#fff;display:flex;flex-direction:column;gap:12px;padding:24px 22px;min-height:132px;text-decoration:none;color:#14202E;height:100%;box-shadow:0 0 0 1px #DFE3E9;transition:transform 180ms cubic-bezier(.22,.61,.36,1),background 180ms,box-shadow 180ms" style-hover="background:#F3F7FB;color:#1E5AA8;box-shadow:0 0 0 1px #DFE3E9,inset 0 3px 0 0 #2E93B8;transform:translateY(-2px)">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1E5AA8" stroke-width="1.8" aria-hidden="true"><path d="M5 4h11l3 3v13H5z"></path><path d="M8 12h8M8 16h8M8 8h5"></path></svg>
+          <span style="font-size:17px;font-weight:600">Documents officiels</span>
+          <span style="font-size:14px;color:#5A6470;margin-top:-4px">Délibérations, arrêtés</span>
+        </a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- MOT DU MAIRE -->
+  <section data-reveal="" aria-labelledby="t-maire" style="background:#F6F8FA;border-top:1px solid #DFE3E9;padding:clamp(44px,6vw,80px) clamp(16px,4vw,40px)">
+    <div style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,64px);align-items:center">
+      <figure style="margin:0;max-width:460px;width:100%">
+        <div style="aspect-ratio:4/5;width:100%">
+          <image-slot id="portrait-maire" shape="rect" fit="cover" placeholder="Déposer le portrait officiel du maire"></image-slot>
+        </div>
+        <figcaption style="font-size:14px;color:#5A6470;padding-top:10px;border-top:1px solid #DFE3E9;margin-top:12px">Portrait officiel, photo à fournir par la mairie</figcaption>
+      </figure>
+      <div>
+        <p style="display:inline-block;color:#1E5AA8;font-size:13px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;border-top:3px solid #2E93B8;padding-top:12px;margin-bottom:16px">Le mot du maire</p>
+        <blockquote style="margin:0 0 22px;font-family:'Source Serif 4',Georgia,serif;font-size:clamp(23px,2.6vw,33px);line-height:1.3;color:#123A63">« Notre commune avance avec ses habitants, ses tribus et ses autorités coutumières. Ce site est là pour rendre la mairie plus proche, plus claire et plus utile au quotidien. »</blockquote>
+        <p style="color:#46535F;font-size:17px;max-width:56ch;margin-bottom:20px">Vous y trouverez vos démarches, les décisions du conseil municipal, les informations d’urgence et la vie de Kunié. Nos services restent à votre écoute à l’accueil de Vao.</p>
+        <p style="font-size:17px;color:#14202E"><strong>Régis Wadieme Vendegou</strong><br><span style="color:#5A6470">Maire de l’Île des Pins</span></p>
+        <a href="#" style="display:inline-block;margin-top:22px;font-weight:700;color:#1E5AA8;text-decoration:none;border-bottom:2px solid #2E93B8;padding-bottom:3px" style-hover="color:#123A63">Lire le message complet →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHIFFRES CLÉS -->
+  <section data-reveal="" aria-label="La commune en chiffres" style="position:relative;overflow:hidden;background:#123A63;padding:clamp(30px,4vw,48px) clamp(16px,4vw,40px)">
+    
+    <dl style="position:relative;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:clamp(20px,3vw,40px)">
+      <div data-stat="" style="--i:0;padding-left:18px">
+        <dt style="color:#A6C0DC;font-size:14px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px">Habitants (2019)</dt>
+        <dd data-count="2037" style="margin:0;font-family:'Nunito','Public Sans',sans-serif;font-size:clamp(32px,3.6vw,44px);font-weight:900;color:#fff;line-height:1">2 037</dd>
+      </div>
+      <div data-stat="" style="--i:1;padding-left:18px">
+        <dt style="color:#A6C0DC;font-size:14px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px">Superficie</dt>
+        <dd data-count="152" data-suffix=" km²" style="margin:0;font-family:'Nunito','Public Sans',sans-serif;font-size:clamp(32px,3.6vw,44px);font-weight:900;color:#fff;line-height:1">152 km²</dd>
+      </div>
+      <div data-stat="" style="--i:2;padding-left:18px">
+        <dt style="color:#A6C0DC;font-size:14px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px">Lagon</dt>
+        <dd style="margin:0;font-family:'Nunito','Public Sans',sans-serif;font-size:clamp(24px,2.6vw,32px);font-weight:900;color:#fff;line-height:1.1">Inscrit à l’UNESCO</dd>
+      </div>
+      <div data-stat="" style="--i:3;padding-left:18px">
+        <dt style="color:#A6C0DC;font-size:14px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px">Établissements scolaires</dt>
+        <dd data-count="3" style="margin:0;font-family:'Nunito','Public Sans',sans-serif;font-size:clamp(32px,3.6vw,44px);font-weight:900;color:#fff;line-height:1">3</dd>
+      </div>
+    </dl>
+  </section>
+
+  <!-- ACTUALITÉS -->
+  <section data-reveal="" aria-labelledby="t-actus" style="background:#F6F8FA;border-top:1px solid #DFE3E9;padding:clamp(44px,6vw,76px) clamp(16px,4vw,40px)">
+    <div style="max-width:1280px;margin:0 auto">
+      <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:32px">
+        <div>
+          <p style="display:inline-block;color:#1E5AA8;font-size:13px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;border-top:3px solid #2E93B8;padding-top:12px;margin-bottom:10px">Vie municipale</p>
+          <h2 id="t-actus" style="font-size:clamp(26px,2.8vw,34px);color:#123A63">Actualités de la commune</h2>
+        </div>
+        <a href="#" onClick="{{ goActus }}" style="font-weight:600;font-size:16px;color:#1E5AA8;border-bottom:2px solid #C9DCEF;text-decoration:none;padding-bottom:3px" style-hover="border-bottom-color:#1E5AA8">Toutes les actualités →</a>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:28px;align-items:start">
+        <a href="#" style="position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:clamp(380px,38vw,520px);text-decoration:none;color:#fff;overflow:hidden;background:#123A63" style-hover="outline:3px solid #2E93B8;outline-offset:-3px">
+          <img src="assets/saint-joseph.jpg" alt="Route côtière de la baie de Saint-Joseph" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+          <div aria-hidden="true" style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,58,99,0.05) 30%,rgba(18,58,99,0.86) 100%)"></div>
+          <div style="position:relative;padding:clamp(24px,3vw,36px)">
+            <p style="display:flex;align-items:center;gap:12px;font-size:13px;margin-bottom:14px">
+              <span style="background:#8FCBE8;color:#0C2340;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:5px 10px">À la une, travaux</span>
+              <time datetime="2026-08-18" style="color:#E6EFEB">18 août 2026</time>
+            </p>
+            <h3 style="font-size:clamp(23px,2.4vw,32px);color:#fff;margin-bottom:12px;max-width:34ch">Réfection de la route de Vao : circulation alternée jusqu’au 12 septembre</h3>
+            <p style="color:#D6E3F0;font-size:17px;max-width:52ch">Circulation alternée entre Vao et la baie de Kuto aux heures ouvrées ; les horaires du transport scolaire sont maintenus.</p>
+            <p style="margin-top:18px;font-weight:700;color:#fff;border-bottom:2px solid #2E93B8;display:inline-block;padding-bottom:3px">Lire l’article →</p>
+          </div>
+        </a>
+
+        <ul style="list-style:none;display:grid;gap:1px;background:#DFE3E9;border:1px solid #DFE3E9">
+          <li><a href="#" style="background:#fff;display:flex;gap:18px;padding:20px;text-decoration:none;color:inherit;align-items:flex-start" style-hover="background:#F3F7FB">
+            <span style="flex-shrink:0;width:64px;text-align:center;border-right:1px solid #DFE3E9;padding-right:14px">
+              <span style="display:block;font-family:'Source Serif 4',Georgia,serif;font-size:26px;font-weight:700;color:#123A63;line-height:1">14</span>
+              <span style="display:block;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#5A6470">Août</span>
+            </span>
+            <span>
+              <span style="display:block;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#1E5AA8;margin-bottom:5px">Éducation</span>
+              <span style="display:block;font-family:'Source Serif 4',Georgia,serif;font-size:19px;font-weight:600;color:#14202E;line-height:1.25">Inscriptions scolaires 2027 : ouverture du guichet le 1er septembre</span>
+            </span>
+          </a></li>
+          <li><a href="#" style="background:#fff;display:flex;gap:18px;padding:20px;text-decoration:none;color:inherit;align-items:flex-start" style-hover="background:#F3F7FB">
+            <span style="flex-shrink:0;width:64px;text-align:center;border-right:1px solid #DFE3E9;padding-right:14px">
+              <span style="display:block;font-family:'Source Serif 4',Georgia,serif;font-size:26px;font-weight:700;color:#123A63;line-height:1">11</span>
+              <span style="display:block;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#5A6470">Août</span>
+            </span>
+            <span>
+              <span style="display:block;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#1E5AA8;margin-bottom:5px">Environnement</span>
+              <span style="display:block;font-family:'Source Serif 4',Georgia,serif;font-size:19px;font-weight:600;color:#14202E;line-height:1.25">Collecte des encombrants : nouveau calendrier par tribu</span>
+            </span>
+          </a></li>
+          <li><a href="#" style="background:#fff;display:flex;gap:18px;padding:20px;text-decoration:none;color:inherit;align-items:flex-start" style-hover="background:#F3F7FB">
+            <span style="flex-shrink:0;width:64px;text-align:center;border-right:1px solid #DFE3E9;padding-right:14px">
+              <span style="display:block;font-family:'Source Serif 4',Georgia,serif;font-size:26px;font-weight:700;color:#123A63;line-height:1">08</span>
+              <span style="display:block;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#5A6470">Août</span>
+            </span>
+            <span>
+              <span style="display:block;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#1E5AA8;margin-bottom:5px">Conseil municipal</span>
+              <span style="display:block;font-family:'Source Serif 4',Georgia,serif;font-size:19px;font-weight:600;color:#14202E;line-height:1.25">Séance du 29 août : ordre du jour et délibérations publiés</span>
+            </span>
+          </a></li>
+          <li><a href="#" style="background:#fff;display:flex;gap:18px;padding:20px;text-decoration:none;color:inherit;align-items:flex-start" style-hover="background:#F3F7FB">
+            <span style="flex-shrink:0;width:64px;text-align:center;border-right:1px solid #DFE3E9;padding-right:14px">
+              <span style="display:block;font-family:'Source Serif 4',Georgia,serif;font-size:26px;font-weight:700;color:#123A63;line-height:1">02</span>
+              <span style="display:block;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#5A6470">Août</span>
+            </span>
+            <span>
+              <span style="display:block;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#1E5AA8;margin-bottom:5px">Lagon classé</span>
+              <span style="display:block;font-family:'Source Serif 4',Georgia,serif;font-size:19px;font-weight:600;color:#14202E;line-height:1.25">Mouillage dans la baie d’Oro : rappel de la réglementation</span>
+            </span>
+          </a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- AGENDA -->
+  <sc-if value="{{ showAgenda }}" hint-placeholder-val="{{ true }}">
+  <section data-reveal="" aria-labelledby="t-agenda" style="background:#123A63;padding:clamp(44px,6vw,76px) clamp(16px,4vw,40px);color:#fff">
+    <div style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,56px)">
+      <div style="max-width:34ch">
+        <p style="display:inline-block;color:#8FCBE8;font-size:13px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;border-top:3px solid #2E93B8;padding-top:12px;margin-bottom:12px">Agenda</p>
+        <h2 id="t-agenda" style="font-size:clamp(26px,2.8vw,34px);margin-bottom:16px">Les prochains rendez-vous de la commune</h2>
+        <p style="color:#C9DCEF;font-size:17px">Séances du conseil, permanences des services, événements coutumiers, associatifs et scolaires : le calendrier officiel de Kunié.</p>
+        <a href="#" style="display:inline-block;margin-top:22px;background:#fff;color:#123A63;font-weight:700;text-decoration:none;padding:14px 22px;border-radius:6px" style-hover="background:#2E93B8">Voir tout l’agenda</a>
+      </div>
+      <ul style="list-style:none;display:grid;gap:14px">
+        <li><a href="#" style="display:flex;gap:20px;align-items:center;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.16);padding:18px 20px;text-decoration:none;color:#fff" style-hover="background:rgba(255,255,255,0.13)">
+          <span style="flex-shrink:0;width:64px;text-align:center">
+            <span style="display:block;font-family:'Source Serif 4',Georgia,serif;font-size:30px;font-weight:700;line-height:1">29</span>
+            <span style="display:block;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#8FCBE8">Août</span>
+          </span>
+          <span style="flex:1">
+            <span style="display:block;font-family:'Source Serif 4',Georgia,serif;font-size:20px;font-weight:600">Conseil municipal, séance publique</span>
+            <span style="display:block;font-size:15px;color:#C9DCEF;margin-top:4px">09h00, salle du conseil, mairie de Vao</span>
+          </span>
+        </a></li>
+        <li><a href="#" style="display:flex;gap:20px;align-items:center;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.16);padding:18px 20px;text-decoration:none;color:#fff" style-hover="background:rgba(255,255,255,0.13)">
+          <span style="flex-shrink:0;width:64px;text-align:center">
+            <span style="display:block;font-family:'Source Serif 4',Georgia,serif;font-size:30px;font-weight:700;line-height:1">05</span>
+            <span style="display:block;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#8FCBE8">Sept</span>
+          </span>
+          <span style="flex:1">
+            <span style="display:block;font-family:'Source Serif 4',Georgia,serif;font-size:20px;font-weight:600">Journée de nettoyage du littoral</span>
+            <span style="display:block;font-size:15px;color:#C9DCEF;margin-top:4px">07h30, baie de Kuto, avec les associations</span>
+          </span>
+        </a></li>
+        <li><a href="#" style="display:flex;gap:20px;align-items:center;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.16);padding:18px 20px;text-decoration:none;color:#fff" style-hover="background:rgba(255,255,255,0.13)">
+          <span style="flex-shrink:0;width:64px;text-align:center">
+            <span style="display:block;font-family:'Source Serif 4',Georgia,serif;font-size:30px;font-weight:700;line-height:1">12</span>
+            <span style="display:block;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#8FCBE8">Sept</span>
+          </span>
+          <span style="flex:1">
+            <span style="display:block;font-family:'Source Serif 4',Georgia,serif;font-size:20px;font-weight:600">Permanence urbanisme sans rendez-vous</span>
+            <span style="display:block;font-size:15px;color:#C9DCEF;margin-top:4px">de 08h00 à 12h00, mairie, bureau 3</span>
+          </span>
+        </a></li>
+      </ul>
+    </div>
+  </section>
+  </sc-if>
+
+  <!-- INFOS PRATIQUES -->
+  <section data-reveal="" aria-labelledby="t-pratique" style="background:#fff;padding:clamp(44px,6vw,76px) clamp(16px,4vw,40px)">
+    <div style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,56px);align-items:start">
+      <div>
+        <p style="display:inline-block;color:#1E5AA8;font-size:13px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;border-top:3px solid #2E93B8;padding-top:12px;margin-bottom:12px">Informations pratiques</p>
+        <h2 id="t-pratique" style="font-size:clamp(26px,2.8vw,34px);color:#123A63;margin-bottom:24px">Votre mairie</h2>
+        <dl style="margin:0;border-top:1px solid #DFE3E9">
+          <div style="display:flex;gap:20px;padding:16px 0;border-bottom:1px solid #DFE3E9">
+            <dt style="width:120px;flex-shrink:0;font-weight:600;color:#5A6470;font-size:15px">Adresse</dt>
+            <dd style="margin:0;font-size:17px">Mairie de l’Île des Pins, Vao<br>BP 87, 98832 Île des Pins</dd>
+          </div>
+          <div style="display:flex;gap:20px;padding:16px 0;border-bottom:1px solid #DFE3E9">
+            <dt style="width:120px;flex-shrink:0;font-weight:600;color:#5A6470;font-size:15px">Téléphone</dt>
+            <dd style="margin:0;font-size:17px"><a href="tel:+687461103" style="font-weight:600">(+687) 46 11 03</a></dd>
+          </div>
+          <div style="display:flex;gap:20px;padding:16px 0;border-bottom:1px solid #DFE3E9">
+            <dt style="width:120px;flex-shrink:0;font-weight:600;color:#5A6470;font-size:15px">Courriel</dt>
+            <dd style="margin:0;font-size:17px"><a href="#" style="font-weight:600">mairie-pins@canl.nc</a></dd>
+          </div>
+          <div style="display:flex;gap:20px;padding:16px 0;border-bottom:1px solid #DFE3E9">
+            <dt style="width:120px;flex-shrink:0;font-weight:600;color:#5A6470;font-size:15px">Horaires</dt>
+            <dd style="margin:0;font-size:17px">Du lundi au jeudi : 07h30 à 11h30 et 12h30 à 16h00<br>Vendredi : 07h30 à 11h30 et 12h30 à 15h00<br><span style="color:#5A6470">Fermé samedi et dimanche</span></dd>
+          </div>
+        </dl>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:26px">
+          <a href="#" onClick="{{ goContact }}" style="background:#1E5AA8;color:#fff;text-decoration:none;font-weight:700;padding:14px 22px;border-radius:6px" style-hover="background:#123A63;transform:translateY(-5px);box-shadow:0 0 0 8px #ffffff,0 14px 28px rgba(18,58,99,0.26)">Nous écrire</a>
+          <a href="#" style="border:1.5px solid #C3C9D2;color:#123A63;text-decoration:none;font-weight:600;padding:13px 22px;border-radius:6px" style-hover="border-color:#1E5AA8;color:#1E5AA8">Annuaire des services</a>
+        </div>
+      </div>
+      <div>
+        <img src="assets/survol-avion.jpg" alt="Vue aérienne de l’Île des Pins" style="width:100%;aspect-ratio:4/3;object-fit:cover;display:block;border:1px solid #DFE3E9">
+        <div style="background:#F6F8FA;border:1px solid #DFE3E9;border-top:0;padding:22px 24px">
+          <h3 style="font-size:20px;color:#123A63;margin-bottom:10px">Alertes municipales par SMS</h3>
+          <p style="color:#46535F;font-size:16px;margin-bottom:16px">Cyclone, coupure d’eau, information sanitaire : recevez les alertes de la commune directement sur votre téléphone.</p>
+          <a href="#" style="font-weight:700;color:#1E5AA8;text-decoration:none;border-bottom:2px solid #C9DCEF;padding-bottom:2px" style-hover="border-bottom-color:#1E5AA8">S’inscrire au service d’alerte →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div aria-hidden="true" style="background:#fff;padding:clamp(28px,4vw,44px) clamp(16px,4vw,40px) 0">
+    <div style="max-width:1280px;margin:0 auto;display:flex;align-items:flex-end;gap:22px">
+      <span style="flex:1;height:1px;background:#DFE3E9;margin-bottom:1px"></span>
+      <span data-draw="" aria-hidden="true" style="display:flex;align-items:flex-end;gap:11px;padding:0 4px"><img src="assets/pin-kunie-vert.png" alt="" aria-hidden="true" width="10" height="44" style="display:block;width:10px;height:44px;--op:0.5;flex-shrink:0"><img src="assets/pin-kunie-vert.png" alt="" aria-hidden="true" width="14" height="62" style="display:block;width:14px;height:62px;--op:0.7;flex-shrink:0"><img src="assets/pin-kunie-vert.png" alt="" aria-hidden="true" width="9" height="40" style="display:block;width:9px;height:40px;--op:0.5;flex-shrink:0"></span>
+      <span style="flex:1;height:1px;background:#DFE3E9;margin-bottom:1px"></span>
+    </div>
+  </div>
+  <!-- TERRITOIRE -->
+  <section data-reveal="" aria-labelledby="t-territoire" style="background:#F1F5F9;padding:clamp(44px,6vw,76px) clamp(16px,4vw,40px);border-top:1px solid #E1E7EE">
+    <div style="max-width:1280px;margin:0 auto">
+      <div style="max-width:60ch;margin-bottom:34px">
+        <p style="display:inline-block;color:#1E5AA8;font-size:13px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;border-top:3px solid #2E93B8;padding-top:12px;margin-bottom:12px">Le territoire</p>
+        <h2 id="t-territoire" style="font-size:clamp(26px,2.8vw,34px);color:#123A63;margin-bottom:14px">Vivre à Kunié</h2>
+        <p style="color:#46535F;font-size:17px">2 037 habitants, un lagon inscrit au patrimoine mondial de l’UNESCO, une organisation coutumière vivante : la commune accompagne au quotidien les habitants et la préservation de ce territoire.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:26px">
+        <a href="#" onClick="{{ goVivreEnvir }}" style="text-decoration:none;color:inherit;display:block;background:#fff;border:1px solid #E1E7EE" style-hover="border-color:#123A63">
+          <img src="assets/araucaria-pins.jpg" alt="Pins colonnaires en bord de lagon" style="width:100%;aspect-ratio:3/2;object-fit:cover;display:block">
+          <div style="padding:22px 24px 26px;border-top:3px solid #2E93B8">
+            <h3 style="font-size:21px;color:#123A63;margin-bottom:8px">Environnement et lagon classé</h3>
+            <p style="color:#46535F;font-size:16px">Réglementation, mouillages, protection des espèces et gestion des déchets.</p>
+          </div>
+        </a>
+        <a href="#" onClick="{{ goVivreCoutume }}" style="text-decoration:none;color:inherit;display:block;background:#fff;border:1px solid #E1E7EE" style-hover="border-color:#123A63">
+          <img src="assets/piscine-oro.jpg" alt="Piscine naturelle de la baie d’Oro" style="width:100%;aspect-ratio:3/2;object-fit:cover;display:block">
+          <div style="padding:22px 24px 26px;border-top:3px solid #2E93B8">
+            <h3 style="font-size:21px;color:#123A63;margin-bottom:8px">Autorités coutumières</h3>
+            <p style="color:#46535F;font-size:16px">Grande chefferie, districts et tribus : organisation et interlocuteurs.</p>
+          </div>
+        </a>
+        <a href="#" onClick="{{ goVivreSante }}" style="text-decoration:none;color:inherit;display:block;background:#fff;border:1px solid #E1E7EE" style-hover="border-color:#123A63">
+          <img src="assets/saint-joseph.jpg" alt="Baie de Saint-Joseph" style="width:100%;aspect-ratio:3/2;object-fit:cover;display:block">
+          <div style="padding:22px 24px 26px;border-top:3px solid #2E93B8">
+            <h3 style="font-size:21px;color:#123A63;margin-bottom:8px">Santé, école et transport</h3>
+            <p style="color:#46535F;font-size:16px">Dispensaire de Vao, écoles Saint-Joseph et Notre-Dame des Anges, collège de Vao, liaisons aériennes et maritimes.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</div>
+</sc-if>
+
+<!-- ================= PAGE : MA MAIRIE ================= -->
+<sc-if value="{{ isMairie }}">
+<div>
+  <div style="background:#123A63;color:#fff;padding:clamp(28px,4vw,52px) clamp(16px,4vw,40px)">
+    <div style="max-width:1280px;margin:0 auto">
+      <nav aria-label="Fil d’ariane" style="font-size:14px;color:#A6C0DC;margin-bottom:14px">
+        <a href="#" onClick="{{ goHome }}" style="color:#A6C0DC">Accueil</a> <span aria-hidden="true">/</span> <span style="color:#fff">Ma mairie</span>
+      </nav>
+      <h1 style="font-family:'Nunito','Public Sans',sans-serif;font-weight:900;letter-spacing:-0.015em;font-size:clamp(30px,4vw,50px);margin-bottom:14px">Ma mairie</h1>
+      <p style="color:#C9DCEF;font-size:clamp(17px,1.5vw,19px);max-width:62ch">L’organisation, les services et les horaires de la mairie de l’Île des Pins, pour savoir qui contacter et comment.</p>
+    </div>
+  </div>
+
+  <section data-reveal="" aria-labelledby="m-maire" style="background:#F6F8FA;border-bottom:1px solid #DFE3E9;padding:clamp(44px,6vw,76px) clamp(16px,4vw,40px)">
+    <div style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,64px);align-items:center">
+      <figure style="margin:0;max-width:420px;width:100%">
+        <div style="aspect-ratio:4/5;width:100%">
+          <image-slot id="portrait-maire-mairie" shape="rect" fit="cover" placeholder="Déposer le portrait officiel du maire"></image-slot>
+        </div>
+        <figcaption style="font-size:14px;color:#5A6470;padding-top:10px;border-top:1px solid #DFE3E9;margin-top:12px">Portrait officiel, photo à fournir par la mairie</figcaption>
+      </figure>
+      <div>
+        <p id="m-maire" style="display:inline-block;color:#1E5AA8;font-size:13px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;border-top:3px solid #2E93B8;padding-top:12px;margin-bottom:16px">Le mot du maire</p>
+        <blockquote style="margin:0 0 22px;font-family:'Source Serif 4',Georgia,serif;font-size:clamp(21px,2.4vw,29px);line-height:1.3;color:#123A63">« Notre commune avance avec ses habitants, ses tribus et ses autorités coutumières. Ce site est là pour rendre la mairie plus proche, plus claire et plus utile au quotidien. »</blockquote>
+        <p style="font-size:17px;color:#14202E"><strong>Régis Wadieme Vendegou</strong><br><span style="color:#5A6470">Maire de l’Île des Pins</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section data-reveal="" aria-labelledby="m-services" style="background:#fff;padding:clamp(44px,6vw,76px) clamp(16px,4vw,40px)">
+    <div style="max-width:1280px;margin:0 auto">
+      <h2 id="m-services" style="font-size:clamp(26px,2.8vw,34px);color:#123A63;margin-bottom:26px">Les services de la mairie</h2>
+      <ul style="list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:#fff;border:1px solid #DFE3E9">
+        <li style="background:#fff;padding:24px 22px;box-shadow:0 0 0 1px #DFE3E9">
+          <h3 style="font-size:18px;color:#123A63;margin-bottom:6px">État civil</h3>
+          <p style="color:#46535F;font-size:16px">Naissances, mariages, décès, livrets de famille et rendez-vous au guichet.</p>
+        </li>
+        <li style="background:#fff;padding:24px 22px;box-shadow:0 0 0 1px #DFE3E9">
+          <h3 style="font-size:18px;color:#123A63;margin-bottom:6px">Urbanisme</h3>
+          <p style="color:#46535F;font-size:16px">Permis de construire, déclarations de travaux, cadastre et plan d’urbanisme.</p>
+        </li>
+        <li style="background:#fff;padding:24px 22px;box-shadow:0 0 0 1px #DFE3E9">
+          <h3 style="font-size:18px;color:#123A63;margin-bottom:6px">Services techniques</h3>
+          <p style="color:#46535F;font-size:16px">Voirie, éclairage public, eau, déchets et suivi des signalements.</p>
+        </li>
+        <li style="background:#fff;padding:24px 22px;box-shadow:0 0 0 1px #DFE3E9">
+          <h3 style="font-size:18px;color:#123A63;margin-bottom:6px">Affaires sociales</h3>
+          <p style="color:#46535F;font-size:16px">Aides, accompagnement social et lien avec les tribus.</p>
+        </li>
+        <li style="background:#fff;padding:24px 22px;box-shadow:0 0 0 1px #DFE3E9">
+          <h3 style="font-size:18px;color:#123A63;margin-bottom:6px">Finances</h3>
+          <p style="color:#46535F;font-size:16px">Budget communal, marchés publics et subventions aux associations.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section data-reveal="" aria-labelledby="m-contact" style="background:#F1F5F9;border-top:1px solid #E1E7EE;padding:clamp(44px,6vw,76px) clamp(16px,4vw,40px)">
+    <div style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:clamp(28px,4vw,56px)">
+      <div>
+        <h2 id="m-contact" style="font-size:clamp(24px,2.6vw,32px);color:#123A63;margin-bottom:14px">Horaires et coordonnées</h2>
+        <p style="font-size:17px;margin-bottom:6px"><strong>Accueil de la mairie de Vao</strong></p>
+        <p style="font-size:17px;color:#46535F">Du lundi au jeudi : 07h30 à 11h30 et 12h30 à 16h00<br>Vendredi : 07h30 à 11h30 et 12h30 à 15h00<br><a href="tel:+687461103" style="font-weight:700;color:#1E5AA8">+687 46 11 03</a></p>
+      </div>
+      <div>
+        <h2 style="font-size:clamp(24px,2.6vw,32px);color:#123A63;margin-bottom:14px">Une démarche à effectuer ?</h2>
+        <p style="color:#46535F;font-size:17px;margin-bottom:18px">Retrouvez toutes les démarches en ligne ou prenez rendez-vous au guichet de l’état civil.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:12px">
+          <a href="#" onClick="{{ goDemarches }}" style="background:#1E5AA8;color:#fff;text-decoration:none;font-weight:700;font-size:16px;padding:13px 20px;border-radius:6px" style-hover="background:#123A63">Voir les démarches</a>
+          <a href="#" onClick="{{ goRdv }}" style="border:1.5px solid #1E5AA8;color:#1E5AA8;text-decoration:none;font-weight:700;font-size:16px;padding:12px 20px;border-radius:6px" style-hover="background:#1E5AA8;color:#fff">Prendre rendez-vous</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+</sc-if>
+
+<!-- ================= PAGE : VIVRE À KUNIÉ ================= -->
+<sc-if value="{{ isVivre }}">
+<div>
+  <div style="background:#123A63;color:#fff;padding:clamp(28px,4vw,52px) clamp(16px,4vw,40px)">
+    <div style="max-width:1280px;margin:0 auto">
+      <nav aria-label="Fil d’ariane" style="font-size:14px;color:#A6C0DC;margin-bottom:14px">
+        <a href="#" onClick="{{ goHome }}" style="color:#A6C0DC">Accueil</a> <span aria-hidden="true">/</span> <span style="color:#fff">Vivre à Kunié</span>
+      </nav>
+      <h1 style="font-family:'Nunito','Public Sans',sans-serif;font-weight:900;letter-spacing:-0.015em;font-size:clamp(30px,4vw,50px);margin-bottom:14px">Vivre à Kunié</h1>
+      <p style="color:#C9DCEF;font-size:clamp(17px,1.5vw,19px);max-width:62ch">2 037 habitants, un lagon classé au patrimoine mondial de l’UNESCO et une organisation coutumière vivante : le quotidien des habitants de l’Île des Pins.</p>
+    </div>
+  </div>
+
+  <section data-reveal="" aria-labelledby="v-envir" style="background:#fff;padding:clamp(44px,6vw,76px) clamp(16px,4vw,40px)">
+    <div style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(24px,3vw,48px)">
+      <div style="max-width:56ch">
+        <p style="display:inline-block;color:#1E5AA8;font-size:13px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;border-top:3px solid #2E93B8;padding-top:12px;margin-bottom:12px">Cadre de vie</p>
+        <h2 id="v-envir" style="font-size:clamp(24px,2.6vw,32px);color:#123A63;margin-bottom:14px">Environnement et lagon classé</h2>
+        <p style="color:#46535F;font-size:17px">Le lagon de l’Île des Pins fait partie du bien inscrit au patrimoine mondial de l’UNESCO. La commune veille au respect de la réglementation locale par les résidents comme par les visiteurs.</p>
+      </div>
+      <ul style="list-style:none;display:grid;gap:12px">
+        <li style="display:flex;gap:14px;background:#fff;border:1px solid #E1E7EE;border-left:4px solid #2E93B8;padding:16px 18px"><span style="font-size:16px;color:#14202E">Mouillage réglementé dans les baies classées, pour préserver les fonds coralliens.</span></li>
+        <li style="display:flex;gap:14px;background:#fff;border:1px solid #E1E7EE;border-left:4px solid #2E93B8;padding:16px 18px"><span style="font-size:16px;color:#14202E">Collecte des déchets organisée par tribu, calendrier disponible auprès des services techniques.</span></li>
+        <li style="display:flex;gap:14px;background:#fff;border:1px solid #E1E7EE;border-left:4px solid #2E93B8;padding:16px 18px"><span style="font-size:16px;color:#14202E">Espèces protégées (tortues, oiseaux marins) : signaler tout échouage ou nid aux services de la mairie.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section data-reveal="" aria-labelledby="v-coutume" style="background:#F6F8FA;border-top:1px solid #DFE3E9;padding:clamp(44px,6vw,76px) clamp(16px,4vw,40px)">
+    <div style="max-width:1280px;margin:0 auto;max-width:1280px">
+      <p style="display:inline-block;color:#1E5AA8;font-size:13px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;border-top:3px solid #2E93B8;padding-top:12px;margin-bottom:12px">Organisation coutumière</p>
+      <h2 id="v-coutume" style="font-size:clamp(24px,2.6vw,32px);color:#123A63;margin-bottom:14px">Autorités coutumières</h2>
+      <p style="color:#46535F;font-size:17px;max-width:70ch;margin-bottom:24px">L’Île des Pins est organisée en une grande chefferie, elle-même composée de districts et de tribus. Cette organisation coutumière vit aux côtés des institutions municipales et est régulièrement consultée sur les sujets touchant au territoire.</p>
+      <ul style="list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px">
+        <li style="background:#fff;border:1px solid #DFE3E9;padding:18px 18px"><span style="font-size:16px;color:#14202E">Grande chefferie de Kunié</span></li>
+        <li style="background:#fff;border:1px solid #DFE3E9;padding:18px 18px"><span style="font-size:16px;color:#14202E">Districts coutumiers</span></li>
+        <li style="background:#fff;border:1px solid #DFE3E9;padding:18px 18px"><span style="font-size:16px;color:#14202E">Tribus de l’île</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section data-reveal="" aria-labelledby="v-sante" style="background:#fff;padding:clamp(44px,6vw,76px) clamp(16px,4vw,40px)">
+    <div style="max-width:1280px;margin:0 auto">
+      <p style="display:inline-block;color:#1E5AA8;font-size:13px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;border-top:3px solid #2E93B8;padding-top:12px;margin-bottom:12px">Au quotidien</p>
+      <h2 id="v-sante" style="font-size:clamp(24px,2.6vw,32px);color:#123A63;margin-bottom:26px">Santé, école et transport</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:#DFE3E9;border:1px solid #DFE3E9">
+        <div style="background:#fff;padding:22px 22px">
+          <h3 style="font-size:18px;color:#123A63;margin-bottom:6px">Santé</h3>
+          <p style="color:#46535F;font-size:16px">Dispensaire de Vao pour les soins de premier recours ; évacuations sanitaires vers Nouméa si nécessaire.</p>
+        </div>
+        <div style="background:#fff;padding:22px 22px">
+          <h3 style="font-size:18px;color:#123A63;margin-bottom:6px">Écoles</h3>
+          <p style="color:#46535F;font-size:16px">Écoles primaires Saint-Joseph et Notre-Dame des Anges, collège de Vao pour le secondaire.</p>
+        </div>
+        <div style="background:#fff;padding:22px 22px">
+          <h3 style="font-size:18px;color:#123A63;margin-bottom:6px">Transport</h3>
+          <p style="color:#46535F;font-size:16px">Liaisons aériennes depuis Nouméa et desserte maritime par le Betico.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-reveal="" style="background:#F1F5F9;border-top:1px solid #E1E7EE;padding:clamp(30px,4vw,52px) clamp(16px,4vw,40px)">
+    <div style="max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;gap:22px;align-items:center;justify-content:space-between">
+      <div style="max-width:62ch">
+        <h2 style="font-size:clamp(21px,2.2vw,27px);color:#123A63;margin-bottom:10px">Une démarche liée à votre installation ?</h2>
+        <p style="color:#46535F;font-size:17px">Retrouvez l’ensemble des démarches administratives de la commune.</p>
+      </div>
+      <a href="#" onClick="{{ goDemarches }}" style="background:#1E5AA8;color:#fff;text-decoration:none;font-weight:700;font-size:17px;padding:15px 24px;border-radius:6px;flex-shrink:0" style-hover="background:#123A63;transform:translateY(-5px);box-shadow:0 0 0 8px #ffffff,0 14px 28px rgba(18,58,99,0.26)">Voir les démarches</a>
+    </div>
+  </section>
+</div>
+</sc-if>
+
+<!-- ================= PAGE : DÉMARCHES ================= -->
+<sc-if value="{{ isDemarches }}">
+<div>
+  <div style="background:#123A63;color:#fff;padding:clamp(28px,4vw,52px) clamp(16px,4vw,40px)">
+    <div style="max-width:1280px;margin:0 auto">
+      <nav aria-label="Fil d’ariane" style="font-size:14px;color:#A6C0DC;margin-bottom:14px">
+        <a href="#" onClick="{{ goHome }}" style="color:#A6C0DC">Accueil</a> <span aria-hidden="true">/</span> <span style="color:#fff">Démarches et services</span>
+      </nav>
+      <h1 style="font-family:'Nunito','Public Sans',sans-serif;font-weight:900;letter-spacing:-0.015em;font-size:clamp(30px,4vw,50px);margin-bottom:14px">Démarches et services</h1>
+      <p style="color:#C9DCEF;font-size:clamp(17px,1.5vw,19px);max-width:64ch">Toutes les démarches de la commune, classées par thème : pièces à fournir, délai, coût et service compétent. En cas de doute, l’accueil de la mairie de Vao vous accompagne.</p>
+      <form onSubmit="{{ onSearch }}" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:26px;max-width:660px">
+        <label for="qd" style="position:absolute;left:-9999px">Rechercher une démarche</label>
+        <input id="qd" type="search" placeholder="Rechercher : acte de naissance, permis de construire…" style="flex:1;min-width:230px;height:54px;padding:0 16px;border:1px solid #4A79B5;border-radius:6px;font-size:16px;background:#fff;color:#14202E">
+        <button type="submit" style="height:54px;padding:0 26px;background:#fff;color:#123A63;border:0;border-radius:6px;font-weight:700;font-size:16px;cursor:pointer" style-hover="background:#2E93B8">Rechercher</button>
+      </form>
+    </div>
+  </div>
+
+  <section data-reveal="" aria-labelledby="t-themes" style="background:#F6F8FA;border-bottom:1px solid #DFE3E9;padding:clamp(32px,4vw,56px) clamp(16px,4vw,40px)">
+    <div style="max-width:1280px;margin:0 auto">
+      <h2 id="t-themes" style="font-size:clamp(22px,2.2vw,28px);color:#123A63;margin-bottom:22px">Les démarches par thème</h2>
+      <ul style="list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px">
+        <sc-for list="{{ themes }}" as="t" hint-placeholder-count="7">
+          <li><a href="{{ t.anchor }}" onClick="{{ t.open }}" style="display:flex;flex-direction:column;gap:10px;background:#fff;border:1px solid #DFE3E9;padding:20px 20px 22px;text-decoration:none;color:#14202E;height:100%" style-hover="border-color:#1E5AA8;background:#F3F7FB">
+            <span style="font-family:'Source Serif 4',Georgia,serif;font-size:19px;font-weight:600;color:#123A63;line-height:1.25">{{ t.titre }}</span>
+            <span style="font-size:15px;color:#5A6470">{{ t.compte }} démarches</span>
+          </a></li>
+        </sc-for>
+      </ul>
+    </div>
+  </section>
+
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(32px,4vw,56px) clamp(16px,4vw,40px)">
+    <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:20px">
+      <h2 style="font-size:clamp(22px,2.2vw,28px);color:#123A63">Toutes les démarches</h2>
+      <button type="button" onClick="{{ toggleAll }}" style="border:1px solid #C3C9D2;background:#fff;border-radius:6px;padding:11px 18px;font-size:15px;font-weight:600;color:#123A63;cursor:pointer" style-hover="border-color:#1E5AA8;color:#1E5AA8">{{ toggleAllLabel }}</button>
+    </div>
+    <div style="display:grid;gap:12px">
+      <sc-for list="{{ themes }}" as="t" hint-placeholder-count="7">
+        <section id="{{ t.id }}" style="border:1px solid #DFE3E9;background:#fff">
+          <h3 style="margin:0">
+            <button type="button" onClick="{{ t.toggle }}" aria-expanded="{{ t.expanded }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:20px 22px;background:{{ t.headBg }};border:0;border-left:4px solid #1E5AA8;cursor:pointer;text-align:left;font-family:'Source Serif 4',Georgia,serif;font-size:clamp(19px,1.8vw,23px);font-weight:600;color:#123A63" style-hover="background:#EAF0F7">
+              <span>{{ t.titre }}</span>
+              <span style="display:flex;align-items:center;gap:14px;flex-shrink:0">
+                <span style="font-family:'Public Sans',sans-serif;font-size:14px;font-weight:600;color:#5A6470">{{ t.compte }}</span>
+                <span aria-hidden="true" style="width:34px;height:34px;border-radius:50%;background:#1E5AA8;color:#fff;display:grid;place-items:center;font-family:'Public Sans',sans-serif;font-size:20px;line-height:1;font-weight:400;transition:transform 300ms cubic-bezier(.22,.61,.36,1);transform:rotate({{ t.rot }})">{{ t.signe }}</span>
+              </span>
+            </button>
+          </h3>
+          <sc-if value="{{ t.ouvert }}" hint-placeholder-val="{{ true }}">
+            <div data-acc="" style="border-top:1px solid #DFE3E9">
+              <p style="padding:16px 22px 0;color:#46535F;font-size:16px;max-width:80ch">{{ t.intro }}</p>
+              <ul style="list-style:none;display:grid;gap:0;padding:14px 0 6px">
+                <sc-for list="{{ t.items }}" as="d" hint-placeholder-count="4">
+                  <li><a href="#" onClick="{{ goFiche }}" style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;padding:14px 22px;text-decoration:none;color:#14202E;border-top:1px solid #E7EAEF" style-hover="background:#F3F7FB;color:#1E5AA8;box-shadow:0 0 0 1px #DFE3E9,inset 0 3px 0 0 #2E93B8;transform:translateY(-2px)">
+                    <span style="flex:1;min-width:200px;font-size:17px;font-weight:600">{{ d.titre }}</span>
+                    <span style="font-size:13px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:{{ d.modeColor }};border:1px solid {{ d.modeColor }};padding:3px 8px;border-radius:3px">{{ d.mode }}</span>
+                    <span style="font-size:15px;color:#5A6470;min-width:120px">{{ d.delai }}</span>
+                    <span aria-hidden="true" style="color:#1E5AA8;font-size:18px">→</span>
+                  </a></li>
+                </sc-for>
+              </ul>
+            </div>
+          </sc-if>
+        </section>
+      </sc-for>
+    </div>
+  </div>
+
+  <section data-reveal="" aria-labelledby="t-aide" style="background:#F1F5F9;border-top:1px solid #E1E7EE;padding:clamp(32px,4vw,60px) clamp(16px,4vw,40px)">
+    <div style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(24px,3vw,44px)">
+      <div>
+        <h2 id="t-aide" style="font-size:clamp(22px,2.2vw,28px);color:#123A63;margin-bottom:14px">Avant de vous déplacer</h2>
+        <p style="color:#46535F;font-size:17px;margin-bottom:18px">Munissez-vous d’une pièce d’identité en cours de validité et, selon la démarche, d’un justificatif de domicile. Pour les dossiers d’urbanisme, prévoyez deux exemplaires papier.</p>
+        <p style="font-size:17px;margin-bottom:6px"><strong>Accueil de la mairie de Vao</strong></p>
+        <p style="font-size:17px;color:#46535F">Du lundi au jeudi : 07h30 à 11h30 et 12h30 à 16h00<br>Vendredi : 07h30 à 11h30 et 12h30 à 15h00<br><a href="tel:+687461103" style="font-weight:700">(+687) 46 11 03</a>, <a href="mailto:mairie-pins@canl.nc">mairie-pins@canl.nc</a></p>
+        <a href="#" onClick="{{ goContact }}" style="display:inline-block;margin-top:20px;background:#1E5AA8;color:#fff;text-decoration:none;font-weight:700;padding:14px 22px;border-radius:6px" style-hover="background:#123A63;transform:translateY(-5px);box-shadow:0 0 0 8px #ffffff,0 14px 28px rgba(18,58,99,0.26)">Contacter un service</a>
+      </div>
+      <div>
+        <h2 style="font-size:clamp(22px,2.2vw,28px);color:#123A63;margin-bottom:14px">Formulaires les plus demandés</h2>
+        <ul style="list-style:none;display:grid;gap:1px;background:#E1E7EE;border:1px solid #E1E7EE">
+          <li><a href="#" style="background:#fff;display:flex;justify-content:space-between;gap:14px;padding:15px 18px;text-decoration:none;color:#14202E;font-size:16px" style-hover="background:#F3F7FB;color:#1E5AA8"><span>Demande d’acte d’état civil</span><span style="color:#5A6470;font-size:14px">PDF, 180 ko</span></a></li>
+          <li><a href="#" style="background:#fff;display:flex;justify-content:space-between;gap:14px;padding:15px 18px;text-decoration:none;color:#14202E;font-size:16px" style-hover="background:#F3F7FB;color:#1E5AA8"><span>Déclaration préalable de travaux</span><span style="color:#5A6470;font-size:14px">PDF, 240 ko</span></a></li>
+          <li><a href="#" style="background:#fff;display:flex;justify-content:space-between;gap:14px;padding:15px 18px;text-decoration:none;color:#14202E;font-size:16px" style-hover="background:#F3F7FB;color:#1E5AA8"><span>Inscription scolaire 2027</span><span style="color:#5A6470;font-size:14px">PDF, 120 ko</span></a></li>
+          <li><a href="#" style="background:#fff;display:flex;justify-content:space-between;gap:14px;padding:15px 18px;text-decoration:none;color:#14202E;font-size:16px" style-hover="background:#F3F7FB;color:#1E5AA8"><span>Réservation d’une salle municipale</span><span style="color:#5A6470;font-size:14px">PDF, 95 ko</span></a></li>
+          <li><a href="#" style="background:#fff;display:flex;justify-content:space-between;gap:14px;padding:15px 18px;text-decoration:none;color:#14202E;font-size:16px" style-hover="background:#F3F7FB;color:#1E5AA8"><span>Demande de subvention associative</span><span style="color:#5A6470;font-size:14px">PDF, 210 ko</span></a></li>
+        </ul>
+        <h3 style="font-size:19px;color:#123A63;margin:26px 0 12px">Démarches hors compétence communale</h3>
+        <p style="color:#46535F;font-size:16px">Carte d’identité, passeport, permis de conduire et impôts relèvent du gouvernement de la Nouvelle-Calédonie ou de la province Sud. <a href="#">Voir où s’adresser</a></p>
+      </div>
+    </div>
+  </section>
+</div>
+</sc-if>
+
+<!-- ================= PAGE : FICHE DÉMARCHE ================= -->
+<sc-if value="{{ isFiche }}">
+<div>
+  <div style="background:#F6F8FA;border-bottom:1px solid #DFE3E9;padding:22px clamp(16px,4vw,40px)">
+    <nav aria-label="Fil d’ariane" style="max-width:1280px;margin:0 auto;font-size:14px;color:#5A6470">
+      <a href="#" onClick="{{ goHome }}">Accueil</a> <span aria-hidden="true">/</span>
+      <a href="#" onClick="{{ goDemarches }}">Démarches</a> <span aria-hidden="true">/</span>
+      <span style="color:#14202E">État civil</span>
+    </nav>
+  </div>
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(28px,4vw,52px) clamp(16px,4vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:clamp(24px,3vw,48px);align-items:start">
+    <article style="grid-column:span 2;min-width:0;max-width:74ch">
+      <p style="display:inline-block;background:#EAF0F7;color:#1E5AA8;font-weight:700;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;padding:5px 9px;margin-bottom:16px">État civil</p>
+      <h1 style="font-family:'Nunito','Public Sans',sans-serif;font-weight:900;letter-spacing:-0.015em;font-size:clamp(30px,3.8vw,46px);color:#123A63;margin-bottom:16px">Demander un acte de naissance</h1>
+      <p style="font-size:19px;color:#46535F;margin-bottom:28px">Toute personne née à l’Île des Pins peut obtenir une copie intégrale ou un extrait de son acte de naissance auprès du service État civil de la mairie.</p>
+      <dl style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:#DFE3E9;border:1px solid #DFE3E9;margin:0 0 34px">
+        <div style="background:#fff;padding:18px 20px"><dt style="font-size:14px;color:#5A6470;margin-bottom:4px">Délai</dt><dd style="margin:0;font-weight:700;font-size:18px;color:#123A63">3 jours ouvrés</dd></div>
+        <div style="background:#fff;padding:18px 20px"><dt style="font-size:14px;color:#5A6470;margin-bottom:4px">Coût</dt><dd style="margin:0;font-weight:700;font-size:18px;color:#123A63">Gratuit</dd></div>
+        <div style="background:#fff;padding:18px 20px"><dt style="font-size:14px;color:#5A6470;margin-bottom:4px">Public</dt><dd style="margin:0;font-weight:700;font-size:18px;color:#123A63">Particuliers</dd></div>
+        <div style="background:#fff;padding:18px 20px"><dt style="font-size:14px;color:#5A6470;margin-bottom:4px">Sur place</dt><dd style="margin:0;font-weight:700;font-size:18px;color:#123A63">Guichet 1</dd></div>
+      </dl>
+
+      <h2 style="font-size:26px;color:#123A63;margin-bottom:14px">Pièces à fournir</h2>
+      <ul style="list-style:none;margin:0 0 32px;display:grid;gap:10px">
+        <li style="display:flex;gap:12px;font-size:17px"><span aria-hidden="true" style="color:#1E5AA8;font-weight:700">✓</span> Une pièce d’identité en cours de validité</li>
+        <li style="display:flex;gap:12px;font-size:17px"><span aria-hidden="true" style="color:#1E5AA8;font-weight:700">✓</span> Les nom, prénoms et date de naissance de la personne concernée</li>
+        <li style="display:flex;gap:12px;font-size:17px"><span aria-hidden="true" style="color:#1E5AA8;font-weight:700">✓</span> Pour un tiers : justificatif du lien de filiation ou procuration écrite</li>
+        <li style="display:flex;gap:12px;font-size:17px"><span aria-hidden="true" style="color:#1E5AA8;font-weight:700">✓</span> Une enveloppe timbrée si l’acte doit être envoyé par courrier</li>
+      </ul>
+
+      <h2 style="font-size:26px;color:#123A63;margin-bottom:18px">Comment faire</h2>
+      <ol style="list-style:none;margin:0 0 32px;display:grid;gap:2px;counter-reset:s">
+        <li style="display:flex;gap:18px;background:#F6F8FA;padding:20px 22px;align-items:flex-start"><span aria-hidden="true" style="font-family:'Source Serif 4',Georgia,serif;font-size:24px;font-weight:700;color:#1E5AA8;line-height:1">1</span><span style="font-size:17px"><strong>Préparez votre demande</strong><br><span style="color:#46535F">Rassemblez les pièces listées ci-dessus.</span></span></li>
+        <li style="display:flex;gap:18px;background:#F6F8FA;padding:20px 22px;align-items:flex-start"><span aria-hidden="true" style="font-family:'Source Serif 4',Georgia,serif;font-size:24px;font-weight:700;color:#1E5AA8;line-height:1">2</span><span style="font-size:17px"><strong>Déposez-la</strong><br><span style="color:#46535F">Au guichet 1 de la mairie de Vao, par courrier ou par courriel.</span></span></li>
+        <li style="display:flex;gap:18px;background:#F6F8FA;padding:20px 22px;align-items:flex-start"><span aria-hidden="true" style="font-family:'Source Serif 4',Georgia,serif;font-size:24px;font-weight:700;color:#1E5AA8;line-height:1">3</span><span style="font-size:17px"><strong>Retirez l’acte</strong><br><span style="color:#46535F">Sous 3 jours ouvrés, sur place ou par envoi postal.</span></span></li>
+      </ol>
+
+      <div style="display:flex;flex-wrap:wrap;gap:12px">
+        <a href="#" style="background:#1E5AA8;color:#fff;text-decoration:none;font-weight:700;font-size:17px;padding:15px 24px;border-radius:6px" style-hover="background:#123A63;transform:translateY(-5px);box-shadow:0 0 0 8px #ffffff,0 14px 28px rgba(18,58,99,0.26)">Faire la demande en ligne</a>
+        <a href="#" style="border:1.5px solid #C3C9D2;color:#123A63;text-decoration:none;font-weight:600;font-size:17px;padding:14px 24px;border-radius:6px" style-hover="border-color:#1E5AA8;color:#1E5AA8">Télécharger le formulaire (PDF, 180 ko)</a>
+      </div>
+    </article>
+
+    <aside style="display:grid;gap:20px">
+      <div style="border:1px solid #DFE3E9;padding:24px">
+        <h2 style="font-size:20px;color:#123A63;margin-bottom:12px">Service État civil</h2>
+        <p style="font-size:16px;color:#46535F;margin-bottom:14px">Mairie de Vao, guichet 1</p>
+        <p style="font-size:17px;margin-bottom:4px"><strong>(+687) 46 11 03</strong></p>
+        <p style="font-size:16px;margin-bottom:14px"><a href="#">mairie-pins@canl.nc</a></p>
+        <p style="font-size:16px;color:#5A6470">Du lundi au jeudi : 07h30 à 11h30 et 12h30 à 16h00<br>Vendredi : 07h30 à 11h30 et 12h30 à 15h00</p>
+      </div>
+      <div style="background:#F6F8FA;border:1px solid #DFE3E9;padding:24px">
+        <h2 style="font-size:20px;color:#123A63;margin-bottom:12px">Démarches liées</h2>
+        <ul style="list-style:none;display:grid;gap:12px;font-size:16px">
+          <li><a href="#">Demander un acte de mariage</a></li>
+          <li><a href="#">Obtenir un livret de famille</a></li>
+          <li><a href="#">Déclarer une naissance</a></li>
+          <li><a href="#">S’inscrire sur les listes électorales</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</div>
+</sc-if>
+
+<!-- ================= PAGE : ACTUALITÉS ================= -->
+<sc-if value="{{ isActus }}">
+<div>
+  <div style="background:#123A63;color:#fff;padding:clamp(28px,4vw,48px) clamp(16px,4vw,40px)">
+    <div style="max-width:1280px;margin:0 auto">
+      <nav aria-label="Fil d’ariane" style="font-size:14px;color:#A6C0DC;margin-bottom:14px">
+        <a href="#" onClick="{{ goHome }}" style="color:#A6C0DC">Accueil</a> <span aria-hidden="true">/</span> <span style="color:#fff">Actualités et agenda</span>
+      </nav>
+      <h1 style="font-family:'Nunito','Public Sans',sans-serif;font-weight:900;letter-spacing:-0.015em;font-size:clamp(30px,4vw,48px);margin-bottom:12px">Actualités et agenda</h1>
+      <p style="color:#C9DCEF;font-size:18px;max-width:60ch">Les informations officielles de la commune : travaux, services, conseil municipal, vie locale.</p>
+    </div>
+  </div>
+  <div data-reveal="" style="max-width:1280px;margin:0 auto;padding:clamp(28px,4vw,52px) clamp(16px,4vw,40px)">
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:30px">
+      <button type="button" style="border:1px solid #1E5AA8;background:#1E5AA8;color:#fff;border-radius:99px;padding:8px 16px;font-size:15px;font-weight:600;cursor:pointer">Toutes</button>
+      <button type="button" style="border:1px solid #C3C9D2;background:#fff;border-radius:99px;padding:8px 16px;font-size:15px;cursor:pointer" style-hover="border-color:#1E5AA8;color:#1E5AA8">Travaux</button>
+      <button type="button" style="border:1px solid #C3C9D2;background:#fff;border-radius:99px;padding:8px 16px;font-size:15px;cursor:pointer" style-hover="border-color:#1E5AA8;color:#1E5AA8">Conseil municipal</button>
+      <button type="button" style="border:1px solid #C3C9D2;background:#fff;border-radius:99px;padding:8px 16px;font-size:15px;cursor:pointer" style-hover="border-color:#1E5AA8;color:#1E5AA8">Éducation</button>
+      <button type="button" style="border:1px solid #C3C9D2;background:#fff;border-radius:99px;padding:8px 16px;font-size:15px;cursor:pointer" style-hover="border-color:#1E5AA8;color:#1E5AA8">Environnement</button>
+    </div>
+    <ul style="list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px">
+      <sc-for list="{{ actus }}" as="a" hint-placeholder-count="6">
+        <li><a href="#" style="display:block;background:#fff;border:1px solid #DFE3E9;text-decoration:none;color:inherit;height:100%;transition:transform 200ms cubic-bezier(.22,.61,.36,1),box-shadow 200ms,border-color 200ms" style-hover="border-color:#1E5AA8;transform:translateY(-3px);box-shadow:0 10px 26px rgba(18,58,99,0.13)">
+          <div role="img" aria-label="{{ a.alt }}" style="width:100%;aspect-ratio:16/9;background-image:url({{ a.img }});background-size:cover;background-position:center;background-color:#EAF0F7"></div>
+          <div style="padding:22px 24px 26px;border-top:3px solid #2E93B8">
+            <p style="display:flex;align-items:center;gap:10px;font-size:13px;margin-bottom:10px">
+              <span style="color:#1E5AA8;font-weight:700;letter-spacing:0.06em;text-transform:uppercase">{{ a.cat }}</span>
+              <span style="color:#5A6470">{{ a.date }}</span>
+            </p>
+            <h2 style="font-size:22px;color:#123A63;margin-bottom:10px">{{ a.titre }}</h2>
+            <p style="color:#46535F;font-size:16px">{{ a.resume }}</p>
+          </div>
+        </a></li>
+      </sc-for>
+    </ul>
+  </div>
+</div>
+</sc-if>
+
+<!-- ================= PAGE : CONTACT ================= -->
+<sc-if value="{{ isContact }}">
+<div>
+  <div style="background:#123A63;color:#fff;padding:clamp(28px,4vw,48px) clamp(16px,4vw,40px)">
+    <div style="max-width:1280px;margin:0 auto">
+      <nav aria-label="Fil d’ariane" style="font-size:14px;color:#A6C0DC;margin-bottom:14px">
+        <a href="#" onClick="{{ goHome }}" style="color:#A6C0DC">Accueil</a> <span aria-hidden="true">/</span> <span style="color:#fff">Contact</span>
+      </nav>
+      <h1 style="font-family:'Nunito','Public Sans',sans-serif;font-weight:900;letter-spacing:-0.015em;font-size:clamp(30px,4vw,48px);margin-bottom:12px">Contacter la mairie</h1>
+      <p style="color:#C9DCEF;font-size:18px;max-width:60ch">Accueil du public à Vao, du lundi au vendredi. Pour une demande précise, écrivez directement au service concerné.</p>
+    </div>
+  </div>
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(28px,4vw,52px) clamp(16px,4vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,52px);align-items:start">
+    <div>
+      <h2 style="font-size:26px;color:#123A63;margin-bottom:18px">Coordonnées</h2>
+      <dl style="margin:0;border-top:1px solid #DFE3E9">
+        <div style="display:flex;gap:20px;padding:16px 0;border-bottom:1px solid #DFE3E9"><dt style="width:120px;flex-shrink:0;font-weight:600;color:#5A6470;font-size:15px">Adresse</dt><dd style="margin:0;font-size:17px">Mairie de l’Île des Pins, Vao<br>BP 87, 98832 Île des Pins</dd></div>
+        <div style="display:flex;gap:20px;padding:16px 0;border-bottom:1px solid #DFE3E9"><dt style="width:120px;flex-shrink:0;font-weight:600;color:#5A6470;font-size:15px">Téléphone</dt><dd style="margin:0;font-size:17px"><strong>(+687) 46 11 03</strong></dd></div>
+        <div style="display:flex;gap:20px;padding:16px 0;border-bottom:1px solid #DFE3E9"><dt style="width:120px;flex-shrink:0;font-weight:600;color:#5A6470;font-size:15px">Courriel</dt><dd style="margin:0;font-size:17px"><a href="#">mairie-pins@canl.nc</a></dd></div>
+        <div style="display:flex;gap:20px;padding:16px 0;border-bottom:1px solid #DFE3E9"><dt style="width:120px;flex-shrink:0;font-weight:600;color:#5A6470;font-size:15px">Horaires</dt><dd style="margin:0;font-size:17px">Du lundi au jeudi : 07h30 à 11h30 et 12h30 à 16h00<br>Vendredi : 07h30 à 11h30 et 12h30 à 15h00</dd></div>
+      </dl>
+      <h3 style="font-size:21px;color:#123A63;margin:30px 0 14px">Contacts directs</h3>
+      <ul style="list-style:none;display:grid;gap:1px;background:#DFE3E9;border:1px solid #DFE3E9">
+        <li style="background:#fff;padding:16px 18px;font-size:16px"><strong style="display:block;color:#123A63">État civil</strong> mairie-pins@canl.nc</li>
+        <li style="background:#fff;padding:16px 18px;font-size:16px"><strong style="display:block;color:#123A63">Urbanisme</strong> mairie-pins@canl.nc</li>
+        <li style="background:#fff;padding:16px 18px;font-size:16px"><strong style="display:block;color:#123A63">Vie associative</strong> mairie-pins@canl.nc</li>
+        <li style="background:#fff;padding:16px 18px;font-size:16px"><strong style="display:block;color:#123A63">Environnement et déchets</strong> mairie-pins@canl.nc</li>
+      </ul>
+    </div>
+    <form onSubmit="{{ onSearch }}" style="background:#F6F8FA;border:1px solid #DFE3E9;padding:clamp(22px,3vw,34px);display:grid;gap:18px">
+      <h2 style="font-size:26px;color:#123A63">Écrire à la mairie</h2>
+      <p style="font-size:15px;color:#5A6470;margin-top:-8px">Les champs marqués d’un astérisque (*) sont obligatoires.</p>
+      <div style="display:grid;gap:6px">
+        <label for="c-nom" style="font-weight:600;font-size:16px">Nom et prénom *</label>
+        <input id="c-nom" type="text" required="required" style="height:52px;padding:0 14px;border:1px solid #C3C9D2;border-radius:6px;font-size:16px;background:#fff">
+      </div>
+      <div style="display:grid;gap:6px">
+        <label for="c-mail" style="font-weight:600;font-size:16px">Adresse électronique *</label>
+        <input id="c-mail" type="email" required="required" style="height:52px;padding:0 14px;border:1px solid #C3C9D2;border-radius:6px;font-size:16px;background:#fff">
+        <span style="font-size:14px;color:#5A6470">Pour recevoir la réponse de la mairie.</span>
+      </div>
+      <div style="display:grid;gap:6px">
+        <label for="c-service" style="font-weight:600;font-size:16px">Service concerné *</label>
+        <select id="c-service" style="height:52px;padding:0 12px;border:1px solid #C3C9D2;border-radius:6px;font-size:16px;background:#fff">
+          <option>Accueil général</option>
+          <option>État civil</option>
+          <option>Urbanisme</option>
+          <option>Vie associative</option>
+          <option>Environnement et déchets</option>
+        </select>
+      </div>
+      <div style="display:grid;gap:6px">
+        <label for="c-msg" style="font-weight:600;font-size:16px">Votre message *</label>
+        <textarea id="c-msg" rows="6" style="padding:12px 14px;border:1px solid #C3C9D2;border-radius:6px;font-size:16px;font-family:inherit;background:#fff"></textarea>
+      </div>
+      <button type="submit" style="justify-self:start;background:#1E5AA8;color:#fff;border:0;border-radius:6px;padding:15px 26px;font-size:17px;font-weight:700;cursor:pointer" style-hover="background:#123A63;transform:translateY(-5px);box-shadow:0 0 0 8px #ffffff,0 14px 28px rgba(18,58,99,0.26)">Envoyer le message</button>
+    </form>
+  </div>
+</div>
+</sc-if>
+
+<!-- ================= PAGE : VISITER KUNIÉ ================= -->
+<sc-if value="{{ isVisiter }}">
+<div lang="{{ langCode }}">
+  <div style="position:relative;overflow:hidden;background:#123A63;color:#fff;padding:clamp(30px,4vw,56px) clamp(16px,4vw,40px)">
+    <div aria-hidden="true" style="position:absolute;right:clamp(8px,3vw,56px);top:-10px;bottom:-10px;display:flex;align-items:center;gap:16px;pointer-events:none">
+      <img src="assets/pin-kunie-clair.png" alt="" width="21" height="94" style="display:block;width:21px;height:94px;object-fit:contain;flex-shrink:0;opacity:0.18">
+      <img src="assets/pin-kunie-clair.png" alt="" width="17" height="76" style="display:block;width:17px;height:76px;object-fit:contain;flex-shrink:0;opacity:0.13">
+    </div>
+    <div style="max-width:1280px;margin:0 auto;position:relative">
+      <nav aria-label="Fil d’ariane" style="font-size:14px;color:#A6C0DC;margin-bottom:14px">
+        <a href="#" onClick="{{ goHome }}" style="color:#A6C0DC">Accueil</a> <span aria-hidden="true">/</span> <span style="color:#fff">{{ t.breadcrumb }}</span>
+      </nav>
+      <div style="display:flex;flex-wrap:wrap;gap:18px;align-items:flex-start;justify-content:space-between">
+        <div style="max-width:62ch">
+          <p style="display:inline-block;color:#8FCBE8;font-size:13px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;border-top:3px solid #2E93B8;padding-top:12px;margin-bottom:12px">{{ t.kicker }}</p>
+          <h1 style="font-family:'Nunito','Public Sans',sans-serif;font-weight:900;letter-spacing:-0.015em;font-size:clamp(30px,4vw,50px);margin-bottom:14px">{{ t.title }}</h1>
+          <p style="color:#C9DCEF;font-size:clamp(17px,1.5vw,19px)">{{ t.sub }}</p>
+        </div>
+        <div role="group" aria-label="Langue / Language / 言語 / ภาษา" style="display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap">
+          <sc-for list="{{ langs }}" as="l" hint-placeholder-count="4">
+            <button type="button" onClick="{{ l.select }}" aria-pressed="{{ l.active }}" style="min-height:44px;padding:0 16px;border:1px solid {{ l.border }};background:{{ l.bg }};color:{{ l.fg }};font-size:15px;font-weight:700;border-radius:6px;cursor:pointer" style-hover="border-color:#8FCBE8"><span lang="{{ l.code }}">{{ l.label }}</span></button>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section data-reveal="" aria-labelledby="v-cout" style="background:#F1F5F9;border-bottom:1px solid #E1E7EE;padding:clamp(34px,4vw,60px) clamp(16px,4vw,40px)">
+    <div style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:clamp(24px,3vw,48px)">
+      <div>
+        <p style="display:inline-block;color:#1E5AA8;font-size:13px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;border-top:3px solid #2E93B8;padding-top:12px;margin-bottom:12px">{{ t.coutKicker }}</p>
+        <h2 id="v-cout" style="font-size:clamp(24px,2.6vw,32px);color:#123A63;margin-bottom:14px">{{ t.coutTitle }}</h2>
+        <p style="color:#46535F;font-size:17px;max-width:52ch">{{ t.coutIntro }}</p>
+      </div>
+      <ul style="list-style:none;display:grid;gap:12px">
+        <sc-for list="{{ t.coutItems }}" as="c" hint-placeholder-count="4">
+          <li style="display:flex;gap:14px;background:#fff;border:1px solid #E1E7EE;border-left:4px solid #2E93B8;padding:16px 18px">
+            <span style="flex:1;font-size:17px;color:#14202E">{{ c }}</span>
+          </li>
+        </sc-for>
+      </ul>
+    </div>
+  </section>
+
+
+  <section data-reveal="" aria-labelledby="v-carte" style="background:#fff;padding:clamp(34px,4vw,60px) clamp(16px,4vw,40px)">
+    <div style="max-width:1280px;margin:0 auto">
+      <div style="display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;justify-content:space-between;margin-bottom:22px">
+        <div style="max-width:60ch">
+          <h2 id="v-carte" style="font-size:clamp(24px,2.6vw,32px);color:#123A63;margin-bottom:10px">{{ t.carteTitle }}</h2>
+          <p style="color:#46535F;font-size:17px">{{ t.carteIntro }}</p>
+        </div>
+        <img src="assets/pin-kunie-vert.png" alt="" aria-hidden="true" width="14" height="60" style="display:block;width:14px;height:60px;object-fit:contain;flex-shrink:0;--op:0.5;flex-shrink:0;opacity:1">
+      </div>
+      <div style="border:1px solid #DFE3E9;border-top:3px solid #2E93B8;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+        <div role="img" aria-label="Vue aérienne de l’Île des Pins" style="min-height:clamp(220px,26vw,320px);background-image:url(assets/survol-avion.jpg);background-size:cover;background-position:center"></div>
+        <div style="padding:clamp(22px,3vw,34px);display:flex;flex-direction:column;justify-content:center;gap:14px;background:#F6F8FA">
+          <ul style="list-style:none;display:grid;gap:8px;font-size:16px;color:#14202E">
+            <li>Mairie de l’Île des Pins, Vao</li>
+            <li>Aérodrome de Moué</li>
+            <li>Baies de Kuto, Kanuméra, Upi et Saint-Joseph</li>
+            <li>Piscine naturelle d’Oro</li>
+          </ul>
+          <a href="carte-ile-des-pins.html" target="_blank" rel="noopener" style="align-self:flex-start;display:inline-flex;align-items:center;gap:10px;background:#1E5AA8;color:#fff;text-decoration:none;font-weight:700;font-size:17px;padding:14px 22px;border-radius:6px" style-hover="background:#123A63;transform:translateY(-5px);box-shadow:0 0 0 8px #ffffff,0 14px 28px rgba(18,58,99,0.26)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7l6-3 4 3 6-3v13l-6 3-4-3-6 3z"></path><path d="M10 4v13M14 7v13"></path></svg>
+            {{ t.carteCta }}
+          </a>
+        </div>
+      </div>
+      <p style="font-size:14px;color:#5A6470;margin-top:10px">{{ t.carteSource }}</p>
+    </div>
+  </section>
+  <section data-reveal="" aria-labelledby="v-venir" style="background:#fff;padding:clamp(34px,4vw,60px) clamp(16px,4vw,40px)">
+    <div style="max-width:1280px;margin:0 auto">
+      <h2 id="v-venir" style="font-size:clamp(24px,2.6vw,32px);color:#123A63;margin-bottom:26px">{{ t.venirTitle }}</h2>
+      <ul style="list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:#DFE3E9;border:1px solid #DFE3E9">
+        <sc-for list="{{ t.venirItems }}" as="v" hint-placeholder-count="3">
+          <li style="background:#fff;padding:24px 22px">
+            <h3 style="font-size:20px;color:#123A63;margin-bottom:8px">{{ v.titre }}</h3>
+            <p style="color:#46535F;font-size:16px">{{ v.texte }}</p>
+          </li>
+        </sc-for>
+      </ul>
+    </div>
+  </section>
+
+  <section data-reveal="" aria-labelledby="v-lagon" style="background:#123A63;color:#fff;padding:clamp(34px,4vw,60px) clamp(16px,4vw,40px)">
+    <div style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(24px,3vw,48px)">
+      <div>
+        <p style="display:inline-block;color:#8FCBE8;font-size:13px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;border-top:3px solid #2E93B8;padding-top:12px;margin-bottom:12px">UNESCO</p>
+        <h2 id="v-lagon" style="font-size:clamp(24px,2.6vw,32px);margin-bottom:14px">{{ t.lagonTitle }}</h2>
+        <p style="color:#C9DCEF;font-size:17px;max-width:50ch">{{ t.lagonIntro }}</p>
+      </div>
+      <ul style="list-style:none;display:grid;gap:12px">
+        <sc-for list="{{ t.lagonItems }}" as="r" hint-placeholder-count="5">
+          <li style="display:flex;gap:12px;align-items:flex-start;border-bottom:1px solid rgba(255,255,255,0.18);padding-bottom:12px">
+            <img src="assets/pin-kunie-clair.png" alt="" aria-hidden="true" width="9" height="40" style="display:block;width:9px;height:40px;object-fit:contain;flex-shrink:0;opacity:0.9;flex-shrink:0">
+            <span style="font-size:17px;color:#EDF3F9">{{ r }}</span>
+          </li>
+        </sc-for>
+      </ul>
+    </div>
+  </section>
+
+
+  <section data-reveal="" aria-labelledby="v-eco" style="background:#F1F5F9;border-bottom:1px solid #E1E7EE;padding:clamp(30px,4vw,52px) clamp(16px,4vw,40px)">
+    <div style="max-width:1280px;margin:0 auto">
+      <h2 id="v-eco" style="font-size:clamp(22px,2.4vw,29px);color:#123A63;margin-bottom:8px">{{ t.ecoTitle }}</h2>
+      <p style="color:#46535F;font-size:17px;max-width:70ch;margin-bottom:22px">{{ t.ecoIntro }}</p>
+      <ul style="list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px">
+        <sc-for list="{{ t.ecoItems }}" as="e" hint-placeholder-count="4">
+          <li style="display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid #E1E7EE;padding:18px 18px">
+            <img src="assets/pin-kunie-vert.png" alt="" aria-hidden="true" width="10" height="42" style="display:block;width:10px;height:42px;object-fit:contain;flex-shrink:0;opacity:0.75;flex-shrink:0">
+            <span style="font-size:16px;color:#14202E">{{ e }}</span>
+          </li>
+        </sc-for>
+      </ul>
+    </div>
+  </section>
+  <section data-reveal="" aria-labelledby="v-sites" style="background:#F6F8FA;padding:clamp(34px,4vw,60px) clamp(16px,4vw,40px)">
+    <div style="max-width:1280px;margin:0 auto">
+      <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;justify-content:space-between;margin-bottom:22px">
+        <div style="max-width:62ch">
+          <h2 id="v-sites" style="font-size:clamp(24px,2.6vw,32px);color:#123A63;margin-bottom:10px">{{ t.sitesTitle }}</h2>
+          <p style="color:#46535F;font-size:17px">{{ t.sitesIntro }}</p>
+        </div>
+        <p style="font-size:15px;color:#5A6470;white-space:nowrap">{{ explorerCountLabel }}</p>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:14px;margin-bottom:20px">
+        <div style="flex:1;min-width:230px;max-width:420px">
+          <label for="explorer-q" style="position:absolute;left:-9999px">Rechercher un lieu</label>
+          <div style="display:flex;align-items:center;border:1px solid #C3C9D2;border-radius:6px;background:#fff;height:46px;padding:0 6px 0 14px">
+            <input id="explorer-q" type="search" value="{{ explorerQuery }}" onInput="{{ onExplorerQuery }}" placeholder="{{ explorerPlaceholder }}" style="flex:1;border:0;outline:0;font-size:16px;background:transparent" />
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#5A6470" stroke-width="2" aria-hidden="true" style="flex-shrink:0"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4.5-4.5"></path></svg>
+          </div>
+        </div>
+        <div role="group" aria-label="Filtrer par catégorie" style="display:flex;flex-wrap:wrap;gap:8px">
+          <sc-for list="{{ explorerCategories }}" as="c" hint-placeholder-count="6">
+            <button type="button" onClick="{{ c.onClick }}" aria-pressed="{{ c.active }}" style="{{ c.style }}">{{ c.name }}</button>
+          </sc-for>
+        </div>
+      </div>
+
+      <ul style="list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;margin-bottom:{{ explorerDetailMargin }}">
+        <sc-for list="{{ explorerPlaces }}" as="p3" hint-placeholder-count="6">
+          <li>
+            <button type="button" onClick="{{ p3.onClick }}" aria-expanded="{{ p3.active }}" style="{{ p3.cardStyle }}" style-hover="transform:translateY(-3px);box-shadow:0 10px 22px rgba(18,58,99,0.14)">
+              <div role="img" aria-label="{{ p3.name }}" style="width:100%;aspect-ratio:4/3;background-image:url({{ p3.image }});background-size:cover;background-position:center;background-color:#EAF0F7"></div>
+              <div style="padding:18px 20px 22px;border-top:3px solid {{ p3.accent }}">
+                <span style="display:block;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:{{ p3.accent }};margin-bottom:6px">{{ p3.categoryLabel }}</span>
+                <h3 style="font-size:19px;color:#123A63;margin-bottom:6px">{{ p3.name }}</h3>
+                <p style="color:#46535F;font-size:16px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">{{ p3.desc }}</p>
+                <span style="display:block;margin-top:10px;font-size:14px;color:#5A6470">{{ p3.areaName }}</span>
+              </div>
+            </button>
+          </li>
+        </sc-for>
+      </ul>
+
+      <sc-if value="{{ explorerNoResults }}">
+        <p style="text-align:center;padding:36px 0;font-size:16px;color:#5A6470">{{ explorerNoResultsText }} <a href="#" onClick="{{ resetExplorer }}" style="color:#1E5AA8;font-weight:600">{{ explorerResetLabel }}</a></p>
+      </sc-if>
+
+      <sc-if value="{{ explorerActivePlace }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#fff;border:1px solid #DFE3E9;display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr)">
+          <div role="img" aria-label="{{ explorerActivePlace.name }}" style="width:100%;min-height:220px;background-image:url({{ explorerActivePlace.image }});background-size:cover;background-position:center"></div>
+          <div style="padding:clamp(22px,3vw,32px)">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:10px">
+              <div>
+                <span style="display:block;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:{{ explorerActivePlace.accent }};margin-bottom:8px">{{ explorerActivePlace.categoryLabel }}</span>
+                <h3 style="font-size:clamp(21px,2.2vw,27px);color:#123A63">{{ explorerActivePlace.name }}</h3>
+              </div>
+              <button type="button" onClick="{{ closeExplorer }}" aria-label="{{ explorerCloseLabel }}" style="border:1px solid #C3C9D2;background:#fff;border-radius:6px;width:36px;height:36px;flex-shrink:0;cursor:pointer;font-size:18px;color:#46535F">×</button>
+            </div>
+            <p style="color:#14202E;font-size:17px;line-height:1.6;max-width:70ch">{{ explorerActivePlace.desc }}</p>
+            <sc-if value="{{ explorerActivePlace.tip }}">
+              <p style="margin-top:14px;padding-left:14px;border-left:3px solid #2E93B8;color:#46535F;font-size:15px;max-width:60ch">{{ explorerActivePlace.tip }}</p>
+            </sc-if>
+            <sc-if value="{{ explorerActivePlace.amenitiesLabel }}">
+              <p style="margin-top:14px;font-size:15px;color:#5A6470">{{ explorerActivePlace.amenitiesLabel }}</p>
+            </sc-if>
+            <a href="carte-ile-des-pins.html" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;margin-top:20px;font-weight:700;font-size:16px;color:#1E5AA8;text-decoration:none;border-bottom:2px solid #C9DCEF;padding-bottom:3px" style-hover="border-bottom-color:#1E5AA8">{{ explorerCarteLabel }}</a>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+
+
+  <section data-reveal="" aria-labelledby="v-events" style="background:#123A63;color:#fff;padding:clamp(34px,4vw,60px) clamp(16px,4vw,40px);position:relative;overflow:hidden">
+    <div aria-hidden="true" style="position:absolute;right:clamp(8px,3vw,48px);top:-10px;bottom:-10px;display:flex;align-items:center;gap:14px;pointer-events:none"><img src="assets/pin-kunie-clair.png" alt="" aria-hidden="true" width="18" height="80" style="display:block;width:18px;height:80px;object-fit:contain;flex-shrink:0;opacity:0.15;flex-shrink:0"><img src="assets/pin-kunie-clair.png" alt="" aria-hidden="true" width="15" height="64" style="display:block;width:15px;height:64px;object-fit:contain;flex-shrink:0;opacity:0.12;flex-shrink:0"><img src="assets/pin-kunie-clair.png" alt="" aria-hidden="true" width="21" height="92" style="display:block;width:21px;height:92px;object-fit:contain;flex-shrink:0;opacity:0.1;flex-shrink:0"></div>
+    <div style="max-width:1280px;margin:0 auto;position:relative">
+      <h2 id="v-events" style="font-size:clamp(22px,2.4vw,29px);margin-bottom:8px">{{ t.eventsTitle }}</h2>
+      <p style="color:#C9DCEF;font-size:17px;max-width:64ch;margin-bottom:24px">{{ t.eventsIntro }}</p>
+      <ul style="list-style:none;display:grid;gap:12px;max-width:900px">
+        <sc-for list="{{ t.events }}" as="ev" hint-placeholder-count="3">
+          <li style="display:flex;gap:20px;align-items:center;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.18);border-left:4px solid #2E93B8;padding:16px 20px">
+            <span style="flex-shrink:0;width:72px;text-align:center">
+              <span style="display:block;font-family:'Source Serif 4',Georgia,serif;font-size:28px;font-weight:700;line-height:1">{{ ev.jour }}</span>
+              <span style="display:block;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:#8FCBE8">{{ ev.mois }}</span>
+            </span>
+            <span style="flex:1">
+              <span style="display:block;font-family:'Source Serif 4',Georgia,serif;font-size:20px;font-weight:600">{{ ev.nom }}</span>
+              <span style="display:block;font-size:15px;color:#C9DCEF;margin-top:4px">{{ ev.lieu }}</span>
+            </span>
+          </li>
+        </sc-for>
+      </ul>
+    </div>
+  </section>
+  <section data-reveal="" aria-labelledby="v-prat" style="background:#fff;padding:clamp(34px,4vw,60px) clamp(16px,4vw,40px)">
+    <div style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:clamp(24px,3vw,48px);align-items:start">
+      <div>
+        <h2 id="v-prat" style="font-size:clamp(24px,2.6vw,32px);color:#123A63;margin-bottom:18px">{{ t.urgTitle }}</h2>
+        <dl style="margin:0;border-top:1px solid #DFE3E9">
+          <sc-for list="{{ t.urgItems }}" as="u" hint-placeholder-count="4">
+            <div style="display:flex;gap:18px;justify-content:space-between;padding:14px 0;border-bottom:1px solid #DFE3E9">
+              <dt style="font-size:17px;color:#14202E">{{ u.label }}</dt>
+              <dd style="margin:0;font-size:19px;font-weight:700;color:#123A63">{{ u.value }}</dd>
+            </div>
+          </sc-for>
+        </dl>
+      </div>
+      <div>
+        <h2 style="font-size:clamp(24px,2.6vw,32px);color:#123A63;margin-bottom:18px">{{ t.pratTitle }}</h2>
+        <ul style="list-style:none;display:grid;gap:12px">
+          <sc-for list="{{ t.pratItems }}" as="p2" hint-placeholder-count="5">
+            <li style="display:flex;gap:14px;border-bottom:1px solid #DFE3E9;padding-bottom:12px">
+              <span style="min-width:120px;font-weight:700;color:#123A63;font-size:16px">{{ p2.label }}</span>
+              <span style="flex:1;color:#46535F;font-size:16px">{{ p2.value }}</span>
+            </li>
+          </sc-for>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+
+  <section data-reveal="" aria-labelledby="v-charte" style="background:#fff;border-top:1px solid #DFE3E9;padding:clamp(30px,4vw,52px) clamp(16px,4vw,40px)">
+    <div style="max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between">
+      <div style="display:flex;gap:20px;align-items:flex-start;max-width:64ch">
+        <img src="assets/pin-kunie-vert.png" alt="" aria-hidden="true" width="16" height="72" style="display:block;width:16px;height:72px;object-fit:contain;flex-shrink:0;opacity:0.6;flex-shrink:0">
+        <div>
+          <h2 id="v-charte" style="font-size:clamp(21px,2.2vw,27px);color:#123A63;margin-bottom:10px">{{ t.charteTitle }}</h2>
+          <p style="color:#46535F;font-size:17px">{{ t.charteText }}</p>
+        </div>
+      </div>
+      <a href="#" style="display:inline-flex;align-items:center;gap:10px;border:1.5px solid #1E5AA8;color:#1E5AA8;text-decoration:none;font-weight:700;font-size:17px;padding:14px 22px;border-radius:6px;flex-shrink:0" style-hover="background:#1E5AA8;color:#fff">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 4v11M7 12l5 5 5-5M5 20h14"></path></svg>
+        {{ t.charteCta }}
+      </a>
+    </div>
+  </section>
+  <section data-reveal="" aria-labelledby="v-tour" style="background:#F1F5F9;border-top:1px solid #E1E7EE;padding:clamp(30px,4vw,52px) clamp(16px,4vw,40px)">
+    <div style="max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;gap:22px;align-items:center;justify-content:space-between">
+      <div style="max-width:62ch">
+        <h2 id="v-tour" style="font-size:clamp(21px,2.2vw,27px);color:#123A63;margin-bottom:10px">{{ t.tourTitle }}</h2>
+        <p style="color:#46535F;font-size:17px">{{ t.tourText }}</p>
+      </div>
+      <a href="#" style="background:#1E5AA8;color:#fff;text-decoration:none;font-weight:700;font-size:17px;padding:15px 24px;border-radius:6px;flex-shrink:0" style-hover="background:#123A63;transform:translateY(-5px);box-shadow:0 0 0 8px #ffffff,0 14px 28px rgba(18,58,99,0.26)">{{ t.tourCta }}</a>
+    </div>
+  </section>
+</div>
+</sc-if>
+
+<!-- ================= PAGE : SIGNALER ================= -->
+<sc-if value="{{ isSignaler }}">
+<div>
+  <div style="background:#123A63;color:#fff;padding:clamp(28px,4vw,52px) clamp(16px,4vw,40px)">
+    <div style="max-width:1280px;margin:0 auto">
+      <nav aria-label="Fil d’ariane" style="font-size:14px;color:#A6C0DC;margin-bottom:14px">
+        <a href="#" onClick="{{ goHome }}" style="color:#A6C0DC">Accueil</a> <span aria-hidden="true">/</span> <span style="color:#fff">Signaler un problème</span>
+      </nav>
+      <h1 style="font-family:'Nunito','Public Sans',sans-serif;font-weight:900;letter-spacing:-0.015em;font-size:clamp(30px,4vw,50px);margin-bottom:14px">Signaler un problème</h1>
+      <p style="color:#C9DCEF;font-size:clamp(17px,1.5vw,19px);max-width:62ch">Voirie dégradée, éclairage en panne, dépôt sauvage, eau, animal errant : signalez-le aux services techniques. Chaque signalement est transmis au service compétent.</p>
+    </div>
+  </div>
+
+  <div style="background:#F1F5F9;border-bottom:1px solid #E1E7EE;padding:clamp(20px,3vw,30px) clamp(16px,4vw,40px)">
+    <div style="max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between">
+      <p style="font-size:17px;color:#14202E;max-width:52ch"><strong>Urgence immédiate</strong> (danger, accident, incendie, fuite majeure) : appelez directement.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px">
+        <a href="tel:+687461103" style="display:inline-flex;align-items:center;gap:10px;background:#1E5AA8;color:#fff;text-decoration:none;font-weight:700;font-size:17px;padding:14px 22px;border-radius:6px" style-hover="background:#123A63;transform:translateY(-5px);box-shadow:0 0 0 8px #ffffff,0 14px 28px rgba(18,58,99,0.26)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 5h5l2 5-3 2a12 12 0 006 6l2-3 5 2v5H4z"></path></svg>
+          Mairie : (+687) 46 11 03
+        </a>
+        <a href="tel:18" style="border:1.5px solid #C3C9D2;color:#123A63;text-decoration:none;font-weight:700;font-size:17px;padding:13px 20px;border-radius:6px" style-hover="border-color:#1E5AA8;color:#1E5AA8">Pompiers : 18</a>
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(28px,4vw,52px) clamp(16px,4vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(24px,3vw,48px);align-items:start">
+    <form onSubmit="{{ onSearch }}" style="background:#F6F8FA;border:1px solid #DFE3E9;border-top:3px solid #2E93B8;padding:clamp(22px,3vw,34px);display:grid;gap:18px">
+      <h2 style="font-size:clamp(22px,2.2vw,28px);color:#123A63">Décrire le problème</h2>
+      <p style="font-size:15px;color:#5A6470;margin-top:-8px">Les champs marqués d’un astérisque (*) sont obligatoires.</p>
+      <div style="display:grid;gap:6px">
+        <label for="s-type" style="font-weight:600;font-size:16px">Nature du problème *</label>
+        <select id="s-type" style="min-height:52px;padding:0 12px;border:1px solid #C3C9D2;border-radius:6px;font-size:16px;background:#fff">
+          <option>Voirie, route, nid-de-poule</option>
+          <option>Éclairage public</option>
+          <option>Dépôt sauvage / déchets</option>
+          <option>Eau : fuite, coupure, qualité</option>
+          <option>Arbre, végétation, débroussaillage</option>
+          <option>Animal errant</option>
+          <option>Bâtiment ou équipement communal</option>
+          <option>Autre</option>
+        </select>
+      </div>
+      <div style="display:grid;gap:6px">
+        <label for="s-lieu" style="font-weight:600;font-size:16px">Lieu précis *</label>
+        <input id="s-lieu" type="text" required="required" placeholder="Tribu, baie, nom de route, point de repère" style="min-height:52px;padding:0 14px;border:1px solid #C3C9D2;border-radius:6px;font-size:16px;background:#fff">
+      </div>
+      <div style="display:grid;gap:6px">
+        <label for="s-desc" style="font-weight:600;font-size:16px">Description *</label>
+        <textarea id="s-desc" rows="5" style="padding:12px 14px;border:1px solid #C3C9D2;border-radius:6px;font-size:16px;font-family:inherit;background:#fff"></textarea>
+      </div>
+      <div style="display:grid;gap:6px">
+        <label for="s-photo" style="font-weight:600;font-size:16px">Photo (facultatif)</label>
+        <input id="s-photo" type="file" accept="image/*" style="font-size:16px;padding:12px;border:1px dashed #C3C9D2;border-radius:6px;background:#fff">
+        <span style="font-size:14px;color:#5A6470">Une photo aide beaucoup les équipes techniques.</span>
+      </div>
+      <div style="display:grid;gap:6px">
+        <label for="s-tel" style="font-weight:600;font-size:16px">Votre téléphone ou courriel *</label>
+        <input id="s-tel" type="text" required="required" style="min-height:52px;padding:0 14px;border:1px solid #C3C9D2;border-radius:6px;font-size:16px;background:#fff">
+        <span style="font-size:14px;color:#5A6470">Pour être recontacté si le service a besoin de précisions.</span>
+      </div>
+      <button type="submit" style="justify-self:start;background:#1E5AA8;color:#fff;border:0;border-radius:6px;padding:15px 26px;font-size:17px;font-weight:700;cursor:pointer;min-height:52px" style-hover="background:#123A63;transform:translateY(-5px);box-shadow:0 0 0 8px #ffffff,0 14px 28px rgba(18,58,99,0.26)">Envoyer le signalement</button>
+    </form>
+
+    <div style="display:grid;gap:22px">
+      <div style="border:1px solid #DFE3E9;padding:24px">
+        <h2 style="font-size:21px;color:#123A63;margin-bottom:14px">Ce qui se passe ensuite</h2>
+        <ol style="list-style:none;margin:0;display:grid;gap:14px">
+          <li style="display:flex;gap:14px;font-size:16px"><span aria-hidden="true" style="font-family:'Source Serif 4',Georgia,serif;font-size:22px;font-weight:700;color:#1E5AA8;line-height:1">1</span><span><strong>Réception</strong><br><span style="color:#46535F">Votre signalement arrive à l’accueil de la mairie de Vao.</span></span></li>
+          <li style="display:flex;gap:14px;font-size:16px"><span aria-hidden="true" style="font-family:'Source Serif 4',Georgia,serif;font-size:22px;font-weight:700;color:#1E5AA8;line-height:1">2</span><span><strong>Transmission</strong><br><span style="color:#46535F">Il est orienté vers le service technique concerné sous 48 h ouvrées.</span></span></li>
+          <li style="display:flex;gap:14px;font-size:16px"><span aria-hidden="true" style="font-family:'Source Serif 4',Georgia,serif;font-size:22px;font-weight:700;color:#1E5AA8;line-height:1">3</span><span><strong>Intervention</strong><br><span style="color:#46535F">Le délai dépend de la nature et de la localisation du problème.</span></span></li>
+        </ol>
+      </div>
+      <div style="background:#F1F5F9;border:1px solid #E1E7EE;padding:24px">
+        <h2 style="font-size:21px;color:#123A63;margin-bottom:12px">Hors compétence communale</h2>
+        <p style="color:#46535F;font-size:16px">Réseau électrique, réseau téléphonique, routes provinciales et signalisation maritime relèvent d’autres opérateurs. La mairie transmet, mais le contact direct est plus rapide. <a href="#">Voir les contacts utiles</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<!-- ================= PAGE : RENDEZ-VOUS ================= -->
+<sc-if value="{{ isRdv }}">
+<div>
+  <div style="background:#123A63;color:#fff;padding:clamp(28px,4vw,52px) clamp(16px,4vw,40px)">
+    <div style="max-width:1280px;margin:0 auto">
+      <nav aria-label="Fil d’ariane" style="font-size:14px;color:#A6C0DC;margin-bottom:14px">
+        <a href="#" onClick="{{ goHome }}" style="color:#A6C0DC">Accueil</a> <span aria-hidden="true">/</span>
+        <a href="#" onClick="{{ goDemarches }}" style="color:#A6C0DC">Démarches</a> <span aria-hidden="true">/</span> <span style="color:#fff">Rendez-vous état civil</span>
+      </nav>
+      <h1 style="font-family:'Nunito','Public Sans',sans-serif;font-weight:900;letter-spacing:-0.015em;font-size:clamp(30px,4vw,50px);margin-bottom:14px">Prendre un rendez-vous d’état civil</h1>
+      <p style="color:#C9DCEF;font-size:clamp(17px,1.5vw,19px);max-width:62ch">Évitez l’attente au guichet : réservez un créneau pour un dossier de mariage, un PACS, une reconnaissance ou la constitution d’un livret de famille.</p>
+    </div>
+  </div>
+
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(28px,4vw,52px) clamp(16px,4vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(24px,3vw,48px);align-items:start">
+    <div>
+      <h2 style="font-size:clamp(22px,2.2vw,28px);color:#123A63;margin-bottom:16px">Choisir un créneau</h2>
+      <p style="color:#46535F;font-size:17px;margin-bottom:22px">Créneaux de 20 minutes au guichet 1 de la mairie de Vao. Un seul dossier par rendez-vous.</p>
+      <ul style="list-style:none;display:grid;gap:14px">
+        <sc-for list="{{ creneaux }}" as="c" hint-placeholder-count="3">
+          <li style="border:1px solid #DFE3E9;background:#fff">
+            <p style="display:flex;align-items:center;gap:12px;background:#F6F8FA;border-bottom:1px solid #DFE3E9;padding:12px 18px;font-weight:700;color:#123A63;font-size:17px">
+              <span aria-hidden="true" style="width:8px;height:8px;background:#2E93B8;border-radius:50%"></span>{{ c.jour }}
+            </p>
+            <div style="display:flex;flex-wrap:wrap;gap:10px;padding:16px 18px">
+              <sc-for list="{{ c.heures }}" as="hh" hint-placeholder-count="4">
+                <button type="button" style="min-height:48px;min-width:88px;border:1.5px solid #C3C9D2;background:#fff;color:#123A63;font-size:16px;font-weight:600;border-radius:6px;cursor:pointer" style-hover="border-color:#1E5AA8;background:#1E5AA8;color:#fff">{{ hh }}</button>
+              </sc-for>
+            </div>
+          </li>
+        </sc-for>
+      </ul>
+    </div>
+    <aside style="display:grid;gap:20px">
+      <div style="background:#F1F5F9;border:1px solid #E1E7EE;border-top:3px solid #2E93B8;padding:24px">
+        <h2 style="font-size:21px;color:#123A63;margin-bottom:12px">Sans rendez-vous</h2>
+        <p style="color:#46535F;font-size:16px;margin-bottom:12px">Les demandes simples (acte de naissance, de mariage, de décès, attestation) se traitent directement au guichet, sans réservation.</p>
+        <p style="font-size:16px;color:#46535F">Du lundi au jeudi : 07h30 à 11h30 et 12h30 à 16h00<br>Vendredi : 07h30 à 11h30 et 12h30 à 15h00</p>
+      </div>
+      <div style="border:1px solid #DFE3E9;padding:24px">
+        <h2 style="font-size:21px;color:#123A63;margin-bottom:12px">À apporter</h2>
+        <ul style="list-style:none;display:grid;gap:10px;font-size:16px">
+          <li style="display:flex;gap:12px"><span aria-hidden="true" style="color:#1E5AA8;font-weight:700">✓</span> Une pièce d’identité en cours de validité</li>
+          <li style="display:flex;gap:12px"><span aria-hidden="true" style="color:#1E5AA8;font-weight:700">✓</span> Un justificatif de domicile de moins de 3 mois</li>
+          <li style="display:flex;gap:12px"><span aria-hidden="true" style="color:#1E5AA8;font-weight:700">✓</span> Les pièces propres à votre démarche</li>
+        </ul>
+        <p style="font-size:16px;color:#46535F;margin-top:14px">Empêché ? Prévenez la mairie au <a href="tel:+687461103" style="font-weight:700">(+687) 46 11 03</a> pour libérer le créneau.</p>
+      </div>
+    </aside>
+  </div>
+</div>
+</sc-if>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer style="background:#123A63;color:#C9DCEF;padding:clamp(40px,5vw,64px) clamp(16px,4vw,40px) 0">
+  <div style="max-width:1280px;margin:0 auto">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:clamp(28px,3vw,44px);padding-bottom:44px">
+      <div>
+        <div style="display:flex;gap:14px;align-items:center;margin-bottom:18px">
+          <img src="assets/logo-kunie-compact.png" alt="Armoiries de la Commune de l’Île des Pins" width="58" height="58" style="width:58px;height:58px;object-fit:contain;display:block;flex-shrink:0">
+          <span>
+            <span style="display:block;font-family:'Source Serif 4',Georgia,serif;font-size:19px;font-weight:700;color:#fff;line-height:1.15">Commune de<br>l’Île des Pins</span>
+            <span style="display:block;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#8FCBE8;margin-top:4px">Kunié</span>
+          </span>
+        </div>
+        <p style="font-size:16px;line-height:1.6">Mairie de Vao<br>BP 87, 98832 Île des Pins<br>Nouvelle-Calédonie</p>
+        <p style="font-size:15px;margin-top:10px;color:#A6C0DC">Maire : Régis Wadieme Vendegou</p>
+        <p style="font-size:16px;margin-top:12px"><a href="tel:+687461103" style="color:#fff;font-weight:600">(+687) 46 11 03</a><br><a href="#" style="color:#fff">mairie-pins@canl.nc</a></p>
+      </div>
+      <nav aria-label="Démarches">
+        <h2 style="font-family:'Public Sans',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#8FCBE8;margin-bottom:16px">Démarches</h2>
+        <ul style="list-style:none;display:grid;gap:11px;font-size:16px">
+          <li><a href="#" style="color:#C9DCEF;text-decoration:none" style-hover="color:#fff;text-decoration:underline">État civil</a></li>
+          <li><a href="#" style="color:#C9DCEF;text-decoration:none" style-hover="color:#fff;text-decoration:underline">Urbanisme</a></li>
+          <li><a href="#" style="color:#C9DCEF;text-decoration:none" style-hover="color:#fff;text-decoration:underline">Élections</a></li>
+          <li><a href="#" style="color:#C9DCEF;text-decoration:none" style-hover="color:#fff;text-decoration:underline">Déchets et collecte</a></li>
+          <li><a href="#" style="color:#C9DCEF;text-decoration:none" style-hover="color:#fff;text-decoration:underline">Associations</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="La mairie">
+        <h2 style="font-family:'Public Sans',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#8FCBE8;margin-bottom:16px">La mairie</h2>
+        <ul style="list-style:none;display:grid;gap:11px;font-size:16px">
+          <li><a href="#" style="color:#C9DCEF;text-decoration:none" style-hover="color:#fff;text-decoration:underline">Le maire et les élus</a></li>
+          <li><a href="#" style="color:#C9DCEF;text-decoration:none" style-hover="color:#fff;text-decoration:underline">Conseil municipal</a></li>
+          <li><a href="#" style="color:#C9DCEF;text-decoration:none" style-hover="color:#fff;text-decoration:underline">Autorités coutumières</a></li>
+          <li><a href="#" style="color:#C9DCEF;text-decoration:none" style-hover="color:#fff;text-decoration:underline">Services municipaux</a></li>
+          <li><a href="#" style="color:#C9DCEF;text-decoration:none" style-hover="color:#fff;text-decoration:underline">Marchés publics</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Informations">
+        <h2 style="font-family:'Public Sans',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#8FCBE8;margin-bottom:16px">Informations</h2>
+        <ul style="list-style:none;display:grid;gap:11px;font-size:16px">
+          <li><a href="#" onClick="{{ goActus }}" style="color:#C9DCEF;text-decoration:none" style-hover="color:#fff;text-decoration:underline">Actualités</a></li>
+          <li><a href="#" style="color:#C9DCEF;text-decoration:none" style-hover="color:#fff;text-decoration:underline">Agenda</a></li>
+          <li><a href="#" style="color:#C9DCEF;text-decoration:none" style-hover="color:#fff;text-decoration:underline">Alertes municipales</a></li>
+          <li><a href="#" style="color:#C9DCEF;text-decoration:none" style-hover="color:#fff;text-decoration:underline">Publications et rapports</a></li>
+          <li><a href="#" onClick="{{ goVisiter }}" style="color:#C9DCEF;text-decoration:none" style-hover="color:#fff;text-decoration:underline">Visiter Kunié (Visitors)</a></li>
+          <li><a href="#" onClick="{{ goContact }}" style="color:#C9DCEF;text-decoration:none" style-hover="color:#fff;text-decoration:underline">Contact</a></li>
+        </ul>
+      </nav>
+      <div>
+        <h2 style="font-family:'Public Sans',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#8FCBE8;margin-bottom:16px">Suivre la commune</h2>
+        <a href="https://www.facebook.com/people/Commune-de-lIle-des-Pins-Kwenyii/61588837833747/" style="display:inline-flex;align-items:center;gap:10px;color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,0.3);padding:11px 16px;border-radius:6px;font-weight:600;font-size:16px" style-hover="background:rgba(255,255,255,0.12)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3h-3.1V8.2c0-.9.3-1.5 1.6-1.5h1.6V4c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.2V10H7.6v3h2.7v8z"></path></svg>
+          Page Facebook
+        </a>
+        <a href="#" onClick="{{ goSignaler }}" style="display:flex;align-items:center;gap:12px;margin-top:12px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.28);border-left:3px solid #8FCBE8;padding:14px 16px;text-decoration:none;color:#fff" style-hover="background:rgba(255,255,255,0.16)">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8FCBE8" stroke-width="2" aria-hidden="true" style="flex-shrink:0"><path d="M12 4l9 16H3z"></path><path d="M12 10v4M12 17v.5"></path></svg>
+          <span><span style="display:block;font-weight:700;font-size:16px">Un problème sur la voie publique ?</span><span style="display:block;font-size:15px;color:#C9DCEF">Signalez-le au (+687) 46 11 03</span></span>
+        </a>
+        <p style="font-size:15px;margin-top:16px;line-height:1.6">Alertes par SMS et informations d’urgence : <a href="#" style="color:#fff">s’inscrire au service d’alerte</a>.</p>
+      </div>
+    </div>
+    <div data-draw="" aria-hidden="true" style="display:flex;align-items:flex-end;gap:16px;padding-bottom:8px">
+      <span style="flex:1;height:1px;background:rgba(255,255,255,0.18);margin-bottom:1px"></span>
+      <img src="assets/pin-kunie-clair.png" alt="" aria-hidden="true" width="11" height="48" style="display:block;width:11px;height:48px;--op:0.85;flex-shrink:0"><img src="assets/pin-kunie-clair.png" alt="" aria-hidden="true" width="14" height="60" style="display:block;width:14px;height:60px;--op:0.95;flex-shrink:0"><img src="assets/pin-kunie-clair.png" alt="" aria-hidden="true" width="10" height="42" style="display:block;width:10px;height:42px;--op:0.85;flex-shrink:0">
+      <span style="flex:1;height:1px;background:rgba(255,255,255,0.18);margin-bottom:1px"></span>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,0.18);padding:20px 0 26px;display:flex;flex-wrap:wrap;gap:12px 26px;align-items:center;justify-content:space-between;font-size:14px">
+      <p>© 2026 Commune de l’Île des Pins, Kunié. Tous droits réservés.</p>
+      <nav aria-label="Liens légaux" style="display:flex;flex-wrap:wrap;gap:20px">
+        <a href="#" style="color:#C9DCEF;text-decoration:none" style-hover="color:#fff;text-decoration:underline">Mentions légales</a>
+        <a href="#" style="color:#C9DCEF;text-decoration:none" style-hover="color:#fff;text-decoration:underline">Politique de confidentialité</a>
+        <a href="#" style="color:#C9DCEF;text-decoration:none" style-hover="color:#fff;text-decoration:underline">Accessibilité : partiellement conforme</a>
+        <a href="#" style="color:#C9DCEF;text-decoration:none" style-hover="color:#fff;text-decoration:underline">Plan du site</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;alertLevel&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;aucune&quot;,&quot;information&quot;,&quot;vigilance&quot;,&quot;urgence&quot;],&quot;default&quot;:&quot;vigilance&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Alerte&quot;},&quot;showAgenda&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Accueil&quot;},&quot;animations&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;toujours&quot;,&quot;auto&quot;,&quot;jamais&quot;],&quot;default&quot;:&quot;toujours&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Animations&quot;}}">
+class Component extends DCLogic {
+  state = { page: 'accueil', w: 1440, menuOpen: false, alertDismissed: false, slide: 0, openThemes: { 'th-etat-civil': true }, explorerQuery: '', explorerCategory: null, explorerSlug: null };
+
+  static EXPLORER_CATEGORIES = [
+    { slug: 'decouvrir', accent: '#2E93B8', name: { fr: 'À découvrir', en: 'To discover', ja: '見どころ', th: 'สถานที่น่าเที่ยว' } },
+    { slug: 'randonnee', accent: '#14453F', name: { fr: 'Randonnée', en: 'Hiking', ja: 'ハイキング', th: 'เดินป่า' } },
+    { slug: 'culture-patrimoine', accent: '#1E5AA8', name: { fr: 'Culture et patrimoine', en: 'Culture and heritage', ja: '文化と遺産', th: 'วัฒนธรรมและมรดก' } },
+  ];
+
+  static EXPLORER_UI = {
+    fr: { placeholder: "Baie de Kuto, Pic N'Ga, grotte…", countLabel: (n) => `${n} lieu${n > 1 ? 'x' : ''}`, noResults: 'Aucun lieu ne correspond à cette recherche.', reset: 'Réinitialiser', carte: 'Voir sur la carte', close: 'Fermer' },
+    en: { placeholder: 'Kuto Bay, N’Ga Peak, cave…', countLabel: (n) => `${n} place${n > 1 ? 's' : ''}`, noResults: 'No place matches this search.', reset: 'Reset', carte: 'View on the map', close: 'Close' },
+    ja: { placeholder: 'クト湾、ンガ山、洞窟…', countLabel: (n) => `${n} 件`, noResults: '該当する場所がありません。', reset: 'リセット', carte: '地図で見る', close: '閉じる' },
+    th: { placeholder: 'อ่าวกูโต, ยอดปิกเอ็นกา, ถ้ำ…', countLabel: (n) => `${n} สถานที่`, noResults: 'ไม่พบสถานที่ที่ตรงกับการค้นหานี้', reset: 'ล้างค่า', carte: 'ดูบนแผนที่', close: 'ปิด' },
+  };
+
+  static EXPLORER_PLACES = [
+    { slug: 'baie-de-kuto', area: 'Kuto', category: 'decouvrir', image: 'assets/site-baie-de-kuto.jpg',
+      name: { fr: 'Baie de Kuto', en: 'Kuto Bay', ja: 'クト湾', th: 'อ่าวกูโต' },
+      categoryLabel: { fr: 'Plage', en: 'Beach', ja: 'ビーチ', th: 'หาด' },
+      desc: { fr: "Grande baie de sable blanc bordée de pins colonnaires, sur la côte ouest de l'île. Séparée de Kanuméra par un isthme étroit.", en: 'A wide white-sand bay lined with columnar pines on the west coast, separated from Kanuméra by a narrow isthmus.', ja: '島の西海岸にある白砂の広い湾で、周囲は柱状の松に囲まれています。狭い地峡でカヌメラ湾と隔てられています。', th: 'อ่าวหาดทรายขาวกว้างใหญ่เรียงรายด้วยต้นสนคอลัมนาร์ ทางฝั่งตะวันตกของเกาะ แยกจากอ่าวคานูเมราด้วยคอคอดแคบ ๆ' },
+      tip: { fr: "Prévoir de l'eau et une protection solaire : peu d'ombre en milieu de journée.", en: 'Bring water and sun protection: little shade around midday.', ja: '日中は日陰が少ないため、水と日焼け対策をお忘れなく。', th: 'เตรียมน้ำและครีมกันแดด เพราะมีร่มเงาน้อยในช่วงกลางวัน' },
+      amenities: { fr: 'Parking · familles', en: 'Parking · families', ja: '駐車場・家族向け', th: 'ที่จอดรถ · เหมาะกับครอบครัว' } },
+    { slug: 'baie-de-kanumera', area: 'Kanuméra', category: 'decouvrir', image: 'assets/site-baie-de-kanumera.jpg',
+      name: { fr: 'Baie de Kanuméra', en: 'Kanuméra Bay', ja: 'カヌメラ湾', th: 'อ่าวคานูเมรา' },
+      categoryLabel: { fr: 'Baie', en: 'Bay', ja: '湾', th: 'อ่าว' },
+      desc: { fr: 'Baie abritée reconnaissable à son rocher, séparée de Kuto par un isthme. Le rocher central est un site coutumier.', en: 'A sheltered bay known for its rock, separated from Kuto by an isthmus. The central rock is a customary site.', ja: '特徴的な岩がある穏やかな湾で、地峡でクト湾と隔てられています。中央の岩は慣習上の聖地です。', th: 'อ่าวกำบังคลื่นที่มีหินก้อนใหญ่เป็นจุดเด่น แยกจากอ่าวกูโตด้วยคอคอด หินกลางอ่าวเป็นสถานที่ตามประเพณี' },
+      tip: { fr: "Site coutumier : l'accès au rocher est interdit.", en: 'Customary site: access to the rock is forbidden.', ja: '慣習上の聖地のため、岩への立ち入りは禁止です。', th: 'สถานที่ตามประเพณี ห้ามเข้าใกล้หิน' },
+      amenities: { fr: 'Parking · familles', en: 'Parking · families', ja: '駐車場・家族向け', th: 'ที่จอดรถ · เหมาะกับครอบครัว' } },
+    { slug: 'piscine-naturelle-oro', area: 'Oro', category: 'decouvrir', image: 'assets/site-piscine-oro.jpg',
+      name: { fr: "Piscine naturelle d'Oro", en: 'Oro natural pool', ja: 'オロ天然プール', th: 'สระธรรมชาติโอโร' },
+      categoryLabel: { fr: 'Piscine naturelle', en: 'Natural pool', ja: '天然プール', th: 'สระน้ำธรรมชาติ' },
+      desc: { fr: "Bassin d'eau claire alimenté par le lagon, atteint par un sentier depuis la baie d'Oro. Le niveau varie fortement selon la marée.", en: 'A clear-water pool fed by the lagoon, reached by a path from Oro Bay. Water level varies greatly with the tide.', ja: 'ラグーンから水が流れ込む澄んだ水の池で、オロ湾からの遊歩道でアクセスします。水位は潮の状態で大きく変わります。', th: 'สระน้ำใสที่ได้รับน้ำจากลากูน เดินทางผ่านเส้นทางเดินจากอ่าวโอโร ระดับน้ำเปลี่ยนแปลงมากตามน้ำขึ้นน้ำลง' },
+      tip: { fr: 'Marée à prendre en compte : prévoir chaussures fermées, eau et nourriture.', en: 'Check the tide: wear closed shoes and bring water and food.', ja: '潮の状態を確認し、履き慣れた靴、水、食料をご用意ください。', th: 'ตรวจสอบระดับน้ำ สวมรองเท้าหุ้มส้น เตรียมน้ำและอาหาร' },
+      amenities: { fr: 'Sentier · familles', en: 'Path · families', ja: '遊歩道・家族向け', th: 'เส้นทางเดิน · เหมาะกับครอบครัว' } },
+    { slug: 'pic-n-ga', area: 'Kuto', category: 'randonnee', image: 'assets/site-pic-n-ga.jpg',
+      name: { fr: "Pic N'Ga", en: 'N’Ga Peak', ja: 'ンガ山', th: 'ยอดปิกเอ็นกา' },
+      categoryLabel: { fr: 'Randonnée', en: 'Hike', ja: 'ハイキング', th: 'เดินป่า' },
+      desc: { fr: "Point culminant de l'île (262 m), d'où l'on découvre l'ensemble du lagon. Sentier depuis la route reliant Kuto à Vao.", en: "The island's highest point (262 m), overlooking the whole lagoon. Trail starting from the Kuto–Vao road.", ja: '島の最高地点（262m）で、ラグーン全体を見渡せます。クトとヴァオを結ぶ道から続く遊歩道でアクセスします。', th: 'จุดสูงสุดของเกาะ (262 ม.) มองเห็นลากูนทั้งหมด เส้นทางเริ่มจากถนนเชื่อมกูโตกับวาโอ' },
+      tip: { fr: 'Prévoir 1,5 L d’eau par personne : aucun point d’eau sur le parcours.', en: 'Bring 1.5 L of water per person: no water source along the way.', ja: '道中に水場はありません。1人あたり1.5リットルの水をご持参ください。', th: 'เตรียมน้ำ 1.5 ลิตรต่อคน เพราะไม่มีจุดเติมน้ำระหว่างทาง' },
+      amenities: { fr: 'Sentier', en: 'Path', ja: '遊歩道', th: 'เส้นทางเดิน' } },
+    { slug: 'baie-d-upi', area: 'Upi', category: 'decouvrir', image: 'assets/site-baie-d-upi.jpg',
+      name: { fr: "Baie d'Upi", en: 'Upi Bay', ja: 'ウピ湾', th: 'อ่าวอูปี' },
+      categoryLabel: { fr: 'Baie', en: 'Bay', ja: '湾', th: 'อ่าว' },
+      desc: { fr: 'Baie parsemée de rochers coralliens, traditionnellement parcourue en pirogue à voile.', en: 'A bay scattered with coral rocks, traditionally explored by sailing outrigger canoe.', ja: 'サンゴ岩が点在する湾で、伝統的に帆付きのカヌーで巡られてきました。', th: 'อ่าวที่มีหินปะการังกระจัดกระจาย เดิมสำรวจด้วยเรือแคนูใบเรือแบบดั้งเดิม' },
+      tip: null,
+      amenities: { fr: 'Accès bateau', en: 'Boat access', ja: '船でアクセス', th: 'เข้าถึงโดยเรือ' } },
+    { slug: 'grotte-de-la-reine-hortense', area: 'Saint-Joseph', category: 'randonnee', image: 'assets/site-grotte-reine-hortense.jpg',
+      name: { fr: 'Grotte de la Reine Hortense', en: 'Queen Hortense Cave', ja: '女王オルタンスの洞窟', th: 'ถ้ำราชินีออร์ตองส์' },
+      categoryLabel: { fr: 'Grotte', en: 'Cave', ja: '洞窟', th: 'ถ้ำ' },
+      desc: { fr: "Cavité naturelle entourée d'une végétation dense, accessible par un court sentier. Le site est lié à l'histoire de l'île.", en: 'A natural cave surrounded by dense vegetation, reached by a short trail. The site is tied to the island’s history.', ja: '密林に囲まれた自然の洞窟で、短い遊歩道でアクセスできます。島の歴史に縁のある場所です。', th: 'ถ้ำธรรมชาติที่รายรอบด้วยพืชพรรณหนาแน่น เข้าถึงได้ด้วยเส้นทางเดินสั้น ๆ สถานที่นี้เกี่ยวข้องกับประวัติศาสตร์ของเกาะ' },
+      tip: { fr: 'Sol humide et glissant : chaussures adaptées recommandées.', en: 'Damp, slippery ground: suitable footwear recommended.', ja: '地面が湿って滑りやすいため、適した靴でお越しください。', th: 'พื้นเปียกและลื่น ควรสวมรองเท้าที่เหมาะสม' },
+      amenities: { fr: 'Sentier', en: 'Path', ja: '遊歩道', th: 'เส้นทางเดิน' } },
+    { slug: 'ilot-brosse', area: 'Oro', category: 'decouvrir', image: 'assets/site-ilot-brosse.jpg',
+      name: { fr: 'Îlot Brosse', en: 'Brosse Islet', ja: 'ブロス島', th: 'เกาะเล็กบรอส' },
+      categoryLabel: { fr: 'Îlot', en: 'Islet', ja: '小島', th: 'เกาะเล็ก' },
+      desc: { fr: 'Petit îlot du lagon situé au large de la côte nord-est. Accessible par la mer uniquement.', en: 'A small lagoon islet off the north-east coast, accessible only by sea.', ja: '北東の海岸沖にあるラグーンの小島で、船でのみアクセスできます。', th: 'เกาะเล็กในลากูนนอกชายฝั่งตะวันออกเฉียงเหนือ เข้าถึงได้ทางทะเลเท่านั้น' },
+      tip: { fr: 'Accès par la mer uniquement : conditions à vérifier localement.', en: 'Sea access only: check local conditions.', ja: '船でのみアクセス可能です。現地で状況をご確認ください。', th: 'เข้าถึงทางทะเลเท่านั้น ควรตรวจสอบสภาพอากาศในพื้นที่' },
+      amenities: { fr: 'Accès bateau', en: 'Boat access', ja: '船でアクセス', th: 'เข้าถึงโดยเรือ' } },
+    { slug: 'eglise-de-vao', area: 'Vao', category: 'culture-patrimoine', image: 'assets/site-eglise-vao.jpg',
+      name: { fr: 'Église de Vao', en: 'Vao Church', ja: 'ヴァオ教会', th: 'โบสถ์วาโอ' },
+      categoryLabel: { fr: 'Église', en: 'Church', ja: '教会', th: 'โบสถ์' },
+      desc: { fr: "Édifice religieux du village de Vao, élément marquant du patrimoine bâti de l'île.", en: 'A place of worship in Vao village, a notable part of the island’s built heritage.', ja: 'ヴァオ村にある宗教建築で、島の建築遺産を代表する存在です。', th: 'สถานที่ประกอบศาสนกิจในหมู่บ้านวาโอ เป็นส่วนสำคัญของมรดกทางสถาปัตยกรรมของเกาะ' },
+      tip: { fr: 'Lieu de culte : tenue correcte demandée.', en: 'Place of worship: appropriate dress required.', ja: '礼拝の場のため、適切な服装でお越しください。', th: 'สถานที่ประกอบศาสนกิจ กรุณาแต่งกายให้เหมาะสม' },
+      amenities: { fr: 'Parking · PMR', en: 'Parking · accessible', ja: '駐車場・車椅子対応', th: 'ที่จอดรถ · รองรับผู้พิการ' } },
+    { slug: 'baie-de-saint-maurice', area: 'Saint-Maurice', category: 'culture-patrimoine', image: 'assets/site-baie-saint-maurice.jpg',
+      name: { fr: 'Baie de Saint-Maurice', en: 'Saint-Maurice Bay', ja: 'サン・モーリス湾', th: 'อ่าวแซ็งต์-โมริส' },
+      categoryLabel: { fr: 'Site historique', en: 'Historic site', ja: '史跡', th: 'สถานที่ทางประวัติศาสตร์' },
+      desc: { fr: 'Baie de la côte sud abritant un ensemble de sculptures traditionnelles en bois, lieu de mémoire.', en: 'A south-coast bay home to a group of traditional wooden carvings, a memorial site.', ja: '南海岸の湾にあり、伝統的な木彫りが集まる慰霊の地です。', th: 'อ่าวทางชายฝั่งใต้ที่มีงานแกะสลักไม้ตามประเพณีรวมกันอยู่ เป็นสถานที่รำลึก' },
+      tip: { fr: 'Lieu de mémoire : tenue et comportement respectueux attendus.', en: 'Memorial site: respectful dress and behaviour expected.', ja: '慰霊の地のため、敬意ある服装と態度でお願いします。', th: 'สถานที่รำลึก ควรแต่งกายและปฏิบัติตัวด้วยความเคารพ' },
+      amenities: { fr: 'Parking', en: 'Parking', ja: '駐車場', th: 'ที่จอดรถ' } },
+    { slug: 'baie-de-ouameo', area: 'Ouaméo', category: 'decouvrir', image: 'assets/site-baie-ouameo.webp',
+      name: { fr: 'Baie de Ouaméo', en: 'Ouaméo Bay', ja: 'ウアメオ湾', th: 'อ่าวอูอาเมโอ' },
+      categoryLabel: { fr: 'Baie', en: 'Bay', ja: '湾', th: 'อ่าว' },
+      desc: { fr: 'Baie de la côte ouest, appréciée pour ses fins de journée.', en: 'A west-coast bay favoured for its late-afternoon light.', ja: '西海岸の湾で、夕暮れどきの景観が人気です。', th: 'อ่าวชายฝั่งตะวันตกที่ได้รับความนิยมในช่วงบ่ายแก่ ๆ' },
+      tip: null, amenities: null },
+  ];
+
+  onExplorerQuery = (e) => this.setState({ explorerQuery: e.target.value });
+  setExplorerCategory(slug) { this.setState({ explorerCategory: this.state.explorerCategory === slug ? null : slug }); }
+  openExplorerPlace(slug) { this.setState({ explorerSlug: this.state.explorerSlug === slug ? null : slug }); }
+  resetExplorer = () => this.setState({ explorerQuery: '', explorerCategory: null });
+  closeExplorer = () => this.setState({ explorerSlug: null });
+
+  static SLIDES = [
+    { url: 'assets/hero-1-ilot-brosse.jpg', pos: 'center 50%', caption: 'Îlot Brosse et le lagon classé' },
+    { url: 'assets/hero-2-kuto.jpg', pos: 'center 55%', caption: 'Baie de Kuto' },
+    { url: 'assets/hero-3-oro-aerien.avif', pos: 'center 50%', caption: 'Baie d’Oro vue du ciel' },
+    { url: 'assets/hero-4-kuto-mouillage.webp', pos: 'center 55%', caption: 'Mouillage de Kuto' },
+    { url: 'assets/hero-5-piscine-oro.webp', pos: 'center 55%', caption: 'Piscine naturelle d’Oro' }
+  ];
+
+  componentDidMount() {
+    this._onResize = () => this.setState({ w: window.innerWidth });
+    this._onResize();
+    window.addEventListener('resize', this._onResize);
+    const mode = this.props.animations ?? 'toujours';
+    const sysReduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    this._reduce = mode === 'jamais' || (mode === 'auto' && sysReduce);
+    document.documentElement.classList.toggle('om-anim', mode === 'toujours');
+    this.startTimer();
+    this.setupReveal();
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this._onResize);
+    if (this._check) { window.removeEventListener('scroll', this._check); window.removeEventListener('resize', this._check); document.removeEventListener('scroll', this._check, true); }
+    this.stopTimer();
+    if (this._io) this._io.disconnect();
+    if (this._scan) clearInterval(this._scan);
+  }
+
+  countUp(el) {
+    const target = parseInt(el.getAttribute('data-count'), 10);
+    if (!target || el._done) return;
+    el._done = true;
+    el.style.fontVariantNumeric = 'tabular-nums';
+    const suffix = el.getAttribute('data-suffix') || '';
+    const fmt = (n) => n.toLocaleString('fr-FR').replace(/\u202f|\u00a0/g, ' ') + suffix;
+    if (this._reduce) { el.textContent = fmt(target); return; }
+    const dur = 1100, t0 = performance.now();
+    const step = (t) => {
+      const p = Math.min(1, (t - t0) / dur);
+      const e = 1 - Math.pow(1 - p, 3);
+      el.textContent = fmt(Math.round(target * e));
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+
+  drawPines(el) {
+    if (el._drawn) return;
+    el._drawn = true;
+    el.querySelectorAll('path').forEach((p, i) => {
+      let len = 0;
+      try { len = p.getTotalLength(); } catch (e) { len = 80; }
+      p.style.setProperty('--len', Math.ceil(len) + 'px');
+      p.style.animationDelay = (i * 55) + 'ms';
+    });
+    el.querySelectorAll('img').forEach((im, i) => { im.style.animationDelay = (i * 120) + 'ms'; });
+    el.classList.add('is-armed');
+    const go = () => el.classList.add('is-drawn');
+    if (typeof requestAnimationFrame === 'function') requestAnimationFrame(() => requestAnimationFrame(go)); else go();
+    setTimeout(go, 400);
+  }
+
+  setupReveal() {
+    const reveal = (el) => {
+      if (el._done) return;
+      el._done = true;
+      if (el.hasAttribute('data-draw')) { this.drawPines(el); return; }
+      el.classList.add('is-in');
+      el.querySelectorAll('[data-count]').forEach((c, i) => {
+        const st = c.closest('[data-stat]');
+        const base = parseInt(st ? st.style.getPropertyValue('--i') : i, 10) || 0;
+        setTimeout(() => this.countUp(c), base * 130 + 200);
+      });
+    };
+    const check = () => {
+      const vh = window.innerHeight || document.documentElement.clientHeight || 0;
+      document.querySelectorAll('[data-reveal], [data-draw]').forEach((el) => {
+        if (el._done) return;
+        const r = el.getBoundingClientRect();
+        if (r.top < vh * 0.92 && r.bottom > 0) reveal(el);
+      });
+    };
+    this._check = check;
+    window.addEventListener('scroll', check, { passive: true });
+    window.addEventListener('resize', check, { passive: true });
+    document.addEventListener('scroll', check, { passive: true, capture: true });
+    check();
+    this._scan = setInterval(check, 400);
+    setTimeout(() => { clearInterval(this._scan); this._scan = null; }, 20000);
+  }
+
+  startTimer() {
+    if (this._timer) clearInterval(this._timer);
+    this._timer = setInterval(() => {
+      this.setState(s => ({ slide: (s.slide + 1) % Component.SLIDES.length }));
+    }, 5000);
+  }
+  stopTimer() {
+    if (this._timer) { clearInterval(this._timer); this._timer = null; }
+  }
+  pickSlide(i) {
+    return () => { this.stopTimer(); this.setState({ slide: i, paused: true }); };
+  }
+  togglePause = () => {
+    if (this.state.paused) { this.startTimer(); this.setState({ paused: false }); }
+    else { this.stopTimer(); this.setState({ paused: true }); }
+  };
+
+  nav(page) {
+    return (e) => {
+      if (e) e.preventDefault();
+      this.setState({ page, menuOpen: false });
+      window.scrollTo(0, 0);
+      this.rearmReveal();
+    };
+  }
+
+  rearmReveal() {
+    if (this._scan) clearInterval(this._scan);
+    requestAnimationFrame(() => {
+      if (this._check) this._check();
+      this._scan = setInterval(this._check, 400);
+      setTimeout(() => { if (this._scan) { clearInterval(this._scan); this._scan = null; } }, 20000);
+    });
+  }
+
+  navAnchor(page, anchorId) {
+    return (e) => {
+      if (e) e.preventDefault();
+      this.setState({ page, menuOpen: false });
+      requestAnimationFrame(() => {
+        const el = document.getElementById(anchorId);
+        if (el) el.scrollIntoView({ block: 'start' }); else window.scrollTo(0, 0);
+      });
+      this.rearmReveal();
+    };
+  }
+
+  static THEMES = [
+    { id: 'th-etat-civil', titre: 'État civil et famille', intro: 'Actes, mariage, PACS et livret de famille sont délivrés par le service État civil, au guichet 1 de la mairie de Vao.', items: [
+      { titre: 'Demander un acte de naissance', mode: 'En ligne', delai: '3 jours ouvrés' },
+      { titre: 'Demander un acte de mariage ou de décès', mode: 'En ligne', delai: '3 jours ouvrés' },
+      { titre: 'Déclarer une naissance', mode: 'Sur place', delai: 'Sous 5 jours' },
+      { titre: 'Constituer un dossier de mariage', mode: 'Formulaire', delai: '2 mois avant' },
+      { titre: 'Conclure un PACS', mode: 'Sur place', delai: '1 mois' },
+      { titre: 'Obtenir un livret de famille', mode: 'Formulaire', delai: '1 semaine' },
+      { titre: 'Déclarer un décès', mode: 'Sur place', delai: 'Sous 24 h' }
+    ]},
+    { id: 'th-urbanisme', titre: 'Urbanisme, foncier et travaux', intro: 'Le service Urbanisme instruit les autorisations de construire et vous oriente pour les terrains situés sur foncier coutumier.', items: [
+      { titre: 'Déposer une demande de permis de construire', mode: 'Formulaire', delai: '2 à 3 mois' },
+      { titre: 'Déclaration préalable de travaux', mode: 'Formulaire', delai: '1 mois' },
+      { titre: 'Demander un certificat d’urbanisme', mode: 'Formulaire', delai: '1 mois' },
+      { titre: 'Consulter le cadastre et le PUD', mode: 'En ligne', delai: 'Immédiat' },
+      { titre: 'Démarche sur terrain coutumier', mode: 'Sur place', delai: 'Variable' },
+      { titre: 'Signaler un problème de voirie ou d’éclairage', mode: 'En ligne', delai: '72 h' }
+    ]},
+    { id: 'th-enfance', titre: 'Enfance et scolarité', intro: 'Inscriptions, cantine et transport scolaire pour les écoles de Vao et Notre-Dame des Anges.', items: [
+      { titre: 'Inscrire son enfant à l’école', mode: 'Formulaire', delai: '15 jours' },
+      { titre: 'Inscrire son enfant à la cantine', mode: 'Formulaire', delai: '1 semaine' },
+      { titre: 'Demander le transport scolaire', mode: 'Formulaire', delai: '2 semaines' },
+      { titre: 'Inscrire aux activités périscolaires', mode: 'Sur place', delai: '1 semaine' },
+      { titre: 'Demander une aide à la scolarité', mode: 'Formulaire', delai: '1 mois' }
+    ]},
+    { id: 'th-environnement', titre: 'Environnement, déchets et lagon', intro: 'Collecte, encombrants et réglementation du lagon classé au patrimoine mondial de l’UNESCO.', items: [
+      { titre: 'Consulter le calendrier de collecte par tribu', mode: 'En ligne', delai: 'Immédiat' },
+      { titre: 'Demander un enlèvement d’encombrants', mode: 'En ligne', delai: '1 semaine' },
+      { titre: 'Signaler un dépôt sauvage', mode: 'En ligne', delai: '72 h' },
+      { titre: 'Demander une autorisation de brûlage', mode: 'Formulaire', delai: '15 jours' },
+      { titre: 'Connaître la réglementation du lagon et des mouillages', mode: 'En ligne', delai: 'Immédiat' }
+    ]},
+    { id: 'th-associations', titre: 'Associations, salles et vie locale', intro: 'Le service Vie associative accompagne la création, le financement et l’organisation d’événements.', items: [
+      { titre: 'Créer une association', mode: 'Formulaire', delai: '1 mois' },
+      { titre: 'Demander une subvention communale', mode: 'Formulaire', delai: 'Campagne annuelle' },
+      { titre: 'Réserver une salle municipale', mode: 'Formulaire', delai: '10 jours' },
+      { titre: 'Emprunter du matériel communal', mode: 'Sur place', delai: '1 semaine' },
+      { titre: 'Publier un événement dans l’agenda', mode: 'En ligne', delai: '5 jours' }
+    ]},
+    { id: 'th-elections', titre: 'Élections et citoyenneté', intro: 'Inscriptions sur les listes électorales, procurations et recensement citoyen.', items: [
+      { titre: 'S’inscrire sur les listes électorales', mode: 'Formulaire', delai: 'Avant le 31 décembre' },
+      { titre: 'Établir une procuration de vote', mode: 'Sur place', delai: '1 semaine' },
+      { titre: 'Vérifier son bureau de vote', mode: 'En ligne', delai: 'Immédiat' }
+    ]},
+    { id: 'th-documents', titre: 'Documents administratifs communaux', intro: 'Délibérations du conseil municipal, arrêtés, marchés publics et publications budgétaires.', items: [
+      { titre: 'Consulter les délibérations du conseil municipal', mode: 'En ligne', delai: 'Immédiat' },
+      { titre: 'Consulter les arrêtés municipaux', mode: 'En ligne', delai: 'Immédiat' },
+      { titre: 'Demander une copie d’acte administratif', mode: 'Formulaire', delai: '1 semaine' },
+      { titre: 'Consulter les marchés publics en cours', mode: 'En ligne', delai: 'Immédiat' }
+    ]}
+  ];
+
+  static VISIT = {
+    fr: {
+      breadcrumb: 'Visiter Kunié', kicker: 'Informations aux visiteurs',
+      title: 'Visiter Kunié en respectant le territoire',
+      sub: 'L’Île des Pins est une terre habitée, coutumière et protégée. Voici l’essentiel à savoir avant et pendant votre séjour.',
+      coutKicker: 'Avant tout', coutTitle: 'Respecter la coutume',
+      coutIntro: 'La majorité des terres appartient aux clans. Les visiteurs sont accueillis, à condition de demander et de respecter les usages locaux.',
+      coutItems: [
+        'Demandez l’autorisation avant d’entrer sur une terre coutumière ou de traverser une propriété.',
+        'Certains sites sont sacrés : ne les escaladez pas, ne prélevez rien, ne photographiez pas les cimetières.',
+        'Le dimanche et les jours de coutume, la vie du village ralentit : évitez le bruit et les visites tardives.',
+        'Demandez avant de photographier une personne, une case ou une cérémonie.'
+      ],
+      venirTitle: 'Arriver et se déplacer',
+      venirItems: [
+        { titre: 'Par avion', texte: 'Liaisons quotidiennes entre Nouméa Magenta et l’aérodrome de Moué (environ 25 min).' },
+        { titre: 'Par bateau', texte: 'Liaison maritime depuis Nouméa vers la baie de Kuto (environ 2 h 30, selon météo).' },
+        { titre: 'Sur place', texte: 'Peu de transports collectifs : prévoyez navette d’hôtel, taxi ou location. Une seule station-service.' }
+      ],
+      lagonTitle: 'Un lagon inscrit au patrimoine mondial',
+      lagonIntro: 'Le lagon et ses récifs sont protégés. Ces règles simples permettent de les préserver.',
+      lagonItems: [
+        'Ne touchez pas les coraux, ne marchez pas sur les patates de corail.',
+        'Zones de mouillage réglementées : renseignez-vous avant de jeter l’ancre.',
+        'Pêche, chasse sous-marine et prélèvement de coquillages réglementés.',
+        'Crème solaire minérale conseillée ; aucun déchet laissé sur les plages.',
+        'Drones : autorisation nécessaire, interdiction au-dessus des habitations et des sites coutumiers.'
+      ],
+      sitesTitle: 'Sites emblématiques', sitesIntro: 'Quelques lieux ouverts au public, à visiter avec respect. Les hébergements et activités marchandes relèvent des prestataires locaux.',
+      urgTitle: 'Urgences et santé',
+      urgItems: [
+        { label: 'Pompiers', value: '18' },
+        { label: 'SAMU', value: '15' },
+        { label: 'Gendarmerie', value: '17' },
+        { label: 'Dispensaire de Vao', value: '(+687) 46 11 03' }
+      ],
+      pratTitle: 'Informations pratiques',
+      pratItems: [
+        { label: 'Mairie', value: 'Vao, du lundi au jeudi 07h30 à 16h00, vendredi 07h30 à 15h00' },
+        { label: 'Argent', value: 'Peu de distributeurs : prévoyez des espèces avant d’arriver.' },
+        { label: 'Réseau', value: 'Couverture mobile partielle selon les baies.' },
+        { label: 'Eau', value: 'Ressource limitée : usage économe demandé à tous.' },
+        { label: 'Déchets', value: 'Aucun tri sur les sites naturels : remportez vos déchets.' }
+      ],
+      tourTitle: 'Hébergements, activités et excursions',
+      tourText: 'La mairie n’assure pas de réservation. Les offres touristiques sont présentées par l’office de tourisme et les prestataires locaux.',
+      carteTitle: 'La carte de l’île et de ses baies',
+      carteIntro: 'Repérez la mairie, l’aérodrome, les baies et les sites ouverts au public. Cliquez sur un point pour en savoir plus.',
+      carteSource: 'Fond de carte : OpenStreetMap. Emplacements indicatifs, à confirmer par la mairie.',
+      carteCta: 'Ouvrir la carte interactive',
+      ecoTitle: 'Cinq gestes qui protègent Kunié',
+      ecoIntro: 'L’île vit de son environnement. Ces gestes simples suffisent à le préserver pour ceux qui y habitent.',
+      ecoItems: [
+        'Remportez tous vos déchets, y compris les mégots et les restes de pique-nique.',
+        'Économisez l’eau : la ressource est limitée sur l’île.',
+        'Restez sur les sentiers balisés pour protéger la végétation littorale.',
+        'N’emportez ni corail, ni coquillage, ni sable.',
+        'Observez la faune à distance : tortues, oiseaux et poissons sont protégés.'
+      ],
+      eventsTitle: 'Événements ouverts au public',
+      eventsIntro: 'Les rendez-vous communaux auxquels les visiteurs sont bienvenus. Les cérémonies coutumières, elles, ne sont pas des animations touristiques.',
+      events: [
+        { jour: '05', mois: 'Sept', nom: 'Journée de nettoyage du littoral', lieu: 'Baie de Kuto, 07h30, avec les associations' },
+        { jour: '20', mois: 'Sept', nom: 'Fête communale de Kunié', lieu: 'Place de Vao, toute la journée' },
+        { jour: '12', mois: 'Oct', nom: 'Course de pirogues traditionnelles', lieu: 'Baie d’Upi, après-midi' }
+      ],
+      charteTitle: 'La charte du visiteur',
+      charteText: 'Une page à lire avant d’arriver : accès aux terres coutumières, sites sacrés, lagon protégé, photographies. À emporter avec vous.',
+      charteCta: 'Télécharger la charte (PDF)',
+      tourCta: 'Voir les ressources touristiques'
+    },
+    en: {
+      breadcrumb: 'Visitors', kicker: 'Visitor information',
+      title: 'Visiting Kunié with respect',
+      sub: 'Isle of Pines is a living, customary and protected land. Here is what to know before and during your stay.',
+      coutKicker: 'First of all', coutTitle: 'Respecting Kanak custom',
+      coutIntro: 'Most of the land belongs to clans. Visitors are welcome, provided they ask permission and follow local customs.',
+      coutItems: [
+        'Ask permission before entering customary land or crossing private property.',
+        'Some sites are sacred: do not climb them, take nothing, and never photograph cemeteries.',
+        'On Sundays and customary days village life slows down: avoid noise and late visits.',
+        'Always ask before photographing a person, a home or a ceremony.'
+      ],
+      venirTitle: 'Getting here and around',
+      venirItems: [
+        { titre: 'By air', texte: 'Daily flights from Nouméa Magenta to Moué airfield (about 25 min).' },
+        { titre: 'By sea', texte: 'Ferry from Nouméa to Kuto Bay (about 2 h 30, weather permitting).' },
+        { titre: 'On the island', texte: 'Very little public transport: arrange a hotel shuttle, taxi or rental. Only one petrol station.' }
+      ],
+      lagonTitle: 'A UNESCO World Heritage lagoon',
+      lagonIntro: 'The lagoon and its reefs are protected. These simple rules help preserve them.',
+      lagonItems: [
+        'Do not touch or stand on coral.',
+        'Anchoring is regulated: check before dropping anchor.',
+        'Fishing, spearfishing and shell collecting are regulated.',
+        'Mineral sunscreen recommended; leave no waste on the beaches.',
+        'Drones: permission required, never over homes or customary sites.'
+      ],
+      sitesTitle: 'Landmark sites', sitesIntro: 'A few places open to the public, to be visited respectfully. Accommodation and paid activities are run by local operators.',
+      urgTitle: 'Emergencies and health',
+      urgItems: [
+        { label: 'Fire service', value: '18' },
+        { label: 'Medical emergencies', value: '15' },
+        { label: 'Police (gendarmerie)', value: '17' },
+        { label: 'Vao health centre', value: '(+687) 46 11 03' }
+      ],
+      pratTitle: 'Practical information',
+      pratItems: [
+        { label: 'Town hall', value: 'Vao, Mon to Thu 7.30am to 4pm, Fri 7.30am to 3pm' },
+        { label: 'Money', value: 'Very few ATMs: bring cash with you.' },
+        { label: 'Network', value: 'Mobile coverage is partial depending on the bay.' },
+        { label: 'Water', value: 'A limited resource: please use it sparingly.' },
+        { label: 'Waste', value: 'No bins at natural sites: take your waste with you.' }
+      ],
+      tourTitle: 'Accommodation, activities and tours',
+      tourText: 'The town hall does not handle bookings. Tourist offers are presented by the tourism office and local operators.',
+      carteTitle: 'Map of the island and its bays',
+      carteIntro: 'Find the town hall, the airfield, the bays and the sites open to the public. Click a point for details.',
+      carteSource: 'Base map: OpenStreetMap. Locations are indicative, pending confirmation by the town hall.',
+      carteCta: 'Open the interactive map',
+      ecoTitle: 'Five habits that protect Kunié',
+      ecoIntro: 'The island lives from its environment. These simple habits are enough to preserve it for the people who live here.',
+      ecoItems: [
+        'Take all your waste with you, including cigarette butts and picnic leftovers.',
+        'Save water: the resource is limited on the island.',
+        'Stay on marked paths to protect coastal vegetation.',
+        'Take no coral, shells or sand.',
+        'Watch wildlife from a distance: turtles, birds and fish are protected.'
+      ],
+      eventsTitle: 'Events open to visitors',
+      eventsIntro: 'Municipal events that visitors are welcome to attend. Customary ceremonies, however, are not tourist attractions.',
+      events: [
+        { jour: '05', mois: 'Sep', nom: 'Coastline clean-up day', lieu: 'Kuto Bay, 7.30am, with local associations' },
+        { jour: '20', mois: 'Sep', nom: 'Kunié community festival', lieu: 'Vao village square, all day' },
+        { jour: '12', mois: 'Oct', nom: 'Traditional outrigger race', lieu: 'Upi Bay, afternoon' }
+      ],
+      charteTitle: 'The visitor charter',
+      charteText: 'One page to read before you arrive: access to customary land, sacred sites, the protected lagoon and photography. Take it with you.',
+      charteCta: 'Download the charter (PDF)',
+      tourCta: 'See tourism resources'
+    },
+    ja: {
+      breadcrumb: '観光の方へ', kicker: '訪問者向け情報',
+      title: 'クニエ島を敬意をもって訪ねる',
+      sub: 'イル・デ・パンは人々が暮らし、慣習が守られ、自然が保護されている島です。滞在前に知っておきたいことをまとめました。',
+      coutKicker: 'はじめに', coutTitle: '慣習（クートゥム）を尊重する',
+      coutIntro: '島の土地の多くは氏族の所有です。許可を求め、地域の習慣に従っていただければ、訪問者は歓迎されます。',
+      coutItems: [
+        '慣習地や私有地に入る前には必ず許可を得てください。',
+        '聖地では、登らない・何も持ち帰らない・墓地の撮影はしない。',
+        '日曜日や慣習の日は村が静かになります。騒音や夜遅い訪問はお控えください。',
+        '人・住居・儀式を撮影する前に必ず許可を求めてください。'
+      ],
+      venirTitle: 'アクセスと島内の移動',
+      venirItems: [
+        { titre: '飛行機', texte: 'ヌメア（マジェンタ空港）からムエ飛行場まで毎日運航、約25分。' },
+        { titre: '船', texte: 'ヌメアからクト湾まで高速船で約2時間30分（天候により変更）。' },
+        { titre: '島内', texte: '公共交通はほとんどありません。ホテルの送迎、タクシー、レンタカーをご利用ください。給油所は1か所のみ。' }
+      ],
+      lagonTitle: '世界遺産のラグーン',
+      lagonIntro: 'ラグーンとサンゴ礁は保護されています。次の点にご協力ください。',
+      lagonItems: [
+        'サンゴに触れたり、上に立たないでください。',
+        '停泊は規制されています。錨を下ろす前に確認してください。',
+        '釣り・素潜り漁・貝の採取は規制対象です。',
+        '鉱物系日焼け止めを推奨。ごみは浜に残さないでください。',
+        'ドローンは許可が必要。住居や慣習地の上空は禁止です。'
+      ],
+      sitesTitle: '主な見どころ', sitesIntro: '一般に開かれた場所です。敬意をもって訪れてください。宿泊や有料アクティビティは地元事業者が提供しています。',
+      urgTitle: '緊急連絡先と医療',
+      urgItems: [
+        { label: '消防', value: '18' },
+        { label: '救急', value: '15' },
+        { label: '警察（憲兵隊）', value: '17' },
+        { label: 'ヴァオ診療所', value: '(+687) 46 11 03' }
+      ],
+      pratTitle: '実用情報',
+      pratItems: [
+        { label: '役場', value: 'ヴァオ、月〜木 7:30〜16:00、金 7:30〜15:00' },
+        { label: '現金', value: 'ATMはごく少数です。現金をご持参ください。' },
+        { label: '通信', value: '湾によって携帯電話の電波が届かない場所があります。' },
+        { label: '水', value: '水資源は限られています。節水にご協力ください。' },
+        { label: 'ごみ', value: '自然エリアにごみ箱はありません。持ち帰りをお願いします。' }
+      ],
+      tourTitle: '宿泊・アクティビティ・ツアー',
+      tourText: '役場では予約を扱っていません。観光情報は観光局と地元事業者がご案内します。',
+      carteTitle: '島と湾の地図',
+      carteIntro: '役場、飛行場、湾、一般に開かれた場所を確認できます。地点をクリックすると詳細が表示されます。',
+      carteSource: '地図データ：OpenStreetMap。位置は目安で、役場による確認待ちです。',
+      carteCta: 'インタラクティブ地図を開く',
+      ecoTitle: 'クニエ島を守る5つの心がけ',
+      ecoIntro: 'この島は自然とともにあります。次の心がけが、住民のための環境を守ります。',
+      ecoItems: [
+        'たばこの吸い殻や食べ残しも含め、ごみはすべて持ち帰ってください。',
+        '水は貴重です。節水にご協力ください。',
+        '海岸の植生を守るため、決められた道を歩いてください。',
+        'サンゴ・貝・砂は持ち帰らないでください。',
+        '生き物は距離をとって観察してください。ウミガメ・鳥・魚は保護対象です。'
+      ],
+      eventsTitle: '一般公開の行事',
+      eventsIntro: '訪問者も参加できる村の行事です。一方で慣習の儀式は観光向けの催しではありません。',
+      events: [
+        { jour: '05', mois: '9月', nom: '海岸クリーンアップの日', lieu: 'クト湾、7:30、地元団体と共同' },
+        { jour: '20', mois: '9月', nom: 'クニエ村祭り', lieu: 'ヴァオ広場、終日' },
+        { jour: '12', mois: '10月', nom: '伝統カヌーレース', lieu: 'ウピ湾、午後' }
+      ],
+      charteTitle: '訪問者のためのお願い',
+      charteText: '到着前にお読みください：慣習地への立ち入り、聖地、保護されたラグーン、写真撮影について。印刷して携帯できます。',
+      charteCta: 'PDFをダウンロード',
+      tourCta: '観光情報を見る'
+    },
+    th: {
+      breadcrumb: 'สำหรับนักท่องเที่ยว', kicker: 'ข้อมูลสำหรับผู้มาเยือน',
+      title: 'เที่ยวเกาะกูนีเยด้วยความเคารพ',
+      sub: 'เกาะแห่งสนคือดินแดนที่มีผู้อยู่อาศัย มีจารีตประเพณี และได้รับการคุ้มครอง นี่คือสิ่งที่ควรรู้ก่อนและระหว่างการพักของท่าน',
+      coutKicker: 'ก่อนอื่นใด', coutTitle: 'เคารพจารีตประเพณี (คูตูม)',
+      coutIntro: 'ที่ดินส่วนใหญ่เป็นของตระกูลท้องถิ่น นักท่องเที่ยวเป็นที่ต้อนรับ หากขออนุญาตและปฏิบัติตามประเพณีท้องถิ่น',
+      coutItems: [
+        'ขออนุญาตก่อนเข้าที่ดินตามประเพณีหรือผ่านที่ดินส่วนบุคคล',
+        'สถานที่บางแห่งศักดิ์สิทธิ์ ห้ามปีนขึ้นไป ห้ามเก็บสิ่งใด และห้ามถ่ายภาพสุสาน',
+        'วันอาทิตย์และวันตามประเพณี หมู่บ้านจะเงียบสงบ กรุณาหลีกเลี่ยงเสียงดังและการเยี่ยมชมช่วงดึก',
+        'ขออนุญาตก่อนถ่ายภาพบุคคล บ้าน หรือพิธีกรรมต่าง ๆ'
+      ],
+      venirTitle: 'การเดินทางมาและการเดินทางในเกาะ',
+      venirItems: [
+        { titre: 'ทางอากาศ', texte: 'มีเที่ยวบินทุกวันจากนูเมอา (สนามบินมาเจนตา) ไปยังสนามบินมูเอ ใช้เวลาประมาณ 25 นาที' },
+        { titre: 'ทางเรือ', texte: 'เรือเฟอร์รีจากนูเมอาไปยังอ่าวกูโต ใช้เวลาประมาณ 2 ชั่วโมง 30 นาที ขึ้นอยู่กับสภาพอากาศ' },
+        { titre: 'บนเกาะ', texte: 'มีระบบขนส่งสาธารณะน้อยมาก ควรจัดรถรับส่งของโรงแรม แท็กซี่ หรือเช่ารถ มีปั๊มน้ำมันเพียงแห่งเดียว' }
+      ],
+      lagonTitle: 'ลากูนมรดกโลกของยูเนสโก',
+      lagonIntro: 'ลากูนและแนวปะการังได้รับการคุ้มครอง กฎง่าย ๆ เหล่านี้ช่วยรักษาไว้',
+      lagonItems: [
+        'ห้ามสัมผัสหรือเหยียบปะการัง',
+        'การทอดสมอมีข้อกำหนด ควรตรวจสอบก่อนทอดสมอ',
+        'การตกปลา ล่าปลาด้วยหอก และเก็บหอยมีข้อกำหนดควบคุม',
+        'แนะนำครีมกันแดดชนิดแร่ธาตุ และไม่ทิ้งขยะบนชายหาด',
+        'โดรน: ต้องขออนุญาต ห้ามบินเหนือที่อยู่อาศัยหรือสถานที่ตามประเพณี'
+      ],
+      sitesTitle: 'สถานที่สำคัญ', sitesIntro: 'สถานที่บางแห่งที่เปิดให้ประชาชนเข้าชม โปรดเยี่ยมชมด้วยความเคารพ ที่พักและกิจกรรมเชิงพาณิชย์ดำเนินการโดยผู้ประกอบการท้องถิ่น',
+      urgTitle: 'เหตุฉุกเฉินและสุขภาพ',
+      urgItems: [
+        { label: 'หน่วยดับเพลิง', value: '18' },
+        { label: 'หน่วยแพทย์ฉุกเฉิน', value: '15' },
+        { label: 'ตำรวจ (ยานดาร์เมอรี)', value: '17' },
+        { label: 'ศูนย์สุขภาพวาโอ', value: '(+687) 46 11 03' }
+      ],
+      pratTitle: 'ข้อมูลที่เป็นประโยชน์',
+      pratItems: [
+        { label: 'ที่ว่าการเมือง', value: 'วาโอ จันทร์ถึงพฤหัส 7:30-16:00 น. ศุกร์ 7:30-15:00 น.' },
+        { label: 'เงินสด', value: 'มีตู้เอทีเอ็มน้อยมาก ควรเตรียมเงินสดมาด้วย' },
+        { label: 'สัญญาณโทรศัพท์', value: 'สัญญาณมือถือครอบคลุมเพียงบางส่วนตามแต่ละอ่าว' },
+        { label: 'น้ำ', value: 'ทรัพยากรน้ำมีจำกัด ควรใช้อย่างประหยัด' },
+        { label: 'ขยะ', value: 'ไม่มีถังขยะในพื้นที่ธรรมชาติ กรุณานำขยะกลับไปด้วย' }
+      ],
+      tourTitle: 'ที่พัก กิจกรรม และทัวร์',
+      tourText: 'ที่ว่าการเมืองไม่ได้จัดการเรื่องการจอง ข้อมูลการท่องเที่ยวจัดทำโดยสำนักงานการท่องเที่ยวและผู้ประกอบการท้องถิ่น',
+      carteTitle: 'แผนที่เกาะและอ่าวต่าง ๆ',
+      carteIntro: 'ค้นหาที่ว่าการเมือง สนามบิน อ่าวต่าง ๆ และสถานที่ที่เปิดให้เข้าชม คลิกจุดเพื่อดูรายละเอียด',
+      carteSource: 'แผนที่พื้นฐาน: OpenStreetMap ตำแหน่งเป็นข้อมูลโดยประมาณ รอการยืนยันจากที่ว่าการเมือง',
+      carteCta: 'เปิดแผนที่แบบอินเทอร์แอกทีฟ',
+      ecoTitle: 'ห้าข้อปฏิบัติเพื่อปกป้องเกาะกูนีเย',
+      ecoIntro: 'เกาะนี้ดำรงอยู่ได้ด้วยสิ่งแวดล้อม ข้อปฏิบัติง่าย ๆ เหล่านี้ช่วยรักษาไว้เพื่อผู้อยู่อาศัย',
+      ecoItems: [
+        'นำขยะทั้งหมดกลับไปด้วย รวมถึงก้นบุหรี่และเศษอาหาร',
+        'ประหยัดน้ำ เพราะทรัพยากรน้ำบนเกาะมีจำกัด',
+        'เดินบนเส้นทางที่กำหนดเพื่อปกป้องพืชพรรณชายฝั่ง',
+        'ห้ามนำปะการัง เปลือกหอย หรือทรายกลับไป',
+        'สังเกตสัตว์ป่าจากระยะไกล เต่า นก และปลาได้รับการคุ้มครอง'
+      ],
+      eventsTitle: 'กิจกรรมที่เปิดให้ประชาชนเข้าร่วม',
+      eventsIntro: 'กิจกรรมของเมืองที่นักท่องเที่ยวสามารถเข้าร่วมได้ ส่วนพิธีกรรมตามประเพณีนั้นไม่ใช่การแสดงเพื่อนักท่องเที่ยว',
+      events: [
+        { jour: '05', mois: 'ก.ย.', nom: 'วันทำความสะอาดชายฝั่ง', lieu: 'อ่าวกูโต 7:30 น. ร่วมกับกลุ่มอาสาสมัคร' },
+        { jour: '20', mois: 'ก.ย.', nom: 'งานเทศกาลชุมชนกูนีเย', lieu: 'ลานหมู่บ้านวาโอ ตลอดวัน' },
+        { jour: '12', mois: 'ต.ค.', nom: 'การแข่งเรือแคนูดั้งเดิม', lieu: 'อ่าวอูปี ช่วงบ่าย' }
+      ],
+      charteTitle: 'กฎบัตรสำหรับผู้มาเยือน',
+      charteText: 'เอกสารหนึ่งหน้าที่ควรอ่านก่อนมาถึง: การเข้าที่ดินตามประเพณี สถานที่ศักดิ์สิทธิ์ ลากูนที่ได้รับการคุ้มครอง และการถ่ายภาพ พกติดตัวไว้ได้',
+      charteCta: 'ดาวน์โหลดกฎบัตร (PDF)',
+      tourCta: 'ดูข้อมูลการท่องเที่ยว'
+    }
+  };
+
+  static norm(s) {
+    return String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[’']/g, ' ');
+  }
+
+  searchIndex() {
+    if (this._index) return this._index;
+    const out = [];
+    Component.THEMES.forEach((t) => t.items.forEach((d) => {
+      out.push({ cat: t.titre, titre: d.titre, meta: d.mode + ', ' + d.delai, key: Component.norm(t.titre + ' ' + d.titre + ' ' + d.mode) });
+    }));
+    [
+      { cat: 'Vie municipale', titre: 'Signaler un problème sur la voie publique', meta: 'En ligne, réponse sous 48 h', page: 'signaler' },
+      { cat: 'État civil', titre: 'Prendre un rendez-vous d’état civil', meta: 'En ligne, créneaux de 20 min', page: 'rdv' },
+      { cat: 'Contact', titre: 'Écrire à la mairie de Vao', meta: 'Formulaire de contact', page: 'contact' },
+      { cat: 'Visiteurs', titre: 'Informations aux visiteurs de Kunié', meta: 'FR, EN, 日本語, ไทย', page: 'visiter' },
+      { cat: 'Actualités', titre: 'Travaux et réseaux en cours', meta: 'Mise à jour par les services', page: 'actus' }
+    ].forEach((e) => { e.key = Component.norm(e.cat + ' ' + e.titre + ' ' + e.meta); out.push(e); });
+    this._index = out;
+    return out;
+  }
+
+  toggleTheme(id) {
+    return (e) => { if (e) e.preventDefault(); this.setState(s => ({ openThemes: Object.assign({}, s.openThemes, { [id]: !s.openThemes[id] }) })); };
+  }
+  openTheme(id) {
+    return () => this.setState(s => ({ openThemes: Object.assign({}, s.openThemes, { [id]: true }) }));
+  }
+  toggleAll = () => {
+    const all = Component.THEMES.length;
+    const open = Object.values(this.state.openThemes).filter(Boolean).length;
+    const next = {};
+    if (open < all) Component.THEMES.forEach(t => { next[t.id] = true; });
+    this.setState({ openThemes: next });
+  };
+
+  explorerVals() {
+    const s = this.state;
+    const lang = s.lang || 'fr';
+    const ui = Component.EXPLORER_UI[lang] || Component.EXPLORER_UI.fr;
+    const q = (s.explorerQuery || '').toLowerCase().trim();
+    const catMeta = {};
+    Component.EXPLORER_CATEGORIES.forEach((c) => { catMeta[c.slug] = c; });
+    const filtered = Component.EXPLORER_PLACES.filter((p) => {
+      if (s.explorerCategory && p.category !== s.explorerCategory) return false;
+      if (q && !((p.name[lang] || p.name.fr) + ' ' + p.area + ' ' + (p.categoryLabel[lang] || p.categoryLabel.fr)).toLowerCase().includes(q)) return false;
+      return true;
+    });
+    const explorerCategories = Component.EXPLORER_CATEGORIES.map((c) => {
+      const active = s.explorerCategory === c.slug;
+      const base = 'border-radius:6px;padding:11px 16px;font-size:15px;font-weight:600;cursor:pointer;border:1px solid ';
+      return {
+        slug: c.slug, name: c.name[lang] || c.name.fr, active,
+        style: active ? base + c.accent + ';background:' + c.accent + ';color:#fff' : base + '#DFE3E9;background:#fff;color:#14202E',
+        onClick: () => this.setExplorerCategory(c.slug),
+      };
+    });
+    const explorerPlaces = filtered.map((p) => {
+      const active = s.explorerSlug === p.slug;
+      const accent = (catMeta[p.category] || {}).accent || '#1E5AA8';
+      return {
+        slug: p.slug, name: p.name[lang] || p.name.fr, areaName: p.area, categoryLabel: p.categoryLabel[lang] || p.categoryLabel.fr, desc: p.desc[lang] || p.desc.fr, image: p.image, accent, active,
+        cardStyle: `display:block;width:100%;text-align:left;background:#fff;border:1px solid ${active ? accent : '#DFE3E9'};box-shadow:0 0 0 1px ${active ? accent : '#DFE3E9'};padding:0;cursor:pointer;font:inherit;transition:transform 180ms cubic-bezier(.22,.61,.36,1),box-shadow 180ms`,
+        onClick: () => this.openExplorerPlace(p.slug),
+      };
+    });
+    const activeRaw = s.explorerSlug ? Component.EXPLORER_PLACES.find((p) => p.slug === s.explorerSlug) : null;
+    const explorerActivePlace = activeRaw ? {
+      name: activeRaw.name[lang] || activeRaw.name.fr,
+      categoryLabel: activeRaw.categoryLabel[lang] || activeRaw.categoryLabel.fr,
+      desc: activeRaw.desc[lang] || activeRaw.desc.fr,
+      tip: activeRaw.tip ? (activeRaw.tip[lang] || activeRaw.tip.fr) : null,
+      image: activeRaw.image,
+      accent: (catMeta[activeRaw.category] || {}).accent || '#1E5AA8',
+      amenitiesLabel: activeRaw.amenities ? (activeRaw.amenities[lang] || activeRaw.amenities.fr) : null,
+    } : null;
+    return {
+      explorerQuery: s.explorerQuery, onExplorerQuery: this.onExplorerQuery,
+      explorerPlaceholder: ui.placeholder,
+      explorerCategories, explorerPlaces,
+      explorerCountLabel: ui.countLabel(filtered.length),
+      explorerNoResultsText: ui.noResults,
+      explorerResetLabel: ui.reset,
+      explorerCarteLabel: ui.carte,
+      explorerCloseLabel: ui.close,
+      explorerNoResults: filtered.length === 0,
+      resetExplorer: this.resetExplorer,
+      explorerActivePlace, closeExplorer: this.closeExplorer,
+      explorerDetailMargin: explorerActivePlace ? '20px' : '0',
+    };
+  }
+
+  renderVals() {
+    const p = this.state.page;
+    const opens = this.state.openThemes;
+    const modeColors = { 'En ligne': '#1E5AA8', 'Formulaire': '#1E5AA8', 'Sur place': '#14453F' };
+    const themes = Component.THEMES.map(t => ({
+      id: t.id, anchor: '#' + t.id, titre: t.titre, intro: t.intro, compte: t.items.length,
+      ouvert: !!opens[t.id],
+      expanded: opens[t.id] ? 'true' : 'false',
+      signe: opens[t.id] ? '\u2212' : '+',
+      rot: opens[t.id] ? '180deg' : '0deg',
+      headBg: opens[t.id] ? '#F3F7FB' : '#FFFFFF',
+      toggle: this.toggleTheme(t.id),
+      open: this.openTheme(t.id),
+      items: t.items.map(d => ({ titre: d.titre, mode: d.mode, delai: d.delai, modeColor: modeColors[d.mode] || '#1E5AA8' }))
+    }));
+    const allOpen = themes.every(t => t.ouvert);
+    const q = Component.norm((this.state.query || '').trim());
+    const suggestions = q.length < 2 ? [] : this.searchIndex()
+      .filter(e => q.split(/\s+/).every(w => e.key.indexOf(w) !== -1))
+      .slice(0, 6)
+      .map(e => ({
+        cat: e.cat, titre: e.titre, meta: e.meta,
+        open: (ev) => {
+          if (ev) ev.preventDefault();
+          this.setState({ query: '', page: e.page || 'fiche', menuOpen: false });
+          window.scrollTo(0, 0);
+        }
+      }));
+    const level = this.props.alertLevel ?? 'vigilance';
+    const labels = { information: 'Information', vigilance: 'Vigilance', urgence: 'Urgence' };
+    return {
+      isDesktop: this.state.w >= 1024,
+      isMobile: this.state.w < 1024,
+      menuOpen: this.state.menuOpen && this.state.w < 1024,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      isHome: p === 'accueil',
+      isDemarches: p === 'demarches',
+      isFiche: p === 'fiche',
+      isActus: p === 'actus',
+      isContact: p === 'contact',
+      isVisiter: p === 'visiter',
+      isMairie: p === 'mairie',
+      isVivre: p === 'vivre',
+      bandDisplay: this.state.w >= 760 ? 'grid' : 'flex',
+      bandOverflow: this.state.w >= 760 ? 'visible' : 'auto',
+      bandFlex: this.state.w >= 760 ? '1 1 auto' : '0 0 186px',
+      isSignaler: p === 'signaler',
+      isRdv: p === 'rdv',
+      goSignaler: this.nav('signaler'),
+      goRdv: this.nav('rdv'),
+      travaux: [
+        { type: 'Voirie', titre: 'Route de Vao : circulation alternée entre Vao et Kuto', periode: 'Jusqu’au 12 sept.' },
+        { type: 'Eau', titre: 'Coupure d’eau programmée, tribu de Youati', periode: 'Mardi 25 août, de 08h à 13h' },
+        { type: 'Collecte', titre: 'Encombrants : passage décalé sur le secteur d’Oro', periode: 'Semaine du 31 août' },
+        { type: 'Réseau', titre: 'Travaux sur le réseau électrique, secteur de Gadji', periode: 'Du 26 au 28 août' }
+      ],
+      creneaux: [
+        { jour: 'Lundi 31 août', heures: ['08h00', '08h20', '09h00', '13h00', '13h40'] },
+        { jour: 'Mardi 1er septembre', heures: ['08h40', '09h20', '10h00', '14h00'] },
+        { jour: 'Jeudi 3 septembre', heures: ['08h00', '09h40', '13h20', '14h20', '15h00'] }
+      ],
+
+      goVisiter: this.nav('visiter'),
+      goMairie: this.nav('mairie'),
+      goVivre: this.nav('vivre'),
+      goVivreEnvir: this.navAnchor('vivre', 'v-envir'),
+      goVivreCoutume: this.navAnchor('vivre', 'v-coutume'),
+      goVivreSante: this.navAnchor('vivre', 'v-sante'),
+      t: Component.VISIT[this.state.lang || 'fr'],
+      langCode: this.state.lang || 'fr',
+      ...this.explorerVals(),
+      langs: [
+        { code: 'fr', label: 'Français' },
+        { code: 'en', label: 'English' },
+        { code: 'ja', label: '日本語' },
+        { code: 'th', label: 'ไทย' }
+      ].map(l => {
+        const on = (this.state.lang || 'fr') === l.code;
+        return {
+          label: l.label, code: l.code, active: on ? 'true' : 'false',
+          bg: on ? '#8FCBE8' : 'transparent',
+          fg: on ? '#2C2306' : '#ffffff',
+          border: on ? '#8FCBE8' : 'rgba(255,255,255,0.45)',
+          select: () => this.setState({ lang: l.code })
+        };
+      }),
+      goHome: this.nav('accueil'),
+      goDemarches: this.nav('demarches'),
+      goFiche: this.nav('fiche'),
+      goActus: this.nav('actus'),
+      goContact: this.nav('contact'),
+      onSearch: (e) => { e.preventDefault(); if ((this.state.query || '').trim()) { this.setState({ page: 'demarches', query: '', menuOpen: false }); window.scrollTo(0, 0); } },
+      query: this.state.query || '',
+      onQuery: (e) => this.setState({ query: e.target.value }),
+      hasSuggestions: suggestions.length > 0 || (q.length >= 2 && !suggestions.length),
+      noResult: q.length >= 2 && suggestions.length === 0,
+      suggestions: suggestions,
+      showAgenda: this.props.showAgenda ?? true,
+      themes: themes,
+      toggleAll: this.toggleAll,
+      toggleAllLabel: allOpen ? 'Tout replier' : 'Tout déplier',
+      slideCaption: Component.SLIDES[this.state.slide].caption,
+      paused: !!this.state.paused,
+      running: !this.state.paused,
+      pauseLabel: this.state.paused ? 'Reprendre le défilement des photos' : 'Interrompre le défilement des photos',
+      togglePause: this.togglePause,
+      slides: Component.SLIDES.map((s, i) => ({
+        url: s.url, pos: s.pos, caption: s.caption,
+        opacity: i === this.state.slide ? 1 : 0,
+        fade: this._reduce ? '0ms' : '1400ms',
+        dot: i === this.state.slide ? 'rgba(255,255,255,0.95)' : 'rgba(255,255,255,0.38)',
+        current: i === this.state.slide ? 'true' : 'false',
+        select: this.pickSlide(i)
+      })),
+      alertVisible: level !== 'aucune' && !this.state.alertDismissed,
+      alertLabel: labels[level] || 'Vigilance',
+      alertTitle: 'Épisode de fortes pluies annoncé sur Kunié',
+      alertText: 'Prudence sur la route de Vao et dans les zones basses jusqu’au 24 août. Les services municipaux restent ouverts.',
+      dismissAlert: () => this.setState({ alertDismissed: true }),
+      demarches: [
+        { cat: 'État civil', titre: 'Demander un acte de naissance', resume: 'Copie intégrale ou extrait, pour vous ou un proche.', delai: '3 jours ouvrés', cout: 'Gratuit' },
+        { cat: 'État civil', titre: 'Déclarer une naissance', resume: 'Déclaration obligatoire dans les 5 jours suivant la naissance.', delai: 'Immédiat', cout: 'Gratuit' },
+        { cat: 'Urbanisme', titre: 'Déposer une demande de permis de construire', resume: 'Construction neuve, extension, changement de destination.', delai: '2 à 3 mois', cout: 'Gratuit' },
+        { cat: 'Éducation et enfance', titre: 'Inscrire son enfant à l’école', resume: 'Inscription en maternelle et élémentaire pour la rentrée 2027.', delai: '15 jours', cout: 'Gratuit' },
+        { cat: 'Associations', titre: 'Réserver une salle municipale', resume: 'Salles communales, terrains et matériel pour vos activités.', delai: '10 jours', cout: 'Selon tarifs' },
+        { cat: 'Environnement', titre: 'Demander un enlèvement d’encombrants', resume: 'Collecte sur rendez-vous par tribu, hors déchets dangereux.', delai: '1 semaine', cout: 'Gratuit' }
+      ],
+      actus: [
+        { cat: 'Travaux', date: '18 août 2026', titre: 'Réfection de la route de Vao : circulation alternée', resume: 'Circulation alternée entre Vao et la baie de Kuto jusqu’au 12 septembre.', img: 'assets/saint-joseph.jpg', alt: 'Route côtière bordant la baie de Saint-Joseph' },
+        { cat: 'Éducation', date: '14 août 2026', titre: 'Inscriptions scolaires 2027 : ouverture du guichet', resume: 'Le guichet unique ouvre le 1er septembre à la mairie de Vao.', img: 'assets/piscine-oro.jpg', alt: 'Piscine naturelle de la baie d’Oro' },
+        { cat: 'Environnement', date: '11 août 2026', titre: 'Collecte des encombrants : nouveau calendrier', resume: 'Un passage par tribu et par mois, sur inscription auprès du service.', img: 'assets/araucaria-pins.jpg', alt: 'Pins colonnaires en bord de lagon' },
+        { cat: 'Conseil municipal', date: '08 août 2026', titre: 'Séance du 29 août : ordre du jour publié', resume: 'Budget supplémentaire, subventions associatives et voirie communale.', img: 'assets/survol-avion.jpg', alt: 'Vue aérienne de l’Île des Pins' },
+        { cat: 'Lagon classé', date: '02 août 2026', titre: 'Mouillage dans la baie d’Oro : rappel des règles', resume: 'Zones interdites au mouillage pour protéger les herbiers et coraux.', img: 'assets/hero-kuto-bay.jpg', alt: 'Baie de Kuto' },
+        { cat: 'Vie locale', date: '28 juillet 2026', titre: 'Fête communale de Kunié : appel aux associations', resume: 'Inscriptions des stands et animations ouvertes jusqu’au 5 septembre.', img: 'assets/piscine-oro.jpg', alt: 'Baie d’Oro' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
